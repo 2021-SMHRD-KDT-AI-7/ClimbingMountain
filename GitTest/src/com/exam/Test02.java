@@ -10,6 +10,8 @@ public class Test02 {
 		System.out.println("혜준 오후4시 34분 커밋!");
 		
 		System.out.println("깃허브 사용법을 익혀놓자");
+		
+		System.out.println("이렇게 하면 커밋이 되나??");
 	}
 
 }
