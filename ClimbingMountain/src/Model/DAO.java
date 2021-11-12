@@ -61,11 +61,31 @@ public class DAO {
 		return cnt;
 	}
 
-	public ArrayList<DTO> getDate() {
+	public ArrayList<DTO> getAlldate() {
 		try {
 			getConn();
 			String sql = "select * from test_table";
 			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				test_board.add(  new DTO(rs.getString("test_String"), rs.getInt("test2_num"))    );
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dbClose();
+		return test_board;
+	}
+	
+	public ArrayList<DTO> getSelect_test_String(String input) {
+		try {
+			getConn();
+			String sql = "select * from test_table where test_String = ? ";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, input);
 
 			rs = psmt.executeQuery();
 			while (rs.next()) {
