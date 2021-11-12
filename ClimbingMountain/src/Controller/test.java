@@ -61,7 +61,7 @@ public class test {
 			}else {
 				System.out.println("번호를 잘못 입력하였습니다!");
 			}
-			test_board.clear();
+			
 			
 		}
 
