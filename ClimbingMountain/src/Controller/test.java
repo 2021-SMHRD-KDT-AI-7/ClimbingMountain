@@ -44,6 +44,7 @@ public class test {
 					int c2 = test_board.get(i).getTest2_num();
 					System.out.println(i + 1 + "번 =  Test_String : " + c1 + " Test2_num :" + c2);
 				}
+				test_board.clear();
 			} else if( input == 3 ){ // 테이블  test_String 컬럼 검색
 				System.out.println("test_String 에서 검색할 단어 입력 >> ");
 				String search = sc.next();
@@ -58,6 +59,7 @@ public class test {
 				if(test_board.size()==0) {
 					System.out.println("검색 결과가 존재하지 않습니다.");
 				}
+				test_board.clear();
 			}else {
 				System.out.println("번호를 잘못 입력하였습니다!");
 			}
