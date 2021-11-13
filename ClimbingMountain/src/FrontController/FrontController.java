@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Controller.DiaryBoardServiceCon;
+import Controller.DiaryOneServiceCon;
 import Interface.Command;
 
 //10월 29일 오전 9시 40분
@@ -43,24 +45,10 @@ public class FrontController extends HttpServlet {
 		
 		request.setCharacterEncoding("euc-kr");
 		
-		if(servlet_Name.equals("LoginServiceCon.do")) {
-			sc = new LoginServiceCon();
-		}else if(servlet_Name.equals("JoinServiceCon.do")) {
-			sc = new JoinServiceCon();
-		}else if(servlet_Name.equals("LogoutServiceCon.do")) {
-			sc = new LogoutServiceCon();	
-		}else if(servlet_Name.equals("UpdateServiceCon.do")) {
-			sc = new UpdateServiceCon();	
-		}else if(servlet_Name.equals("MessageServiceCon.do")) {
-			sc = new MessageServiceCon();			
-		}else if(servlet_Name.equals("DeleteServiceCon.do")) {
-			sc = new DeleteServiceCon();						
-		}else if(servlet_Name.equals("DeleteOneServiceCon.do")) {
-			sc = new DeleteOneServiceCon();					
-		}else if(servlet_Name.equals("WriteBoardServiceCon.do")) {
-			sc = new WriteBoardServiceCon();		
+		if(servlet_Name.equals("DiaryOneServiceCon.do")) {
+			sc = new DiaryOneServiceCon();
 		}
 		String path = sc.execute(request, response);
-		response.sendRedirect(path);		
+		response.sendRedirect(path);	
 	}
 }

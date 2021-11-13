@@ -11,6 +11,6 @@ CREATE TABLE tbl_routine
     routine_length      NUMBER(12, 0)    NOT NULL, 
     reg_date            DATE             DEFAULT SYSDATE NOT NULL, 
     member_id           VARCHAR2(20)     NOT NULL, 
-     PRIMARY KEY (routine_seq)
+--     PRIMARY KEY (routine_seq)
 )
 /
