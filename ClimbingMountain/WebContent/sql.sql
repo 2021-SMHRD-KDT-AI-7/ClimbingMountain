@@ -5,3 +5,5 @@ insert into test_table(test_String,test2_num) values ('testing',1)
 select * from test_table
 
 drop table test_table
+
+select 
