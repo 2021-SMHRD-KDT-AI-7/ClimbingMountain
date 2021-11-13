@@ -12,3 +12,4 @@ CREATE TABLE tbl_community
      PRIMARY KEY (community_seq)
 )
 /
+
