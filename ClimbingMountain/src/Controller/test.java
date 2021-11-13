@@ -42,7 +42,7 @@ public class test {
 				for (int i = 0; i < test_board.size(); i++) {
 					String c1 = test_board.get(i).getTest_String();
 					int c2 = test_board.get(i).getTest2_num();
-					System.out.println(i + 1 + "번 =  Test_String : " + c1 + " Test2_num :" + c2);
+					System.out.println(i + 1 + "번 =  Test_String : " + c1 + " \t Test2_num :" + c2);
 				}
 				test_board.clear();
 			} else if( input == 3 ){ // 테이블  test_String 컬럼 검색
@@ -53,9 +53,8 @@ public class test {
 				for (int i = 0; i < test_board.size(); i++) {
 					String c1 = test_board.get(i).getTest_String();
 					int c2 = test_board.get(i).getTest2_num();
-					System.out.println(i + 1 + "번 =  Test_String : " + c1 + " Test2_num :" + c2);
+					System.out.println(i + 1 + "번 =  Test_String : " + c1 + "  \t Test2_num :" + c2);
 				}
-				System.out.println("=======================================================================================");
 				if(test_board.size()==0) {
 					System.out.println("검색 결과가 존재하지 않습니다.");
 				}
