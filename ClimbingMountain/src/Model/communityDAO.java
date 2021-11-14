@@ -47,11 +47,11 @@ public class communityDAO {
 
 		// 게시판 보기
 		public ArrayList<communityDTO> viewBoard() {
-			ArrayList<communityDTO> b_list = new ArrayList<communityDTO>();
+			ArrayList<communityDTO> c_list = new ArrayList<communityDTO>();
 			getConn();
 			try {
 				
-				String sql = "select * from web_board order by b_date desc";
+				String sql = "select * from tbl_community order by reg_date desc";
 				
 				psmt = conn.prepareStatement(sql);
 				
@@ -65,14 +65,14 @@ public class communityDAO {
 					String member_id = rs.getString("member_id");
 					
 					dto = new communityDTO(comm_num, comm_title, comm_date, comm_cnt, member_id);
-					b_list.add(dto);
+					c_list.add(dto);
 				}
 		
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				dbclose();
-			}return b_list;		
+			}return c_list;		
 			
 		}
 		
@@ -82,7 +82,7 @@ public class communityDAO {
 			getConn();
 			try {
 				
-				String sql = "select * from web_board where num=?";
+				String sql = "select * from tbl_community where community_seq=?";
 				
 				psmt = conn.prepareStatement(sql);
 				
@@ -112,7 +112,7 @@ public class communityDAO {
 		public int upload(communityDTO dto) {
 			getConn();
 			try {
-				String sql = "insert into web_board values(num_board.nextval, ?, ?, ?, ?, sysdate)";
+				String sql = "insert into tbl_community values(community_seq.nextval, ?, ?, ?, ?, reg_date)";
 				
 				psmt = conn.prepareStatement(sql);
 				
