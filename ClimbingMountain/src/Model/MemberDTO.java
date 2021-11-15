@@ -17,6 +17,20 @@ public class MemberDTO {
 	private String admin_yn;		// boolean 타입으로 바꿔야 할까 고민.
 	
 	public MemberDTO(String member_id, String member_pwd, String member_name, String member_addr, int member_age,
+			String member_health, String member_gender, int member_career, String admin_yn) {
+		super();
+		this.member_id = member_id;
+		this.member_pwd = member_pwd;
+		this.member_name = member_name;
+		this.member_addr = member_addr;
+		this.member_age = member_age;
+		this.member_health = member_health;
+		this.member_gender = member_gender;
+		this.member_career = member_career;
+		this.admin_yn = admin_yn;
+	}
+
+	public MemberDTO(String member_id, String member_pwd, String member_name, String member_addr, int member_age,
 			String member_health, String member_gender, int member_career, Date member_joindate, String admin_yn) {
 		super();
 		this.member_id = member_id;

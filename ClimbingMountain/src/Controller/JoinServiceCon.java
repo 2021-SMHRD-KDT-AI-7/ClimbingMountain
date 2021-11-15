@@ -12,7 +12,7 @@ import Interface.Command;
 import Model.MemberDAO;
 
 public class JoinServiceCon implements Command{
-	
+	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 	
 		System.out.println("[JoinServiceCON]");
@@ -28,7 +28,7 @@ public class JoinServiceCon implements Command{
 		String member_health = request.getParameter("member_health");
 		String member_gender = request.getParameter("member_gender");
 		int member_career = Integer.parseInt(request.getParameter("member_career"));
-		Date member_joindate = new Date();					// SQL문에 sysdate를 쓰면 되니 필요없다고 생각했는데, MemberDTO를 생각하면 Date타입이어야 한다.
+//		Date member_joindate = new Date();  SQL문에 sysdate를 쓰면 되니 필요없다고 생각했는데, MemberDTO를 생각하면 Date타입이어야 한다.
 		String admin_yn  = request.getParameter("admin_yn");
 		
 		System.out.println("member_id : "+member_id);
@@ -39,11 +39,11 @@ public class JoinServiceCon implements Command{
 		System.out.println("member_health : "+member_health);
 		System.out.println("member_gender : "+member_gender);
 		System.out.println("member_career : "+member_career);
-		System.out.println("member_joindate : "+member_joindate);
+//		System.out.println("member_joindate : "+member_joindate);
 		System.out.println("admin_yn : "+admin_yn);
 		
 		MemberDAO dao = new MemberDAO();
-		int cnt = dao.join(member_id, member_pwd, member_name, member_addr, member_age, member_health, member_gender, member_career, member_joindate, admin_yn);
+		int cnt = dao.join(member_id, member_pwd, member_name, member_addr, member_age, member_health, member_gender, member_career, admin_yn);
 				
 		String path = null;
 		if(cnt>0) {
