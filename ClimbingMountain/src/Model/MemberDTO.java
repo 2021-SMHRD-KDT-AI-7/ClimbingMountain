@@ -1,3 +1,4 @@
+// 정현수 2021-11-13
 package Model;
 
 import java.util.Date;
@@ -13,7 +14,7 @@ public class MemberDTO {
 	private String member_gender;
 	private int member_career;
 	private Date member_joindate;
-	private String admin_yn;
+	private String admin_yn;		// boolean 타입으로 바꿔야 할까 고민.
 	
 	public MemberDTO(String member_id, String member_pwd, String member_name, String member_addr, int member_age,
 			String member_health, String member_gender, int member_career, Date member_joindate, String admin_yn) {

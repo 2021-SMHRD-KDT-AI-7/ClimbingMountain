@@ -1,3 +1,4 @@
+// 정현수 2021-11-13
 package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +15,7 @@ public class MemberDAO {
 	MemberDTO dto = null;
 	int cnt = 0;
 	// String to Date, Date to String 형변환
-	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	// DB연결 메소드
 	public void getConn() {
@@ -65,7 +66,7 @@ public class MemberDAO {
 			psmt.setString(6, member_health);
 			psmt.setString(7, member_gender);
 			psmt.setInt(8, member_career);
-			psmt.setString(9, transFormat.format(member_joindate)); // Date to Sting 형변환
+			psmt.setString(9, transFormat.format(member_joindate));	// Date to String 형변환
 			psmt.setString(10, admin_yn);
 
 			// 실행
@@ -119,12 +120,11 @@ public class MemberDAO {
 		try {
 			getConn();
 			
-			String sql = "update tbl_member set member_pwd=?, member_name=?, member_addr=?, member_age=?, member_health=?, member_gender=?, member_career=?, member_joindate=?,"
+			String sql = "update tbl_member set member_pwd=?, member_name=?, member_addr=?, member_age=?, member_health=?, member_gender=?, member_career=?"
 					   + "where member_id=?";
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(10, info.getMember_id());
 			psmt.setString(1, info.getMember_pwd());
 			psmt.setString(2, info.getMember_name());
 			psmt.setString(3, info.getMember_addr());
@@ -132,8 +132,9 @@ public class MemberDAO {
 			psmt.setString(5, info.getMember_health());
 			psmt.setString(6, info.getMember_gender());
 			psmt.setInt(7, info.getMember_career());
-			psmt.setString(8, transFormat.format(info.getMember_joindate()));	// Date to Sting 형변환
-			psmt.setString(9, info.getAdmin_yn());
+			psmt.setString(8, info.getAdmin_yn());
+//			psmt.setString(9, transFormat.format(info.getMember_joindate()));	// Date to String 형변환, 정보수정하는데 가입일을 바꿀 필요가 없다.
+			psmt.setString(9, info.getMember_id());
 			
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -166,7 +167,7 @@ public class MemberDAO {
 				String member_health = rs.getString("member_health");
 				String member_gender = rs.getString("member_gender");
 				int member_career = rs.getInt("member_career");
-				Date member_joindate = transFormat.parse(rs.getString("member_joindate"));	// Sting to Date 형변환
+				Date member_joindate = rs.getDate("member_joindate");
 				String admin_yn = rs.getString("admin_yn");
 				
 				// 회원정보를 dto로 묶어주기
