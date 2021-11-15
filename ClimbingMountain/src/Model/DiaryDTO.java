@@ -23,6 +23,12 @@ public class DiaryDTO {
 		this.diary_file2 = diary_file2;
 	}
 
+	public DiaryDTO(String diary_subject, String diary_content, String member_id) {
+		this.diary_subject = diary_subject;
+		this.diary_content = diary_content;
+		this.member_id = member_id;
+	}
+
 	public int getDiary_seq() {
 		return diary_seq;
 	}
