@@ -6,6 +6,22 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style>
+
+           @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+        legend{
+       		text-align : center;		 
+            color : blueviolet;
+           	font-size : 50px;
+            /*font-weight: 600;*/
+            font-family: 'Cute Font', cursive;   /*구글폰트*/
+            font-style : italic;
+        }
+        ui{
+        	text-align : center;
+        }
+    
+</style>
 </head>
 <body>
 	<%
