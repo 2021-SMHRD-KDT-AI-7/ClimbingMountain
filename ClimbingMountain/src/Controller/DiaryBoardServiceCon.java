@@ -16,6 +16,6 @@ public class DiaryBoardServiceCon implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		return "diaryView.jsp";
-	}
+	}}
 
 
