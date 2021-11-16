@@ -48,11 +48,11 @@ public class MemberDAO {
 	}
 	
 	// 회원가입 메소드
-	public int join(String member_id, String member_pwd, String member_name, String member_addr, int member_age, String member_health, String member_gender, int member_career, Date member_joindate, String admin_yn) {
+	public int join(String member_id, String member_pwd, String member_name, String member_addr, int member_age, String member_health, String member_gender, int member_career, String admin_yn) {
 		try {
 			getConn();
 			// SQL문작성
-			String sql = "insert into tbl_member values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into tbl_member values(?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?)";
 
 			// DB에 전달
 			psmt = conn.prepareStatement(sql);
@@ -66,8 +66,8 @@ public class MemberDAO {
 			psmt.setString(6, member_health);
 			psmt.setString(7, member_gender);
 			psmt.setInt(8, member_career);
-			psmt.setString(9, transFormat.format(member_joindate));	// Date to String 형변환
-			psmt.setString(10, admin_yn);
+			
+			psmt.setString(9, admin_yn);
 
 			// 실행
 			cnt = psmt.executeUpdate();
