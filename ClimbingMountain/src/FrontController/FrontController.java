@@ -54,6 +54,7 @@ public class FrontController extends HttpServlet {
 		}else if(servlet_Name.equals("logoutServiceCon.do")) {
 			sc = new LogoutServiceCon();
 		}
+		
 		String path = sc.execute(request, response);
 		response.sendRedirect(path);	
 	}
