@@ -33,7 +33,7 @@ public class LoginServiceCon implements Command {
 			System.out.println("로그인 실패");
 		}	
 					
-		return "main.jsp";
+		return "main1.jsp";
 	}
 
 }

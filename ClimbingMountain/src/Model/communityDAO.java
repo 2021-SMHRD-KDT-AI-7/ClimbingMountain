@@ -21,9 +21,9 @@ public class communityDAO {
 
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 
-				String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
-				String db_id = "hr";
-				String db_pw = "hr";
+				String db_url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+				String db_id = "campus_c_d_1111";
+				String db_pw = "smhrd4";
 
 				conn = DriverManager.getConnection(db_url, db_id, db_pw);
 			} catch (Exception e) {
@@ -58,13 +58,13 @@ public class communityDAO {
 				rs = psmt.executeQuery();
 				
 				while(rs.next()) {
-					int comm_num = rs.getInt("comm_num");
-					String comm_title = rs.getString("comm_title");
-					String comm_date = rs.getString("comm_date");
-					int comm_cnt = rs.getInt("comm_cnt");
+					int community_seq = rs.getInt("community_seq");
+					String community_subject = rs.getString("community_subject");
+					String reg_date = rs.getString("reg_date");
+					int community_cnt = rs.getInt("community_cnt");
 					String member_id = rs.getString("member_id");
 					
-					dto = new communityDTO(comm_num, comm_title, comm_date, comm_cnt, member_id);
+					dto = new communityDTO(community_seq, community_subject, reg_date, community_cnt, member_id);
 					c_list.add(dto);
 				}
 		
@@ -90,15 +90,15 @@ public class communityDAO {
 				rs = psmt.executeQuery();
 				
 				if(rs.next()) {
-					int comm_num = rs.getInt("comm_num");
-					String comm_title = rs.getString("comm_title");
-					String comm_content = rs.getString("comm_content");
-					String comm_date = rs.getString("comm_date");
-					int comm_cnt = rs.getInt("comm_cnt");
+					int community_seq = rs.getInt("community_seq");
+					String community_subject = rs.getString("community_subject");
+					String community_content = rs.getString("community_content");
+					String reg_date = rs.getString("reg_date");
+					int community_cnt = rs.getInt("community_cnt");
 					String member_id = rs.getString("member_id");
-					String comm_file1 = rs.getString("comm_file1");
+					String community_file1 = rs.getString("community_file1");
 					
-					dto = new communityDTO(comm_num, comm_title, comm_content, comm_date, comm_cnt, member_id, comm_file1);
+					dto = new communityDTO(community_seq, community_subject, community_content, reg_date, community_cnt, member_id, community_file1);
 				}
 
 			}catch (Exception e) {
@@ -112,14 +112,16 @@ public class communityDAO {
 		public int upload(communityDTO dto) {
 			getConn();
 			try {
-				String sql = "insert into tbl_community values(community_seq.nextval, ?, ?, ?, ?, reg_date)";
+				String sql = "insert into tbl_community values(tbl_community_SEQ.nextval, ?, ?, sysdate, 0, ?, ?, ?, ?)";
 				
 				psmt = conn.prepareStatement(sql);
 				
-				psmt.setString(1, dto.getComm_title());
-				psmt.setString(2, dto.getComm_content());
-				psmt.setString(3, dto.getmember_id());
-				psmt.setString(4, dto.getComm_file1());
+				psmt.setString(1, dto.getCommunity_subject());
+				psmt.setString(2, dto.getCommunity_content());
+				psmt.setString(3, dto.getMember_id());
+				psmt.setString(4, dto.getCommunity_file1());
+				psmt.setString(5, dto.getCommunity_file2());
+				psmt.setString(6, dto.getCommunity_file3());
 				
 				cnt = psmt.executeUpdate();
 				
@@ -129,5 +131,6 @@ public class communityDAO {
 				dbclose();
 			}return cnt;
 		}
+
 
 }
