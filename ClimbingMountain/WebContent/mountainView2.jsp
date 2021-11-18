@@ -9,12 +9,14 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
-
-
+<%
+MountainDAO dao = new MountainDAO();
+ArrayList<MountainDTO> list = new ArrayList<>();
+%>
+<!-- 승옥 - 11/18 오후 12시 30분 작성 시작 --> 
 <body>
 	<%
-	MountainDAO dao = new MountainDAO();
-	ArrayList<MountainDTO> list = new ArrayList<>();
+	
 	request.setCharacterEncoding("EUC-KR");
 	String search = request.getParameter("search");
 	list = dao.selectMountain(search);
@@ -50,6 +52,7 @@
 		<td><%=list.get(i).getPmntn_uppl()%></td>
 		<td><%=list.get(i).getPmntn_godn()%></td>
 		</tr>	
+		
 		<%
 			}
 		%>
@@ -59,3 +62,4 @@
 
 </body>
 </html>
+<!-- 승옥 - 11/18 오후 12시 30분 작성 끝` --> 

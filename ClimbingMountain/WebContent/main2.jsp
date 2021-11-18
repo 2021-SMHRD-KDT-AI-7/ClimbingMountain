@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- ½Â¿Á - ¿ÀÈÄ 12½Ã 30ºÐ ÀÛ¼º ½ÃÀÛ --> 
+<!-- ½Â¿Á - 11/18 ¿ÀÈÄ 12½Ã 30ºÐ ÀÛ¼º ½ÃÀÛ --> 
 <form action ="mountainView2.jsp" method = "post">
 	<div>°Ë»ö : 
 	<input name = "search" type ="text" >
@@ -16,6 +16,6 @@
 	
 	</form>
 	
-<!-- ½Â¿Á - ¿ÀÈÄ 1½Ã ÀÛ¼º ³¡ --> 
+<!-- ½Â¿Á - 11/18 ¿ÀÈÄ 1½Ã ÀÛ¼º ³¡ --> 
 </body>
 </html>

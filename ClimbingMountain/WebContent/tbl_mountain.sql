@@ -23,6 +23,8 @@ CREATE TABLE tbl_mountain
     PRIMARY KEY (MOUNTAIN_SEQ) 
 )
 
+select * from tbl_mountain where MOUNTAIN_SEQ = 120
+
 CREATE SEQUENCE tbl_mountain_SEQ
 START WITH 1
 INCREMENT BY 1 

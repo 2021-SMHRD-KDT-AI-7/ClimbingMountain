@@ -75,9 +75,9 @@ public class MountainDAO {
 				int pmntn_uppl = rs.getInt("pmntn_uppl");//상행시간
 				int pmntn_godn = rs.getInt("pmntn_godn");//하행시간
 				
-				
-				
-				MountainDTO mountain = new MountainDTO(mntn_nm, pmntn_nm, pmntn_main, pmntn_lt,pmntn_dffl,pmntn_uppl,pmntn_godn);
+				MountainDTO mountain = new MountainDTO(mntn_nm, pmntn_nm, pmntn_main,
+														pmntn_lt,pmntn_dffl,
+														pmntn_uppl,pmntn_godn);
 				mountain_list.add(mountain);
 			}
 			
