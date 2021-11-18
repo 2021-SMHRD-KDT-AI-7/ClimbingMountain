@@ -97,8 +97,10 @@ public class communityDAO {
 					int community_cnt = rs.getInt("community_cnt");
 					String member_id = rs.getString("member_id");
 					String community_file1 = rs.getString("community_file1");
+					String community_file2 = rs.getString("community_file2");
+					String community_file3 = rs.getString("community_file3");
 					
-					dto = new communityDTO(community_seq, community_subject, community_content, reg_date, community_cnt, member_id, community_file1);
+					dto = new communityDTO(community_seq, community_subject, community_content, reg_date, community_cnt, member_id, community_file1, community_file2, community_file3);
 				}
 
 			}catch (Exception e) {

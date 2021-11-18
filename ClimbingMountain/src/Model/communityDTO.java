@@ -95,6 +95,20 @@ public class communityDTO {
 		this.community_file2 = community_file2;
 		this.community_file3 = community_file3;
 	}
+	public communityDTO(int community_seq, String community_subject, String community_content, String reg_date,
+			int community_cnt, String member_id, String community_file1, String community_file2,
+			String community_file3) {
+		super();
+		this.community_seq = community_seq;
+		this.community_subject = community_subject;
+		this.community_content = community_content;
+		this.reg_date = reg_date;
+		this.community_cnt = community_cnt;
+		this.member_id = member_id;
+		this.community_file1 = community_file1;
+		this.community_file2 = community_file2;
+		this.community_file3 = community_file3;
+	}
 	
 	
 

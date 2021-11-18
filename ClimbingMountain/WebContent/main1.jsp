@@ -10,7 +10,10 @@
 <body>
 
 	<button>
-		<a href="upload.jsp">다이어리 게시판</a>
+		<a href="diaryView.jsp">다이어리 게시판</a>
+	</button>
+	<button>
+		<a href="communitywrite.jsp">커뮤니티 게시판</a>
 	</button>
 	<hr>
 	<form action ="mountainView1.jsp" method = "post">
