@@ -16,7 +16,7 @@
 <body>
 	<%
 	request.setCharacterEncoding("EUC-KR");
-	String mountain_name = request.getParameter("mountain_name");
+	String mountain_name = request.getParameter("search");
 
 	mountain_list = moutaincode_dao.selectMountaincode(mountain_name);
 	%>

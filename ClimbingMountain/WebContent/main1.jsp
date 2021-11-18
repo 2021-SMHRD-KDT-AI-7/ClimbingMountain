@@ -13,9 +13,9 @@
 		<a href="diaryView.jsp">다이어리 게시판</a>
 	</button>
 	<hr>
-	<form action ="mountainView.jsp" method = "post">
+	<form action ="mountainView1.jsp" method = "post">
 	<div>검색 : 
-	<input name = "mountain_name" type ="text" >
+	<input name = "search" type ="text" >
 	<input type ="submit" value = "입력">
 	</div>
 	
