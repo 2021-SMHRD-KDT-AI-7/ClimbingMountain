@@ -1,0 +1,128 @@
+
+/* 노토 산스 웹주소*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+body{
+  
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+.c_1{
+  
+  
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom : 10px;
+}
+.c_1_1{
+  margin-bottom: 30px;
+  font-size: 15px;
+
+}
+.c_2_f{
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  color:black;
+}
+
+
+.c_2{
+  color : black;
+  font-size : 15px;
+  padding-bottom: 15px;
+}
+#left{
+  
+  border-top :solid rgb(208, 206, 206);
+  border-bottom : solid rgb(208, 206, 206);
+  border-top-width: thin;
+  border-bottom-width: thin;
+  padding-top: 0.4cm;
+  padding-bottom: 0.06cm;
+
+}
+#nav1 {
+  margin-right :20px;
+  margin-bottom: 300px;
+  padding-top: 100px;
+  padding-left: 30px;
+  padding-right : 0px;
+  float : left;
+}
+
+#name_title{
+  text-align: left;
+  color:rgb(223, 77, 77);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.section1{
+  margin-top : 100px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+  padding-left : 80px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.section2{
+  margin-top : 40px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+  padding-left : 80px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.name_table{
+  text-align: center;
+  padding-bottom: 50px;
+  border-top :solid rgb(208, 206, 206);
+  border-bottom : solid rgb(208, 206, 206);
+  border-top-width: 2px;
+  border-bottom-width: thin;
+
+}
+.name_table2{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.notice-table{
+  margin-top: 10px;
+  border-bottom : solid rgb(221, 221, 221);
+  border-bottom-width: thin;
+}
+
+.main_table{
+  width: 90%;
+}
+
+#write_btn{
+
+  margin-left: 72%;
+  padding: 2px;
+  margin-bottom: 30px;
+}
+.list-search{
+
+    margin-left: 40%;
+    height: 40px;
+    width: 500px;
+    
+    background: #ffffff;
+
+}
+#select-button{
+  padding:2px;
+}
+#search-button1{
+  
+  padding : 2px;
+}
+#search-button2{
+  padding : 2px;
+}
