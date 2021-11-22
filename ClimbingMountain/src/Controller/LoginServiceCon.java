@@ -29,6 +29,7 @@ public class LoginServiceCon implements Command {
 			// session으로 로그인 정보
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info); // object형태라서 MemberDTO 형태도 담을 수 있다.
+			session.setAttribute("member_id", member_id);
 		}else {
 			System.out.println("로그인 실패");
 		}	

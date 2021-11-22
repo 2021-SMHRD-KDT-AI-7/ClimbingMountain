@@ -77,30 +77,31 @@ public class communityDAO {
 		}
 		
 		// 게시글 세부내용
-		public communityDTO viewOneBoard(String num) {
+		public communityDTO viewOneBoard(int community_seq) {
 
 			getConn();
 			try {
 				
-				String sql = "select * from tbl_community where community_seq=?";
+				String sql = "select * from tbl_community where community_seq = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				
-				psmt.setString(1, num);
+				psmt.setInt(1, community_seq);
 				rs = psmt.executeQuery();
 				
 				if(rs.next()) {
-					int community_seq = rs.getInt("community_seq");
+
+					int Community_seq = rs.getInt("community_seq");
 					String community_subject = rs.getString("community_subject");
 					String community_content = rs.getString("community_content");
 					String reg_date = rs.getString("reg_date");
 					int community_cnt = rs.getInt("community_cnt");
-					String member_id = rs.getString("member_id");
+					String Member_id = rs.getString("member_id");
 					String community_file1 = rs.getString("community_file1");
 					String community_file2 = rs.getString("community_file2");
 					String community_file3 = rs.getString("community_file3");
 					
-					dto = new communityDTO(community_seq, community_subject, community_content, reg_date, community_cnt, member_id, community_file1, community_file2, community_file3);
+					dto = new communityDTO(community_seq, community_subject, community_content, reg_date, community_cnt, Member_id, community_file1, community_file2, community_file3);
 				}
 
 			}catch (Exception e) {
@@ -133,6 +134,75 @@ public class communityDAO {
 				dbclose();
 			}return cnt;
 		}
+		
+		// 조회수 증가
+		public void updatehit(int community_seq) {
+			getConn();
+			try {
+				String sql = "update community set community_cnt=community_cnt+1 where community_seq = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setInt(1, community_seq);
+				cnt = psmt.executeUpdate();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbclose();
+			}
+		}
+		
+		
+		// 글 수정하기
+		public boolean updateCommunity(communityDTO dto) {
+			getConn();
+			boolean ok = false;
+			try {
+				String sql = "update tbl_community set community_subject = ?, community_content = ?, community_file1 = ?, , community_file2 = ?, community_file3 = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, dto.getCommunity_subject());
+				psmt.setString(2, dto.getCommunity_content());
+				psmt.setString(3, dto.getCommunity_file1());
+				psmt.setString(4, dto.getCommunity_file2());
+				psmt.setString(5, dto.getCommunity_file3());
+				
+				cnt = psmt.executeUpdate();
+				if(cnt==1) {
+					ok=true;
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbclose();
+			}return ok;
+		}
 
+		// 글 삭제
+		public boolean deleteCommunity(int community_seq) {
+			getConn();
+			boolean ok = false;
+			try {
+				String sql = "delete from tbl_community where community_seq = ?";
+				
+				psmt = conn.prepareStatement(sql);			
+				psmt.setInt(1, dto.getCommunity_seq());	
+				
+				cnt = psmt.executeUpdate();
+				if(cnt==1) {
+					ok=true;
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbclose();
+			}return ok;
+			
+			
+		}
 
 }
