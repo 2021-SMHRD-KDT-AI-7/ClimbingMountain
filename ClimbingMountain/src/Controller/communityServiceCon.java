@@ -29,31 +29,29 @@ public class communityServiceCon extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
 		
-		int maxSize = 1024*1024*5;  // 5MB
+		int maxSize = 1024*1024*10;  // 10MB
 		String encoding = "EUC-KR";
 		String saveDirectory = request.getServletContext().getRealPath("file");
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 		
-		String comm_title = multi.getParameter("comm_title");
-		String comm_content = multi.getParameter("comm_content");
+		String community_subject = multi.getParameter("community_subject");
+		String community_content = multi.getParameter("community_content");
 		String member_id = mdto.getMember_id();
-		String fileName1 = URLEncoder.encode(multi.getFilesystemName("file1"),"EUC-KR");
-		String fileName2 = URLEncoder.encode(multi.getFilesystemName("file2"),"EUC-KR");
-		String fileName3 = URLEncoder.encode(multi.getFilesystemName("file3"),"EUC-KR");
+		String community_file1 = URLEncoder.encode(multi.getFilesystemName("community_file1"),"EUC-KR");
+		String community_file2 = URLEncoder.encode(multi.getFilesystemName("community_file2"),"EUC-KR");
+		String community_file3 = URLEncoder.encode(multi.getFilesystemName("community_file3"),"EUC-KR");
 		
-		System.out.println("title : "+comm_title);
-		System.out.println("content : "+comm_content);
+		System.out.println("community_subject : "+community_subject);
+		System.out.println("community_content : "+community_content);
 		System.out.println("member_id : "+ member_id);
-		System.out.println("fileName1 : "+fileName1);
-		System.out.println("fileName2 : "+fileName2);
-		System.out.println("fileName3 : "+fileName3);
+		System.out.println("community_file1 : "+community_file1);
+		System.out.println("community_file2 : "+community_file2);
+		System.out.println("community_file3 : "+community_file3);
 		
-		communityDTO dto = new communityDTO(comm_title, comm_content, member_id, fileName1, fileName2, fileName3);
+		communityDTO dto = new communityDTO(community_subject, community_content, member_id, community_file1, community_file2, community_file3);
 		communityDAO dao = new communityDAO();
-		int cnt = dao.upload(dto);
-		
-																								
+		int cnt = dao.upload(dto);																			
 		
 		if(cnt>0) {
 			System.out.println("파일 업로드 성공");
@@ -61,7 +59,7 @@ public class communityServiceCon extends HttpServlet {
 			System.out.println("파일 업로드 실패");
 		}
 		
-		response.sendRedirect("main.jsp");
+		response.sendRedirect("communityview.jsp");
 		
 		
 	}
