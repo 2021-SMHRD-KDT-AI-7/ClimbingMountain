@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
 
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -161,6 +163,7 @@
 							<h1 class="logo"><a href="D_Home.html" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
+							----
 								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
 							</div>
 						</div>
@@ -658,7 +661,7 @@
 						<article id="footerTop">
 							<!-- 푸터 하단 왼쪽 -->
 							<article class="footer-left-con">
-								<a href="#메인페이지">
+								<a href="D_Home.html">
 									<div class="footer-logo"><img src="./images/logo_font.png" width="320px"
 											height="160px"></div>
 								</a>

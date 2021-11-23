@@ -34,7 +34,7 @@ public class LoginServiceCon implements Command {
 			System.out.println("로그인 실패");
 		}	
 					
-		return "main1.jsp";
+		return "../Main/D_Home.jsp";
 	}
 
 }

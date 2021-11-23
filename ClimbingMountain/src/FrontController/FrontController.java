@@ -43,15 +43,15 @@ public class FrontController extends HttpServlet {
 		// 업캐스팅 : 부모클래스의 타입으로 자식클래스를 형변환 하는 것
 		Command sc = null;
 		
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 
 		if(servlet_Name.equals("DiaryOneServiceCon.do")) {
 			sc = new DiaryOneServiceCon();
-		}else if(servlet_Name.equals("loginServiceCon.do")){
+		}else if(servlet_Name.equals("Login/LoginServiceCon.do")){
 			sc = new LoginServiceCon();
-		}else if(servlet_Name.equals("JoinServiceCon.do")){
+		}else if(servlet_Name.equals("Join/JoinServiceCon.do")){
 			sc = new JoinServiceCon();
-		}else if(servlet_Name.equals("logoutServiceCon.do")) {
+		}else if(servlet_Name.equals("Main/LogoutServiceCon.do")) {
 			sc = new LogoutServiceCon();
 		}
 		

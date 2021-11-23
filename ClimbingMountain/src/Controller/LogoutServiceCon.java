@@ -12,7 +12,7 @@ public class LogoutServiceCon implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		System.out.println("[LogoutServiceCon");
+		System.out.println("[LogoutServiceCon]");
 		
 		// 로그인 -> session
 		// 로그인x -> session X
@@ -21,7 +21,7 @@ public class LogoutServiceCon implements Command {
 		session.removeAttribute("info");
 		
 		System.out.println("로그아웃 성공");
-		return "main.jsp";
+		return "../Main/D_Home.jsp";
 	}
 
 }

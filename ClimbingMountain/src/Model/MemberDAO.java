@@ -48,11 +48,11 @@ public class MemberDAO {
 	}
 	
 	// 회원가입 메소드
-	public int join(String member_id, String member_pwd, String member_name, String member_addr, int member_age, String member_health, String member_gender, int member_career, String admin_yn) {
+	public int join(String member_id, String member_pwd, String member_name, String member_addr, int member_age, String member_gender) {
 		try {
 			getConn();
 			// SQL문작성
-			String sql = "insert into tbl_member values(?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?)";
+			String sql = "insert into tbl_member values(?, ?, ?, ?, ?, ?)";
 
 			// DB에 전달
 			psmt = conn.prepareStatement(sql);
@@ -63,11 +63,7 @@ public class MemberDAO {
 			psmt.setString(3, member_name);
 			psmt.setString(4, member_addr);
 			psmt.setInt(5, member_age);
-			psmt.setString(6, member_health);
-			psmt.setString(7, member_gender);
-			psmt.setInt(8, member_career);
-			
-			psmt.setString(9, admin_yn);
+			psmt.setString(6, member_gender);
 
 			// 실행
 			cnt = psmt.executeUpdate();
@@ -99,13 +95,9 @@ public class MemberDAO {
 				String member_name = rs.getString("member_name");
 				String member_addr = rs.getString("member_addr");
 				int member_age = rs.getInt("member_age");
-				String member_health = rs.getString("member_health");
 				String member_gender = rs.getString("member_gender");
-				int member_career = rs.getInt("member_career");
-				Date member_joindate = transFormat.parse(rs.getString("member_joindate"));	// Sting to Date 형변환
-				String admin_yn = rs.getString("admin_yn");
 				
-				dto = new MemberDTO(member_id, member_pwd, member_name, member_addr, member_age, member_health, member_gender, member_career, member_joindate, admin_yn);
+				dto = new MemberDTO(member_id, member_pwd, member_name, member_addr, member_age, member_gender);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,7 +112,7 @@ public class MemberDAO {
 		try {
 			getConn();
 			
-			String sql = "update tbl_member set member_pwd=?, member_name=?, member_addr=?, member_age=?, member_health=?, member_gender=?, member_career=?"
+			String sql = "update tbl_member set member_pwd=?, member_name=?, member_addr=?, member_age=?, member_gender=?"
 					   + "where member_id=?";
 			
 			psmt = conn.prepareStatement(sql);
@@ -129,12 +121,8 @@ public class MemberDAO {
 			psmt.setString(2, info.getMember_name());
 			psmt.setString(3, info.getMember_addr());
 			psmt.setInt(4, info.getMember_age());
-			psmt.setString(5, info.getMember_health());
-			psmt.setString(6, info.getMember_gender());
-			psmt.setInt(7, info.getMember_career());
-			psmt.setString(8, info.getAdmin_yn());
-//			psmt.setString(9, transFormat.format(info.getMember_joindate()));	// Date to String 형변환, 정보수정하는데 가입일을 바꿀 필요가 없다.
-			psmt.setString(9, info.getMember_id());
+			psmt.setString(5, info.getMember_gender());
+			psmt.setString(6, info.getMember_id());
 			
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -164,14 +152,10 @@ public class MemberDAO {
 				String member_name = rs.getString("member_name");
 				String member_addr = rs.getString("member_addr");
 				int member_age = rs.getInt("member_age");
-				String member_health = rs.getString("member_health");
 				String member_gender = rs.getString("member_gender");
-				int member_career = rs.getInt("member_career");
-				Date member_joindate = rs.getDate("member_joindate");
-				String admin_yn = rs.getString("admin_yn");
 				
 				// 회원정보를 dto로 묶어주기
-				dto = new MemberDTO(member_id, member_pwd, member_name, member_addr, member_age, member_health, member_gender, member_career, member_joindate, admin_yn);
+				dto = new MemberDTO(member_id, member_pwd, member_name, member_addr, member_age, member_gender);
 				list.add(dto); // 한 사람의 정보를 list에 추가해서 회원정보 모으기
 			}
 		}catch (Exception e) {

@@ -23,12 +23,12 @@
 <!-- //스킵네비게이션 -->
 <!-- header -->
 <div id="header" class="join_membership" role="banner">
-    <h1><a href="#메인으로" class="h_logo"><span class="blind">산 타 클로스(메인)</span></a></h1>
+    <h1><a href="../Main/D_Home.html" class="h_logo"><span class="blind">산 타 클로스(메인)</span></a></h1>
 </div>
 <!-- // header -->
 
 <!-- form태그 시작 여기서 action 넣어줬고 들어간다 -->
-<form id="join_form" method="post" action="#JoinServiceCon">
+<form id="join_form" method="post" action="JoinServiceCon.do">
     <input type="hidden" id="token_sjoin" name="token_sjoin" value="6JI9bmRk07bfWXh3">
     <input type="hidden" id="encPswd" name="encPswd" value="">
     <input type="hidden" id="encKey" name="encKey" value="">
@@ -50,7 +50,7 @@
                         <h3 class="join_title"><label for="id">아이디</label></h3>
                         <span class="ps_box int_id">
                             <!-- 여기가 아이디 추가하는 부분 name은 id -->
-							<input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
+							<input type="text" id="id" name="member_id" class="int" title="ID" maxlength="20">
                             <span class="step_url"></span></span>
                         <span class="error_next_box" id="idMsg" style="display:none" aria-live="assertive"></span>
                     </div>
@@ -59,7 +59,7 @@
                         <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                         <span class="ps_box int_pass" id="pswd1Img">
                             <!-- 여기가 비밀번호 추가하는 부분 name은 pswd1 -->
-							<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+							<input type="password" id="pswd1" name="member_pwd" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
                             <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 						</span>
                         <span class="error_next_box" id="pswd1Msg" style="display:none" aria-live="assertive">5~12자의 영문 소문자, 숫자와 특수기호(_)만 사용 가능합니다.</span>
@@ -83,7 +83,7 @@
                         <h3 class="join_title"><label for="name">이름</label></h3>
                         <span class="ps_box box_right_space">
                             <!-- 여기는 이름 추가하는 부분 name은 name -->
-							<input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
+							<input type="text" id="name" name="member_name" title="이름" class="int" maxlength="40">
 						</span>
                         <span class="error_next_box" id="nameMsg" style="display:none" aria-live="assertive"></span>
                     </div>
@@ -93,7 +93,7 @@
                         <h3 class="join_title"><label for="region">지역</label></h3>
                         <div class="ps_box region_code">
                             <!-- 여기는 지역 구분하는 부분 선택한게 name값 region으로 들어옴 -->
-                            <select id="region" name="region" class="sel" aria-label="지역">
+                            <select id="region" name="member_addr" class="sel" aria-label="지역">
                                 <option value="" selected>지역</option>
                                         <option value="서울특별시">서울특별시</option>
                                         <option value="부산광역시">부산광역시</option>
@@ -118,7 +118,7 @@
                     </div>
 
                     <!-- 여기는 생년월일 넣는곳인데 name아니고 id로 받으면서 yy mm dd로 받아옴 -->
-                    <div class="join_row join_birthday">
+                    <!-- <div class="join_row join_birthday">
                         <h3 class="join_title"><label for="yy">생년월일</label></h3>
                         <div class="bir_wrap">
                             <div class="bir_yy">
@@ -177,13 +177,22 @@
                             </div>
                         </div>
                         <span class="error_next_box" id="birthdayMsg" style="display:none" aria-live="assertive"></span>
+                    </div> -->
+                    
+                     <div class="join_row">
+                        <h3 class="join_title"><label for="age">나이</label></h3>
+                        <span class="ps_box box_right_space">
+                            <!-- 여기는 나이 추가하는 부분 age는 age -->
+							<input type="text" id="age" name="member_age" title="나이" class="int" maxlength="20">
+						</span>
+                        <span class="error_next_box" id="nameMsg" style="display:none" aria-live="assertive"></span>
                     </div>
 
                     <div class="join_row join_sex">
                         <h3 class="join_title"><label for="gender">성별</label></h3>
                         <div class="ps_box gender_code">
                             <!-- 성별은 name이 gender로 설정됨 -->
-                            <select id="gender" name="gender" class="sel" aria-label="성별">
+                            <select id="gender" name="member_gender" class="sel" aria-label="성별">
                                 <option value="" selected>성별</option>
                                         <option value="M">남자</option>
                                         <option value="F">여자</option>

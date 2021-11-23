@@ -17,10 +17,12 @@
     <link rel="stylesheet" type="text/css" href="./css/w_202105.css">
 </head>
 <body>
+
+
 <div id="wrap" class="wrap">
     <header class="header" role="banner" >
         <div class="header_inner">
-            <a href="#메인메뉴" class="logo">
+            <a href="../Main/D_Home.html" class="logo">
                 <h1 class="blind">산타클로스</h1>
             </a>
         </div>
@@ -34,7 +36,7 @@
                     
                 </ul>
                 <form id="frmNIDLogin" name="frmNIDLogin" target="_top" AUTOCOMPLETE="off"
-                      action="#로그인서비스" method="POST">
+                      action="LoginServiceCon.do" method="POST">
                     <input type="hidden" id="localechange" name="localechange" value="">
                     <input type="hidden" name="dynamicKey" id="dynamicKey" value="XkVROzJ_3v0l6GD-JeQmLXmg0HGAbYHRf0Q_noz5UYZ7LLH_dBElbveLfF1WuI76FNotNNAIRmtzg8h217x0sEZqt6ZFdOO7L03qqm1Eg6w">
                     <input type="hidden" name="encpw" id="encpw" value="">
@@ -57,7 +59,7 @@
                                                 <span class="blind">아이디</span>
                                             </span>
                                         </div>
-                                        <input type="text" id="id" name="id" placeholder="아이디" title="아이디"
+                                        <input type="text" id="member_id" name="member_id" placeholder="아이디" title="아이디"
                                                class="input_text" maxlength="41"
                                                value="">
                                         <span role="button" class="btn_delete" id="id_clear" style="display: none;">
@@ -72,7 +74,7 @@
                                                 <span class="blind">비밀번호</span>
                                             </span>
                                         </div>
-                                        <input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호"
+                                        <input type="password" id="member_pwd" name="member_pwd" placeholder="비밀번호" title="비밀번호"
                                                class="input_text" maxlength="16">
                                         <span role="button" class="btn_delete" id="pw_clear" style="display: none;">
                                             <span class="icon_delete">
@@ -107,16 +109,13 @@
                                 </div>
                                 <div class="login_error_wrap" id="err_common"  style="display:none;">
                                     <div class="error_message"
-                                         style="width:90%">
-                                        
+                                         style="width:90%">                                       
                                     </div>
                                 </div>
                                 <div class="btn_login_wrap">
-
                                     <button type="submit" class="btn_login" id="log.login">
                                         <span class="btn_text">로 그 인</span>
                                     </button>
-
                                 </div>
                             </div>
                         </li>
