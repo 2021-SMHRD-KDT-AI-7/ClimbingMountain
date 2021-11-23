@@ -14,11 +14,13 @@
 	Mountain100_2_DAO two_dao = new Mountain100_2_DAO(); 	
 	
 	int mountain_seq = Integer.parseInt(request.getParameter("mountain_seq"));
-	
+	System.out.print(mountain_seq);
 	Mountain100_1_DTO one_dto = one_dao.selectOneMountaion100(mountain_seq);
+	
+	System.out.print(one_dto);
+	
 	Mountain100_2_DTO two_dto = two_dao.selectOneMountaion100(mountain_seq);
-	
-	
+	System.out.print(two_dto);
 	
 %>
 <body>
