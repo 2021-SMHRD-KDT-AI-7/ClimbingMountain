@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+html {
+    font-size: 10px;
+    margin: 100px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_wrap {
+    width: 1000px;
+    margin-top : 200px;
+    margin-left: 500px;
+}
+
+.board_title {
+    margin-bottom: 30px;
+}
+
+.board_title strong {
+    font-size: 3rem;
+}
+
+.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
+
+.bt_wrap a:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap a.on {
+    background: #000;
+    color: #fff;
+}
+
+.board_list {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+.board_list > div {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+
+.board_list > div.top {
+    border-bottom: 1px solid #999;
+}
+
+.board_list > div:last-child {
+    border-bottom: 1px solid #000;
+}
+
+.board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.board_list > div.top > div {
+    font-weight: 600;
+}
+
+.board_list .num {
+    width: 10%;
+}
+
+.board_list .title {
+    width: 60%;
+    text-align: left;
+}
+
+.board_list .top .title {
+    text-align: center;
+}
+
+.board_list .writer {
+    width: 10%;
+}
+
+.board_list .date {
+    width: 10%;
+}
+
+.board_list .count {
+    width: 10%;
+}
+
+.board_page {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_page a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    line-height: 100%;
+}
+
+.board_page a.bt {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.board_page a.num {
+    padding-top: 9px;
+    font-size: 1.4rem;
+}
+
+.board_page a.num.on {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.board_page a:first-child {
+    border-left: 1px solid #ddd;
+}
+
+.board_view {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+.board_view .title {
+    padding: 20px 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    font-size: 0;
+}
+
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.board_view .info dl:first-child {
+    padding-left: 0;
+}
+
+.board_view .info dl::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
+}
+
+.board_view .info dl:first-child::before {
+    display: none;
+}
+
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_view .info dl dt {
+
+}
+
+.board_view .info dl dd {
+    margin-left: 10px;
+    color: #777;
+}
+
+.board_view .cont {
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    line-height: 160%;
+    font-size: 1.4rem;
+}
+
+.board_write {
+    border-top: 2px solid #000;
+}
+
+.board_write .title,
+.board_write .info {
+    padding: 15px;
+}
+
+.board_write .info {
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px solid #000;
+    font-size: 0;
+}
+
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .info dl {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .info dt,
+.board_write .info dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.board_write .title dt,
+.board_write .info dt {
+    width: 100px;
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"],
+.board_write .info input[type="text"],
+.board_write .info input[type="password"] {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type="text"] {
+    width: 80%;
+}
+
+.board_write .cont {
+    border-bottom: 1px solid #000;
+}
+
+.board_write .cont textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 0;
+    resize: vertical;
+}
+
+
+
+/* 노토 산스 웹주소*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+body{
+  
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+.c_1{
+  
+  
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom : 10px;
+}
+.c_1_1{
+  margin-bottom: 30px;
+  font-size: 15px;
+
+}
+.c_2_f{
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  color:black;
+}
+
+
+.c_2{
+  color : black;
+  font-size : 15px;
+  padding-bottom: 15px;
+}
+#left{
+  
+  border-top :solid rgb(208, 206, 206);
+  border-bottom : solid rgb(208, 206, 206);
+  border-top-width: thin;
+  border-bottom-width: thin;
+  padding-top: 0.4cm;
+  padding-bottom: 0.06cm;
+
+}
+#nav1 {
+  margin-right :50px;
+  margin-bottom: 100%;
+  /* margin-left: 10px; */
+
+  padding-top: 200px;
+  padding-left: 30px;
+  padding-right : 0px;
+  float : left;
+}
+
+#name_title{
+  text-align: left;
+  color:rgb(223, 77, 77);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.section1{
+  margin-top : 150px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+  padding-left : 200px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.section2{
+  /* margin-top : 100px; */
+  margin-left: 200px;
+  margin-bottom: 20px;
+  padding-left : 200px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.name_table{
+  text-align: center;
+  padding-bottom: 50px;
+  border-top :solid rgb(208, 206, 206);
+  border-bottom : solid rgb(208, 206, 206);
+  border-top-width: 2px;
+  border-bottom-width: thin;
+
+}
+.name_table2{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.notice-table{
+  margin-top: 10px;
+  border-bottom : solid rgb(221, 221, 221);
+  border-bottom-width: thin;
+}
+
+.main_table{
+  width: 90%;
+}
+
+#write_btn{
+  
+  margin-left: 30%;
+  padding: 2px;
+  margin-bottom: 30px;
+}
+#write_btn_1{
+  color: black;
+}
+.list-search{
+
+    margin-left: 50%;
+    height: 40px;
+    width: 500px;
+    
+    background: #ffffff;
+
+}
+#select-button{
+  padding:2px;
+}
+#search-button1{
+  
+  padding : 2px;
+}
+#search-button2{
+  padding : 2px;
+}

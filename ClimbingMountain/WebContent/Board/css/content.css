@@ -1,0 +1,878 @@
+@charset "utf-8";
+
+/* ******************  서브공통 ********************** */
+/* -------- 공통 스크롤바  -------- */
+.custom-scrollbar-cover{display:none;}
+
+/* -------- 공통 Fixed Move Tab -------- */
+.fixed-tab-container{position:relative}
+/* tab */
+.fixed-move-tab-list-wrapper,
+.fixed-change-tab-list-wrapper {position:relative; height:60px; width:100%}
+.fixed-move-tab-link-wrapper{margin-bottom:90px}
+.fixed-move-tab-list-wrapper .fixed-tab-inner ,
+.fixed-change-tab-list-wrapper .fixed-tab-inner{max-width:1200px; margin:0px auto;}
+.fixed-move-tab-list,
+.fixed-change-tab-list {height:60px; position:relative; margin:0px auto;  transition: width 0.2s;}
+/* fixed */
+.fixed-move-tab-list.fixed,
+.fixed-change-tab-list.fixed {position:fixed; top:49px; left:0; width:100%; z-index:99; background-color: #fff; transition: width 0.2s;/*  border-bottom:1px solid #ddd; */} /* fixed top 변경*/
+.fixed-move-tab-list.fixed ul,
+.fixed-change-tab-list.fixed ul {max-width:1200px; margin:0px auto; }
+.fixed-move-tab-list.fixed ul li,
+.fixed-change-tab-list.fixed ul li {border-top:0; }
+.fixed-move-tab-list.fixed .sub-tab02-list li.selected ,
+.fixed-change-tab-list.fixed .sub-tab02-list li.selected {border-top:1px solid #222;}
+
+/* content(임시) */
+.fixed-tab-content{padding:30px 0; border:1px solid #ddd; margin-top:50px; min-height:300px; }
+
+/* -------- 공통 :: 이미지 박스 -------- */
+.img-box{position:relative;margin-top:20px;text-align:center}
+.img-box img{vertical-align:top;max-width:100%}
+@media screen and (max-width: 800px) {
+	.img-box:after{position:absolute;background:rgba(0,0,0,0.6) url('../images/img_arrow.png')no-repeat center;width:13.3vw;height:13.3vw;right:0;bottom:0;background-size:6.2vw;cursor:pointer;content:'';}
+}
+/* -------- 공통 :: 버튼 -------- */
+.cm-button-style04,
+.cm-button-style04 strong,
+.cm-button-style04 i{-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-ms-transition:all 0.3s;transition:all 0.3s}
+.cm-button-style04{position:relative; overflow:hidden; display:block; border:2px solid #222; text-align:left; background-color:#222; }
+.cm-button-style04:before{
+    display:block; position:absolute; left:-130%; bottom:0; content:""; width:120%; height:150%; background:#fff; /* opacity:0;filter:Alpha(opacity=0); */
+    transform:skew(-20deg); 
+    -webkit-transition:all 0.5s;-moz-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;transition:all 0.5s
+}
+.cm-button-style04 strong{position:relative; left:0px; z-index:1; display:block; color:#fff; font-size:16px; font-weight:400; letter-spacing:-0.5px; text-indent:25px; }
+.cm-button-style04 i{position:absolute; top:0px; right:15px; line-height:60px; color:#fff; font-size:24px;}
+.cm-button-style04:hover{}
+.cm-button-style04:hover strong{color:#333;}
+.cm-button-style04:hover i{color:#333}
+.cm-button-style04:hover:before{left:-10%; opacity:1.0;filter:Alpha(opacity=100);}
+
+/* 버튼02 */
+.business-btn-box{text-align:center; margin-top:85px;}
+.business-btn-box a{display:inline-block; width: 350px; height:70px; margin:0 5px; background-color:#ed1d25;}
+.business-btn-box a span {display:table; width: 100%; height:100%;}
+.business-btn-box a em {display:table-cell; vertical-align:middle; color: #fff; font-size: 16px; letter-spacing:-0.25px; }
+ 
+/* -------- 공통 테이블 -------- */
+.sub-tbl {width:100%; border-top: 1px solid #222; table-layout:fixed; }
+.sub-tbl th {font-size: 16px; letter-spacing:-0.5px; color: #222; border-bottom:1px solid #ddd; }
+.sub-tbl td {font-size: 16px; line-height:26px; letter-spacing:-0.5px; color: #222;  border-bottom: 1px solid #ddd;}
+
+/* 공통 테이블 :: sub-tbl01 */
+.sub-tbl01 tbody th {background-color: #f5f5f5; padding: 0 20px; text-align:left;}
+.sub-tbl01 tbody td { padding:14px 20px;}
+
+/* 공통 테이블 :: sub-tbl02 */
+.sub-tbl02 thead th {padding: 20px 0; background-color: #f7f7f7; font-weight: 400; color: #666; border-left: 1px solid #ddd; }
+.sub-tbl02 tbody td {border-left:1px solid #ddd; padding:13px 5px 13px 10px;  }
+.sub-tbl02 .no-line-left {border-left:0;}
+.sub-tbl02 thead tr th:first-child,
+.sub-tbl02 tbody tr td:first-child{border-left:0;}
+.sub-tbl02 tbody tr td.bor{border-left:1px solid #ddd;}
+
+/* -------- 공통 Box Tab :: sub-tab01-list -------- */
+.business-page .gnb-icon {display:none;}
+.sub-tab01 {margin-bottom:100px;}
+.sub-tab01-list {border:1px solid #e5e5e5; width:50%; margin:0px auto;  }
+.sub-tab01-list li {width: 33.33%; float:left; text-align:center; position:relative; }
+.sub-tab01-list li:before {content:""; display:block; width:1px; height: 25px; background-color: #e5e5e5; position:absolute; top:50%; margin-top:-12.5px; left:0; z-index:-1;}
+.sub-tab01-list li:first-child:before {display:none;}
+.sub-tab01-list li a {font-size:20px; letter-spacing:-0.5px; color: #222; display:block; background-color:#f3f4f4;border-left:1px solid #e5e5e5}
+.sub-tab01-list li:first-child a {border-left:0}
+.sub-tab01-list li span {display:table; width:100%; height: 60px; }
+.sub-tab01-list li span em {display:table-cell; vertical-align:middle;}
+.sub-tab01-list li.on a {color: #fff;  background-color: #222; }
+
+.sub-tab01-list.menu02 {width: 33.33%;}
+.sub-tab01-list.menu02 li {width:50%;}
+.sub-tab01-list.menu04 {width: 66.66%;}
+.sub-tab01-list.menu04 li {width:25%;}
+.sub-tab01-list.menu05 {width: 100%;}
+.sub-tab01-list.menu05 li {width:20%;}
+.sub-tab01-list.menu07 {width: 100%;}
+.sub-tab01-list.menu07 li {width:14.28%;}
+
+/* -------- 공통 Box Tab :: sub-tab02-list -------- */
+.sub-tab02-list li {float:left; width:50%; text-align:center; border:1px solid  #e5e5e5; border-left:0; background-color:#fff; -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+ box-sizing: border-box; }
+.sub-tab02-list li:first-child {border-left:1px solid #e5e5e5;}
+.sub-tab02-list li > a {display:block;}
+.sub-tab02-list li span { display: table; width:100%; height: 60px; }
+.sub-tab02-list li span em {display:table-cell; vertical-align:middle;  font-size: 16px; line-height:1.2; letter-spacing:-0.5px; color: #222; word-break:keep-all;}
+.sub-tab02-list li.selected {border-top-color: #222; border-bottom:0;}
+.sub-tab02-list.menu03 li {width: 33.33%;}
+.sub-tab02-list.menu04 li {width: 25%;}
+.sub-tab02-list.menu05 li {width: 20%;}
+
+/* -------- 공통 :: 작은 타이틀 -------- */
+.small-tit {text-align:center; font-size: 20px; letter-spacing:-0.5px; color: #222;  margin-bottom:24px; } 
+.small-tit span {position:relative; padding-bottom: 8px;/*  display:inline-block; */}
+.small-tit span:before {content:"";  width: 100%; height: 2px; background-color: #222;  position:absolute; bottom:0; left:0; display:block;}
+.sub-top-tit {font-size: 45px; letter-spacing:-0.85px; font-weight:700; color: #222;  text-align:center; margin-bottom:65px;}
+.sub-top-tit.type{font-size:40px;font-weight:900}
+
+
+/* ******************  Business  ********************** */
+/* -------- Business :: 공통 -------- */
+#visual.sub-visual-business .visual-img-con{background-position:30% 50% !important}
+#loanContent{padding-bottom:100px}
+/* 컨텐츠 박스 */
+.content-box{position:relative;padding-bottom:100px}
+.content-box + .content-box{padding-top:120px}
+.content-box:after{position:absolute;bottom:0;left:-100%;right:-100%;border-top:1px solid #d6d6d6;content:''}
+.content-box:last-child:after{display:none}
+/* top visual */
+.loan-top-visual{padding:50px 0 50px 50px}
+.loan-top-visual p{letter-spacing:-1px;}
+.loan-top-visual-txt1{margin-bottom:30px;font-size:30px;color:#44c0f4;font-weight:700;line-height:1.4}
+.loan-top-visual-txt2{width:55%;font-size:22px;color:#fff;font-weight:200;line-height:1.6;text-shadow:2px 1px black}
+/* 원형 리스트 */
+.circle-list-con{margin:0 -0.5%;}
+.circle-list-con li{position:relative;float:left;width:24%;padding-bottom:24%;margin:0 0.5%;font-size:26px;color:#222;text-align:center}
+.circle-list-con li > div{position:absolute;top:0;left:0;bottom:0;display:table;width:100%;height:100%;border-radius:50%;background-color:#f3f4f4;line-height:1.5}
+.circle-list-con li > div > span{display:table-cell;padding:0 50px;vertical-align:middle}
+.circle-list-con li em{color:#0099da;font-weight:900}
+/* arrow */
+.ico-arrow-box{margin:60px 0;padding-bottom:5%;background:url(../images/ico_arrow.jpg) no-repeat 50% 50%;background-size:contain}
+.ico-arrow-box.type{margin:40px 0;padding:0;background:url(../images/arrow_finance.jpg) no-repeat 50% 50%;height:109px}
+/* 서브 타이틀 텍스트 */
+.loan-sub-tit{font-size:26px;font-weight:900;color:#fff;background-color:#0056a4;line-height:100px;text-align:center}
+/* 구성도 */
+.config-list{column-width:249px;column-gap: 15px;margin-top:20px}
+.config-list li{margin-bottom:20px;text-align:center}
+.config-list dl{display:inline-block;width:100%}
+.config-list dt,.config-list dd{border:1px solid #c5c5c5;font-size:22px;line-height:54px;color:#222}
+.config-list dt{font-weight:700;background-color:#e7e7e7}
+.config-list dd{margin-top:-1px}
+
+/* -------- Business :: 플랫폼 사업 -------- */
+.platform-con{margin:-0.4%}
+.platform-con:after{display:block;clear:both;content:''}
+.platform-con > li{overflow:hidden;width:49%;margin:0.4%}
+.platform-con .plat-img{height:600px;background:url(../images/platform_img1.jpg) no-repeat 50% 50%}
+.platform-con.type > li .plat-img{background-image:url(../images/platform_img2.jpg)}
+.platform-con .plat-inner-con{margin:0 -0.7%}
+.platform-con .plat-inner-con:after{display:block;clear:both;content:''}
+.platform-con .plat-inner-con > li{float:left;width:48.6%;margin:0 0.7%}
+.platform-con .plat-inner-con > li > div{position:relative;height:518px;padding:50px 27px 30px;border:1px solid #222}
+.platform-con .plat-inner-con .plat-tit{font-size:26px;text-align:center;color:#0099da;font-weight:900}
+.platform-con .plat-inner-con .plat-ico{margin:30px 0;text-align:center}
+.platform-con .plat-inner-con .plat-ico img{max-width:100%}
+.platform-con .plat-inner-con .txt-type2{font-weight:400}
+.platform-con .plat-inner-con .plat-logo{position:absolute;bottom:30px;left:27px;right:27px;padding-top:18px;border-top:1px solid #c9c9c9;text-align:center}
+.platform-con .plat-inner-con .plat-logo img{max-width:100%}
+.cloud-con{margin:0 -0.3%}
+.cloud-con:after{display:block;clear:both;content:''}
+.cloud-con > li{float:left;width:32.7%;margin:0 0.3%}
+.cloud-con .cloud-inner{height:363px;padding:45px 30px 20px;border:1px solid #c0c0c0;letter-spacing:-0.5px}
+.cloud-con .txt-type2{font-size:20px;font-weight:400}
+.cloud-con .cloud-tit{font-size:26px;font-weight:900;color:#0099da;text-align:center}
+.cloud-con .cloud-ico{margin:30px 0;text-align:center}
+.cloud-con .cloud-ico img{max-width:100%}
+.cloud-logo-con{display:table;margin-top:10px;padding:20px;border:1px solid #c0c0c0}
+.cloud-logo-con li{position:relative;display:table-cell;padding:0 50px;width:20%;text-align:center}
+.cloud-logo-con li:after{position:absolute;top:50%;left:0;width:6px;height:6px;background-color:#d2d2d2;border-radius:50%;content:''}
+.cloud-logo-con li:first-child:after{display:none}
+.cloud-logo-con li img{max-width:100%}
+
+/* -------- Business :: 개발실적 -------- */
+#performanceContent{padding-bottom:160px}
+.performance-list-con{border-top:2px solid #0055a5;border-bottom:2px solid #0055a5;padding:30px 0}
+.performance-list-con + .performance-list-con,.hide-box{margin-top:-2px}
+.performance-list-con > dl {overflow:hidden; position:relative; padding-bottom:30px}
+.performance-list-con > dl:last-child{padding-bottom:0}
+.performance-list-con > dl > dt{position:absolute; top:0; left:0px;color:#0055a5; font-weight:700; font-size:50px;line-height:1.2;font-style:italic;letter-spacing:-1px}
+.performance-list-con > dl > dt:after{position:absolute;bottom:20px;left:175px;width:35%;height:3px;background-color:#0056a4;content:''}
+.performance-list-con > dl > dd{padding-left:290px;}
+.performance-list-con > dl > dd ul{position:relative;border-top:1px solid #cecece;color:#222;font-size:22px;letter-spacing:-0.5px;}
+.performance-list-con > dl > dd ul:first-child{border-top:0}
+.performance-list-con > dl > dd li{padding:15px 24px 16px;border-top:1px solid #cecece}
+.performance-list-con > dl > dd li:first-child{border-top:0}
+.performance-list-con > dl > dd li:nth-child(even){background-color:#f4f4f4}
+.performance-list-con > dl > dd .corp,.performance-list-con > dl > dd span{display:inline-block;vertical-align:top;line-height:1.4}
+.performance-list-con > dl > dd .corp{position:relative;padding:0 30px;width:32%;color:#0056a4;font-weight:700}
+.performance-list-con > dl > dd .corp:after{position:absolute;top:12px;left:0;width:6px;height:6px;border-radius:50%;background:#0056a4;content:''}
+.performance-list-con > dl > dd span{width:calc(100% - (32% + 60px));color:#666}
+.view-btn-box{margin-top:80px;text-align:center}
+.view-btn-box a{display:inline-block;width:350px;line-height:100px;color:#fff;background:#222;text-align:center;font-size:20px;font-weight:700;
+	transition:all 0.3s;-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-ms-transition:all 0.3s;
+}
+.view-btn-box a:hover{background-color:#0056a4}
+
+/* -------- Business :: 여신사후관리시스템 -------- */
+.loan-txt-box ul{margin:0 -0.8%}
+.loan-txt-box ul li{float:left;width:31.7%;margin:0 0.8%;color:#222}
+.loan-txt-box ul li span{display:block;border:1px solid #9d9d9d;text-align:center;line-height:68px;white-space:nowrap}
+.loan-txt-box ul li,.loan-txt-box p{font-size:26px;font-weight:700}
+.loan-txt-box p{margin-top:20px;color:#fff;text-align:center;line-height:100px}
+.loan-txt-box .txt1{background-color:#b6b6b6}
+.loan-txt-box .txt2{background-color:#222}
+
+.loan-txt-box2 ul{margin:20px -0.8% 0}
+.loan-txt-box2 ul li{float:left;width:31.7%;margin:0 0.8% 20px;font-size:22px;color:#222}
+.loan-txt-box2 ul li span{display:block;border:1px solid #c5c5c5;text-align:center;line-height:60px;white-space:nowrap}
+
+.biz-list-con{border:1px solid #969696}
+.biz-list-con + .biz-list-con{margin-top:20px}
+.biz-list-con dt,.biz-list-con dd{color:#222;letter-spacing:-0.25px;}
+.biz-list-con dt{padding:17px 0 15px 68px;font-size:30px;font-weight:900;line-height:1.4;background-color:#efeff0}
+.biz-list-con dt span{margin-right:30px;font-weight:700}
+.biz-list-con dd{padding:25px 20px 29px 135px}
+.biz-list-con dd p{position:relative;font-size:22px;line-height:1.8;color:#444;padding-left:17px}
+.biz-list-con dd p:before{display:block;width:3px;height:3px;background-color:#222;position:absolute; left:0; top: 17px; -webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%;content:''}
+
+/* -------- Business :: 연체종합관리시스템 -------- */
+.circle-list-con.type{margin:-2.5% -3% 0}
+.circle-list-con.type li{width:27.33%;padding-bottom:27.33%;margin:2.5% 3% 0}
+
+.card-list-con{margin:-20px -0.7% 0}
+.card-list-con > li{position:relative;float:left;width:23.6%;margin:20px 0.7% 0}
+.card-list-con > li:after{position:absolute;top:0;left:50%;width:33%;margin-left:-16.5%;border-top:2px solid #0056a4;content:''}
+.card-list-con dl{min-height:340px;padding:28px 16px 0;border:1px solid #a5a5a5}
+.card-list-con dl dt{color:#0056a4;font-size:24px;font-weight:700;text-align:center;line-height:1.4}
+.card-list-con dl dd{position:relative;margin-top:20px;padding-left:20px;color:#666;font-size:19px;line-height:1.4}
+.card-list-con dl dd:first-child{margin-top:0}
+.card-list-con dl dd:before{position:absolute;top:13px;left:0;width:8px;height:2px;background-color:#666;content:''}
+
+.loan-bottom-txt{margin:0 -0.5%}
+.loan-bottom-txt li{float:left;width:49%;margin:0 0.5%;font-size:30px;font-weight:700;color:#fff;line-height:100px;text-align:center;background-color:#878787}
+
+/* -------- Business :: 조기경보시스템 -------- */
+.loan-top-visual.type{padding:0}
+.loan-top-visual.type .loan-top-visual-txt1 span{color:#222}
+.loan-top-visual.type .loan-top-visual-txt2{width:100%;color:#222;text-shadow:none}
+.loan-top-visual.type .loan-top-visual-txt2 strong{font-weight:900}
+.loan-top-visual.type img{width:100%;margin-top:30px}
+/* 전체업무 구성도 */
+.loan-tbl-con{border-top:2px solid #222;border-bottom:2px solid #222}
+.loan-tbl-con table{width:100%;table-layout:fixed}
+.loan-tbl-con tr:nth-child(odd){background-color:#f2f2f2}
+.loan-tbl-con tr:first-child th,.loan-tbl-con tr:first-child td{border-top:0}
+.loan-tbl-con th,.loan-tbl-con td{height:111px;border-top:1px solid #c9c9c9;letter-spacing:-0.25%}
+.loan-tbl-con th{width:270px;text-align:left;font-size:24px;color:#222;}
+.loan-tbl-con th span{margin-right:40px;font-size:36px;color:#c8c7c7;font-style:italic}
+.loan-tbl-con th em{display:inline-block;line-height:42px;vertical-align:top;font-weight:900}
+.loan-tbl-con td{padding:15px 15px 15px 8%;font-size:20px;color:#666;line-height:1.6;border-left:1px solid #c9c9c9}
+/* 기대효과 */
+.card-list-con2{display:table;border-spacing:20px 0;margin:0 -20px}
+.card-list-con2 > li{position:relative;display:table-cell;width:25%;height:298px;padding:0 26px;font-size:22px;line-height:1.5;text-align:center;border:1px solid #a5a5a5;vertical-align:middle;color:#222}
+.card-list-con2 > li em{color:#0056a4}
+.card-list-con2 > li:after{position:absolute;top:-1px;left:50%;width:33%;margin-left:-16.5%;border-top:2px solid #0056a4;content:''}
+
+/* -------- Business :: 손부실률정보시스템 -------- */
+.loan-txt-box .txt3{background-color:#0056a4;padding:20px;font-size:22px;line-height:1.4}
+.loan-txt-box .txt4{background-color:#b6b6b6;padding:20px;font-size:22px;line-height:1.4}
+.loan-txt-box .txt5{background-color:#787e8e;padding:20px;font-size:22px;line-height:1.4}
+.loan-txt-box .txt6{background-color:#94a2af;padding:20px;font-size:22px;line-height:1.4}
+.loan-txt-box .txt7{background-color:#40516b;padding:20px;font-size:22px;line-height:1.4}
+.loan-txt-box.type li{font-size:22px}
+.sub-txt{margin:40px 0;color:#222;font-size:22px;line-height:1.6}
+.sub-txt em{font-weight:900}
+.sub-txt span{color:#0099da;font-weight:700}
+/* 주요기능 및 특징 */
+.system-list-con{margin:0 -0.7%;}
+.system-list-con > li{float:left;width:23.6%;margin:0 0.7%;font-weight:700;text-align:center}
+.system-list-con dl dt,.system-list-con dl dd{display:table;width:100%;line-height:1.4;}
+.system-list-con dl dt{min-height:100px;font-size:24px;color:#fff;background:#222;}
+.system-list-con dl em{display:table-cell;vertical-align:middle}
+.system-list-con dl dd{min-height:58px;box-sizing:border-box;background-color:#f2f2f2;font-size:22px;color:#222;border:1px solid #878787}
+.system-list-con dl dd + dd{margin-top:-1px}
+.system-list-con.type{margin:0 -0.7%}
+.system-list-con.type > li{width:18.6%;margin:0 0.7%}
+/* 기대효과 및 활용방안 */
+.info-tbl-con{margin-top:100px;border-top:2px solid #222;border-bottom:2px solid #222}
+.info-tbl-con table{width:100%}
+.info-tbl-con table th,.info-tbl-con table td{border-top:1px solid #c9c9c9}
+.info-tbl-con table tr:first-child th,.info-tbl-con table tr:first-child td{border-top:0}
+.info-tbl-con table th{width:19%;background-color:#f2f2f2;color:#222;font-size:24px;font-weight:900}
+.info-tbl-con table td{padding:40px 20px 40px 50px}
+.info-tbl-con .tbl-txt-list{}
+.info-tbl-con .tbl-txt-list li{position:relative;font-size:20px;color:#666;}
+.info-tbl-con .tbl-txt-list > li{padding-left:18px;line-height:1.4}
+.info-tbl-con .tbl-txt-list > li + li{margin-top:20px}
+.info-tbl-con .tbl-txt-list > li:after{position:absolute;top:13px;left:0;width:8px;height:2px;background-color:#666;content:''}
+.info-tbl-con .tbl-txt-list > li > ul li{margin-top:5px;padding-left:12px;line-height:1.6}
+.info-tbl-con .tbl-txt-list > li > ul li:after{position:absolute;top:13px;left:0;width:4px;height:4px;border-radius:50%;background-color:#666;content:''}
+
+/* -------- Business :: 재정기금관리시스템 -------- */
+.circle-list-con.type li strong{display:block;margin-top:12px;font-size:22px;font-weight:400}
+/* 전체업무 구성도 */
+.loan5-sub-tit{font-size:24px;font-weight:700;background-color:#0056a4;text-align:center}
+.loan5-circle-con{padding:25px 30px;background-color:#f2f2f2}
+.loan5-circle-con ul{margin:0 -0.6%;}
+.loan5-circle-con ul li{position:relative;float:left;width:15.4%;padding-bottom:15.4%;margin:0 0.6%;font-size:22px;background-color:#fff;text-align:center;border-radius:50%;
+	box-shadow:0 2px 21px 0 rgba(0, 0, 0, 0.12);
+	-webkit-box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow:0 2px 21px 0 rgba(0, 0, 0, 0.12);
+}
+.loan5-circle-con ul li span{display:table;position:absolute;top:0;left:0;bottom:0;width:100%;height:100%}
+.loan5-circle-con ul li span em{display:table-cell;vertical-align:middle}
+.loan5-list-con{margin:0 -1%}
+.loan5-list-con > li{float:left;width:31.33%;margin:40px 1% 0;font-size:22px;}
+.loan5-list-con > li:nth-child(1) dl,
+.loan5-list-con > li:nth-child(2) dl,
+.loan5-list-con > li:nth-child(3) dl{min-height:424px;}
+.loan5-list-con dl{border:1px solid #c5c5c5;}
+.loan5-list-con dl dt{text-align:center;padding:10px;background-color:#222;color:#fff;font-weight:700;line-height:1.6;}
+.loan5-list-con dl dd{padding:11px 10px 11px 28px;color:#222;line-height:1.4;border-top:1px solid #c5c5c5}
+.loan5-list-con dl dd:first-child{border-top:0}
+.loan5-list-con dl dd + dd{margin-top:-1px}
+.loan5-list-con dl dd ul{margin-top:15px;}
+.loan5-list-con dl dd ul li{color:#666;line-height:1.6}
+/* 기대효과 */
+.loan-tbl-con.type{margin-top:80px}
+.loan-tbl-con.type th{text-align:center}
+/* 구축사이트 */
+.loan5-tbl-con{text-align:center}
+.loan5-tbl-con table{width:100%}
+.loan5-tbl-con thead th{height:70px;font-size:22px;background-color:#222;color:#fff;border-left:1px solid #fff}
+.loan5-tbl-con td{height:50px;color:#666;font-size:20px}
+.loan5-tbl-con th,.loan5-tbl-con td{padding:0 20px}
+.loan5-tbl-con tbody th{height:152px;color:#222;font-size:24px;font-weight:900;line-height:1.5}
+.loan5-tbl-con tbody th,.loan5-tbl-con tbody td{border-bottom:1px solid #c9c9c9}
+.loan5-tbl-con tbody td{border-left:1px solid #c9c9c9}
+.loan5-tbl-con .bg th,.loan5-tbl-con .bg td{background:#f2f2f2}
+
+/* -------- Business :: 종합수익관리시스템 -------- */
+.result-content .loan-tbl-con.type th{text-align:left;padding-left:50px}
+.hr_arrow_icon{display:inline-block;margin:0 5px;width:6px;height:8px;background:url(../images/hr_arrow_icon.png) no-repeat}
+.result01 .loan5-list-con > li:nth-child(1) dl,.result01 .loan5-list-con > li:nth-child(2) dl,.result01 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.intro-con-box{margin-top:60px}
+.intro-con-box .img-con {float:right; width:55%; height:260px;background-size:cover; background-image:url("../images/result01_img.jpg")}
+.intro-con-box .img-con .img-m {display:none;}
+.intro-con-box .txt-con {float:left; width:45%; height:260px; display:table; background-color:  #a2a2a2;}
+.intro-con-box .txt-con .txt-con-inner {display:table-cell; vertical-align:middle; padding:0 45px;  }
+.intro-con-box .txt-con p {font-size:20px; line-height:32px; letter-spacing:-0.5px; color: #fff; font-weight:300; word-break:keep-all;}
+.intro-con-box .txt-con p strong{font-weight:700; color: #fff; }
+.intro-con-box .txt-con p.txt01 {font-size: 24px; line-height:40px;}
+.intro-con-box .txt-con p.txt02 {font-size: 20px;margin-top:20px;}
+.result-dl-con{margin-top:30px}
+.result-dl-con dl{float:left;width:49%}
+.result-dl-con dl + dl{float:right;width:49%}
+.result-dl-con dl dt,.result-dl-con dl dd{border:1px solid #c5c5c5}
+.result-dl-con dl dt{font-size:24px;background:#222;color:#fff;font-size:700;line-height:60px;text-align:center}
+.result-dl-con dl dd{min-height:128px;margin-top:-1px;font-size:20px;padding:18px 20px 18px 35px}
+.result-dl-con ul{}
+.result-dl-con ul li{float:left;width:calc(50% - 40px);position:relative;margin-bottom:12px;padding-left:20px;margin-right:20px;line-height:1.4;letter-spacing:-0.25px}
+.result-dl-con ul li:after{position:absolute;top:12px;left:0;width:6px;height:6px;border-radius:50%;background-color:#0055a5;content:''}
+/* -------- Business :: 신용리스크관리시스템 -------- */
+.result02 .loan-top-visual-txt2{width:70%}
+.result-list-con{margin-bottom:50px;}
+.result-list-con ul{float:left;width:48.5%}
+.result-list-con ul + ul{float:right;width:48.5%}
+.result-list-con ul li{padding:15px 10px;margin-top:-1px;border:1px solid #878787;background-color:#f2f2f2;line-height:1.4;text-align:center;font-size:22px;color:#222}
+
+/* -------- Business :: 캐피탈 -------- */
+.capital01 .loan-top-visual-txt2{width:64%}
+.capital01 .loan-txt-box{margin-top:80px}
+.capital01 .loan5-list-con dl{min-height:auto}
+.capital01 .loan5-list-con > li:nth-child(1) dl,.capital01 .loan5-list-con > li:nth-child(2) dl,.capital01 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.capital01 .loan5-list-con dl dt{background-color:#787e8e}
+.capital01 .loan5-list-con dl dd{padding:10px;text-align:center}
+.capital-sign-box{margin-top:20px}
+.capital-sign-inner > li{display:table;table-layout:fixed;position:relative;float:left;width:49%;min-height:200px;background-color:#f2f2f2}
+.capital-sign-inner > li:nth-child(2){float:right}
+.capital-sign-inner > li > div{position:absolute;top:85px;left:120px}
+.capital-sign-inner > li > div span{position:absolute;top:0;left:0;width:100px;height:30px;background-color:#b5b8c0;text-indent:-9999px}
+.capital-sign-inner > li > div .set{transform: rotate(90deg);}
+.capital-sign-inner > li > ul{display:table-cell;width:100%;padding:20px 0 20px 70%;vertical-align:middle}
+.capital-sign-inner > li > ul li{font-size:22px;color:#222;font-weight:700;line-height:1.8}
+.capital01 .loan5-tbl-con{border-bottom:2px solid #222}
+.capital01 .loan5-tbl-con tbody td{padding:30px;text-align:left;line-height:1.6}
+.capital01 .loan5-tbl-con tbody td strong{display:block;margin:20px 0 5px;color:#222}
+.capital01 .loan5-tbl-con tbody td strong:first-child{margin-top:0}
+.card-list-con-wrap{margin:0 -20px}
+.card-list-con-wrap .card-list-con2{margin:30px 0 0;width:100%}
+.card-list-con-wrap .card-list-con2 > li{height:280px;color:#666;font-size:20px;letter-spacing:-0.25px}
+.card-list-con-wrap .card-list-con2 > li strong{display:block;margin-bottom:40px;color:#222;font-weight:900;font-size:22px}
+/* 할부금융시스템 */
+.capital02 .loan-top-visual-txt2{font-weight:400}
+.capital02 .loan-top-visual-txt2 strong{color:#0099da;font-weight:700}
+.capital02 .loan5-tbl-con thead th{background-color:#787e8e}
+.capital02 .loan5-tbl-con{border-bottom:2px solid #222}
+.capital02 .loan5-tbl-con tbody td{padding:30px;text-align:left;line-height:1.6}
+.capital02 .loan5-tbl-con tbody td strong{display:block;margin:20px 0 5px;color:#222}
+.capital02 .loan5-tbl-con tbody td strong:first-child{margin-top:0}
+.loan5-tbl-con + .loan5-tbl-con{margin-top:30px}
+.ul-list-3col-wrap{margin:30px -20px 0}
+.ul-list-3col{display:table;width:100%;min-height:200px;border-spacing:20px 0}
+.ul-list-3col > li{display:table-cell;width:33.33%;padding:10px 0;background-color:#f2f2f2;vertical-align:middle;text-align:center}
+.ul-list-3col > li > div{display:inline-block;text-align:left}
+.ul-list-3col > li > div p{font-size:22px;font-weight:700;color:#222;line-height:1.8}
+/* 팩토링금융시스템 */
+.capital03 .loan5-tbl-con thead th{background-color:#787e8e}
+.capital03 .loan5-tbl-con{border-bottom:2px solid #222}
+.capital03 .loan5-tbl-con tbody td{padding:30px;text-align:left;line-height:1.6;vertical-align:top}
+.capital03 .loan5-tbl-con tbody td strong{display:block;margin:20px 0 5px;color:#222}
+.capital03 .loan5-tbl-con tbody td strong:first-child{margin-top:0}
+.capital03 .loan5-list-con{margin:0 -0.7%}
+.capital03 .loan5-list-con > li{width:23.6%;margin:30px 0.7% 0;}
+.capital03 .loan5-list-con > li:nth-child(1) dl,.capital03 .loan5-list-con > li:nth-child(2) dl,.capital03 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.capital03 .loan5-list-con dl dd{display:table;min-height:140px;width:100%;font-size:20px;padding:0}
+.capital03 .loan5-list-con dl dd span{display:table-cell;padding:11px;vertical-align:middle;text-align:center}
+.capital03 .loan5-list-con + .loan-txt-box{margin-top:120px}
+.person-info-con{margin-top:20px;background-color:#f2f2f2;color:#222;padding:10px;}
+.person-info-con > dt{float:left;display:table;width:330px;height:140px;font-size:22px;font-weight:900;text-align:center;}
+.person-info-con > dt > div{display:table-cell;vertical-align:middle}
+.person-info-con > dd{display:table;float:left;width:calc(100% - 330px);height:140px;font-size:20px;font-weight:700;background-color:#fff}
+.person-info-con > dd > div{display:table-cell;padding:10px 10px 10px 70px;vertical-align:middle}
+.person-info-con ul{display:table;}
+.person-info-con ul li{display:table-cell;padding-right:50px;line-height:1.8;vertical-align:middle;letter-spacing:-0.25px}
+.person-info-con ul li:last-child{padding-right:0}
+.person-info-con ul li span{margin-left:6px;font-size:8px;vertical-align:middle}
+.capital-type .loan-bottom-txt li{line-height:70px;font-size:22px}
+.capital-type .loan-bottom-txt.m4{margin-left:-0.5%;margin-right:-0.5%}
+.capital-type .loan-bottom-txt.m4 li{width:24%;margin:0 0.5%}
+.capital-type .loan-bottom-txt.m3{margin-left:-0.5%;margin-right:-0.5%}
+.capital-type .loan-bottom-txt.m3 li{width:32.3%;margin:0 0.5%}
+/* 개인금융시스템 */
+.capital04 .loan5-tbl-con{border-bottom:2px solid #222}
+.capital04 .loan5-tbl-con td:nth-child(2),
+.capital04 .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.loan5-tbl-con.tbl2{border-top:2px solid #222}
+.loan5-tbl-con.tbl2 th{text-align:left;padding-left:35px}
+/* 기업금융시스템 */
+.capital05 .loan5-list-con{margin:0 -0.7%}
+.capital05 .loan5-list-con > li{width:23.6%;margin:30px 0.7% 0;}
+.capital05 .loan5-list-con > li:nth-child(1) dl,.capital05 .loan5-list-con > li:nth-child(2) dl,.capital05 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.capital05 .loan5-list-con dl dd{text-align:center;padding:10px}
+.capital05 .loan5-tbl-con{border-bottom:2px solid #222}
+.capital05 .loan5-tbl-con tbody td{padding:30px;text-align:left;line-height:1.6;vertical-align:top}
+.capital05 .loan5-tbl-con tbody td:last-child{vertical-align:middle}
+.capital05 .loan5-tbl-con tbody td strong{display:block;margin:20px 0 5px;color:#222}
+.capital05 .loan5-tbl-con tbody td strong:first-child{margin-top:0}
+
+/* -------- Business :: 보험,증권(방카슈랑스) -------- */
+.stock .circle-list-con{margin:50px 0 70px}
+.stock .loan5-list-con > li:nth-child(1) dl,.stock .loan5-list-con > li:nth-child(2) dl,.stock .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.stock-type .loan5-list-con dl{min-height:auto}
+.stock-type .loan5-list-con dl dt{background-color:#787e8e}
+.stock-type .loan5-list-con dl dd{padding:10px;text-align:center}
+.stock .card-list-con-wrap .card-list-con2 > li strong{color:#0056a4}
+.stock .card-list-con2 > li em{display:block;color:#222;font-weight:700;margin-bottom:10px}
+.stock .loan5-tbl-con{border-bottom:2px solid #222}
+.stock .loan5-tbl-con td:nth-child(2),
+.stock .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.stock .person-info-con{margin-top:70px}
+.stock-type2{margin-top:40px}
+.stock-type2 .loan5-list-con dl dd{padding:10px;text-align:center}
+.stock-type2 .loan5-list-con > li{width:48%}
+/* -------- Business :: 카드 -------- */
+.card .loan5-list-con > li:nth-child(1) dl,.card .loan5-list-con > li:nth-child(2) dl,.card .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.sub-tab01-list li a{padding:20px 5px;line-height:1.5}
+.card-tab{display:table;width:100%}
+.card-tab li{float:left;width:14.28%}
+.card-tab li a{display:table;width:calc(100% - 10px);margin-left:-1px;height:56px;padding:6px 5px;background-color:#f3f4f4;border:1px solid #c6c6c6;text-align:center;line-height:1.4;color:#222;font-size:20px;font-weight:700;letter-spacing:-0.25px}
+.card-tab li a span{display:table-cell;vertical-align:middle}
+.card-tab li.on a{background-color:#0056a4;color:#fff;border-color:#0056a4}
+.card-txt{margin:65px 0 30px;;font-size:22px;font-weight:900;color:#222}
+.card .loan5-tbl-con{border-bottom:2px solid #222;opacity:1 !important;transform:none !important}
+.card .loan5-tbl-con th{height:110px}
+.card .loan5-tbl-con td{padding:30px 0 30px 30px;text-align:left;vertical-align:top;line-height:1.6;}
+.card .loan5-tbl-con td:nth-child(3),.card .loan5-tbl-con td:nth-child(4){border-left:0}
+.card .loan5-tbl-con .vm{vertical-align:middle}
+.card-tab-con{margin-top:30px}
+/* -------- Business :: iFramework -------- */
+.rnd-desc-con:after{display:block;clear:both;content:''}
+.rnd-desc-con .rnd-desc-img{float:left;margin-right:45px;border:1px solid #c5c5c5}
+.rnd-desc-con .rnd-desc-img img{width:100%}
+.rnd-desc-con .rnd-desc{float:left;margin-top:-12px;width:calc(100% - 420px);font-size:22px;line-height:1.8;color:#222}
+.rnd-desc-con .rnd-desc strong{color:#0099da}
+.rnd-desc-con + .loan-txt-box,.rnd-desc-con + .img-box{margin-top:50px}
+.arrow-iframe{margin:20px 0;text-align:center}
+.rnd .loan5-list-con.type{margin:0 -0.7%}
+.rnd .loan5-list-con.type > li{width:23.6%;margin:30px 0.7% 0;font-size:20px}
+.rnd .loan5-list-con.type dl dd{text-align:center;padding:10px}
+.rnd .loan5-list-con > li:nth-child(1) dl,.rnd .loan5-list-con > li:nth-child(2) dl,.rnd .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.loan5-list-con.type2 dl dt{background-color:#787e8e}
+.loan5-list-con.type2 dl dd{padding:10px;text-align:center}
+.loan5-list-con.type2 > li{font-size:20px;}
+.loan5-list-con.type2 dl{display:table;width:100%}
+.loan5-list-con.type2 dl dt{display:table;padding:10px 0;width:100%;min-height:50px;line-height:1.2;font-weight:400}
+.loan5-list-con.type2 dl dt span{display:table-cell;vertical-align:middle}
+.loan5-list-con.type2 p{margin-bottom:2px;font-size:22px;line-height:70px;text-align:center;color:#fff;background-color:#40516b}
+.img-box-client{margin-top:30px}
+.img-box-client ul{margin:0 -0.5%}
+.img-box-client ul:after{display:block;clear:both;content:''}
+.img-box-client ul li{float:left;width:19%;margin:0 0.5% 1%}
+.img-box-client ul li span{display:block;border:1px solid #d4d4d4}
+.img-box-client ul li img{width:100%}
+
+/* -------- Business :: IBK BOX -------- */
+.ibkbox .loan-top-visual-txt2{width:42%}
+.ibkbox .img-box{margin-top:70px}
+.txt-type{margin-top:60px;color:#222;font-weight:700;font-size:18px;text-align:center;line-height:1.4}
+.ibkbox .loan-txt-box{position:relative}
+.loan-txt-box.arrow-bg{margin-top:100px}
+.loan-txt-box.arrow-bg:after{position:absolute;top:-60px;left:50%;margin-left:-308px;width:617px;height:368px;z-index:-1;background:url(../images/ibkbox_arrow_bg.jpg) no-repeat 0 0;content:''}
+.solution-con + .solution-con{margin-top:40px}
+.solution-con .solution-tit{background-color:#0056a4;font-size:22px;color:#fff;font-weight:700;line-height:70px;text-align:center}
+.solution-con .solution-box{padding:50px;background-color:#f2f2f2;}
+.solution-con .solution-box ul{margin:-10px -0.5% 0}
+.solution-con .solution-box ul:after{display:block;clear:both;content:''}
+.solution-con .solution-box ul li{float:left;width:49%;margin:10px 0.5% 0}
+.solution-con .solution-box dl:after{display:block;clear:both;content:''}
+.solution-con .solution-box dl dt,.solution-con .solution-box dl dd{float:left;line-height:1.3;font-size:19px;font-weight:700;box-sizing:border-box}
+.solution-con .solution-box dl dt{width:40%;padding:10px 10px 10px 40px;color:#fff;background-color:#787e8e;}
+.solution-con .solution-box dl dd{width:60%;color:#222;background:#fff}
+.solution-con .solution-box dl dd span{display:block;padding:9px 10px 9px 30px;border:1px solid #c5c5c5}
+.ibkbox-list-con{margin:0 -0.5%}
+.ibkbox-list-con:after{display:block;clear:both;content:''}
+.ibkbox-list-con li{float:left;width:19%;margin:0 0.5%}
+.ibkbox-list-con .ibkbox-list-tit{background-color:#94a2af;color:#fff;font-size:20px;font-weight:700;line-height:60px;text-align:center;}
+.ibkbox-list-con .ibkbox-list-box{overflow:hidden;padding:15px;border:1px solid #c5c5c5;text-align:center;min-height:301px}
+.ibkbox-list-con .ibkbox-list-box span{display:inline-block;width:102px;height:102px;background:url(../images/ibkbox_clock_img.jpg) no-repeat}
+.ibkbox-list-con li:nth-child(2) .ibkbox-list-box span{background-image:url(../images/ibkbox_clock_img2.jpg)}
+.ibkbox-list-con li:nth-child(3) .ibkbox-list-box span{background-image:url(../images/ibkbox_clock_img3.jpg)}
+.ibkbox-list-con li:nth-child(4) .ibkbox-list-box span{background-image:url(../images/ibkbox_clock_img4.jpg)}
+.ibkbox-list-con li:nth-child(5) .ibkbox-list-box span{background-image:url(../images/ibkbox_clock_img5.jpg)}
+.ibkbox-list-con .ibkbox-list-box p{margin-top:15px;color:#222;line-height:1.6;font-size:19px;text-align:left}
+.ibkbox-list-con .ibkbox-list-box p em{font-weight:900;color:#0056a4}
+.ibkbox .loan5-list-con dl dt{background-color:#787e8e}
+.ibkbox .loan5-list-con > li:nth-child(1) dl,.ibkbox .loan5-list-con > li:nth-child(2) dl,.ibkbox .loan5-list-con > li:nth-child(3) dl{min-height:202px}
+.ibkbox .loan5-list-con dl dd{padding:20px 10px;text-align:center;font-size:20px}
+
+/* -------- Business :: 금융기타 -------- */
+.financial .loan5-list-con > li:nth-child(1) dl,.financial .loan5-list-con > li:nth-child(2) dl,.financial .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.financial .loan5-list-con.type2 p{background-color:#787e8e}
+.financial .loan5-list-con.type2 dl dt{background-color:#94a2af}
+.financial .loan5-tbl-con{border-bottom:2px solid #222}
+.financial .loan5-tbl-con td:nth-child(2),
+.financial .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.financial .loan-tbl-con th{width:380px}
+.financial .loan5-list-con li:nth-child(2) dl dd{text-align:center}
+.client-box{margin:0 -0.5%}
+.client-box:after{display:block;clear:both;content:''}
+.client-box > li{float:left;width:19%;margin:0 0.5%}
+.client-box div{padding:22px 0 24px;text-align:center;border:1px solid #ddd}
+.client-box div span{display:inline-block}
+.client-box div span img{width:100%}
+.client-box p{background-color:#ddd;font-weight:700;line-height:60px;color:#222;font-size:20px;text-align:center;letter-spacing:-0.25px}
+
+.finance-txt-box{margin-bottom:70px;padding:18px;border:1px solid #c5c5c5;border-top:0;text-align:center}
+.finance-txt-box div{display:inline-block;}
+.finance-txt-box div p{font-size:20px;color:#222;line-height:1.8;text-align:left}
+.loan-txt-box ul li span{border:0;background-color:#222;color:#fff}
+.financial02 .loan-txt-box p{margin-top:10px}
+.finance-interface-con{margin-top:60px;color:#fff;font-size:22px;text-align:center}
+.finance-interface-con p{font-weight:700;background-color:#94a2af;line-height:65px}
+.finance-interface-con ul{margin:0 -0.5%}
+.finance-interface-con ul:after{display:block;clear:both;content:''}
+.finance-interface-con ul li{float:left;width:24%;margin:1% 0.5% 0;font-weight:900;background-color:#787e8e;line-height:100px}
+.financial02 .loan5-tbl-con{border-bottom:2px solid #222}
+.financial02 .loan5-tbl-con td:nth-child(2),
+.financial02 .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.financial03 .img-box + .financial03 .img-box{margin-top:50px}
+.financial03 .loan5-tbl-con{border-bottom:2px solid #222}
+.financial03 .loan5-tbl-con td:nth-child(2),
+.financial03 .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.financial03 .loan5-tbl-con.finan2 td:nth-child(2){text-align:center}
+.financial03 .loan5-tbl-con.finan2 td{padding:17px}
+.finan04-txt-type .loan-top-visual-txt1{margin-bottom:20px}
+.finan04-txt-type .sub-txt{margin:20px 0}
+.finan04-txt-type .loan-top-visual{margin-bottom:15px}
+.finan04-txt-type .loan-txt-box p{margin-top:40px}
+.financial04 .loan5-list-con dl{min-height:auto}
+.financial04 .loan5-list-con > li:nth-child(1) dl,.financial04 .loan5-list-con > li:nth-child(2) dl,.financial04 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.financial04 .loan5-list-con dl dt{background-color:#787e8e}
+.financial04 .loan5-list-con dl dd{padding:10px;text-align:center}
+.financial05 .loan5-list-con > li{width:48%;}
+.financial05 .loan5-list-con dl{min-height:auto}
+.financial05 .loan5-list-con > li:nth-child(1) dl,.financial05 .loan5-list-con > li:nth-child(2) dl,.financial05 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.financial05 .loan5-list-con dl dd{padding:10px;text-align:center}
+.financial05 .loan5-list-con.dt-color dl dt{background-color:#0056a4}
+.financial05 .loan5-tbl-con{border-bottom:2px solid #222}
+.financial05 .loan5-tbl-con td:nth-child(2),
+.financial05 .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
+.financial05 .circle-list-con{margin-top:50px}
+.financial05 .circle-list-con li{width:14.6%;margin:0 1%;padding-bottom:14.6%}
+.financial05 .circle-list-con li > div > span{padding:0 10px}
+.ico-arrow-box.type2{margin:20px 0;padding:0;transform:rotate(180deg);background:url(../images/arrow_finance2.png) no-repeat 50% 50%;height:49px}
+.ico-arrow-box.type3{margin:20px 0;padding:0;background:url(../images/arrow_finance2.png) no-repeat 50% 50%;height:49px}
+.finan-tx-list{margin:50px -1% 0}
+.finan-tx-list li{position:relative;float:left;width:23%;margin:0 1%;background-color:#40516b;color:#fff;font-size:20px;font-weight:700;line-height:70px;text-align:center}
+.finan-tx-list li:after{position:absolute;top:-50px;left:50%;margin-left:-7px;width:13px;height:36px;background:url(../images/arrow_finance3.png) no-repeat;content:''}
+.financial05 .loan5-list-con.type{margin:0 -0.7%}
+.financial05 .loan5-list-con.type > li{width:23.6%;margin:30px 0.7% 0;}
+.financial05 .loan5-list-con.type > li:nth-child(1) dl,.financial05 .loan5-list-con.type > li:nth-child(2) dl,.financial05 .loan5-list-con.type > li:nth-child(3) dl{min-height:auto}
+.financial05 .loan5-list-con.type dl dd{text-align:center;padding:10px}
+.financial06 .loan5-list-con dl{min-height:auto}
+.financial06 .loan5-list-con > li:nth-child(1) dl,.financial06 .loan5-list-con > li:nth-child(2) dl,.financial06 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.financial06 .loan5-list-con dl dd{padding:10px;text-align:center}
+.financial06 .loan5-list-con.dt-color dl dt{background-color:#787e8e}
+.financial06 .loan5-list-con + .loan-txt-box{margin-top:70px}
+.financial07 .loan5-list-con dl{min-height:auto}
+.financial07 .loan5-list-con{margin:0 -0.5%}
+.financial07 .loan5-list-con > li{width:19%;margin:40px 0.5%}
+.financial07 .loan5-list-con > li:nth-child(1) dl,.financial07 .loan5-list-con > li:nth-child(2) dl,.financial07 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
+.financial07 .loan5-list-con dl dd{padding:10px;text-align:center}
+.financial07 .loan5-tbl-con{border-bottom:2px solid #222}
+.financial07 .loan5-tbl-con td:nth-child(2){padding:30px;text-align:left;line-height:1.6;}
+.financial07 .capital-type .loan-bottom-txt li{margin-bottom:1%}
+
+/* -------- Business :: 고객센터 -------- */
+.brguide .loan5-tbl-con{border-bottom:2px solid #222}
+.brguide .loan5-tbl-con tbody th{height:65px;font-size:20px;font-weight:700;text-align:left}
+.brguide .loan5-tbl-con tbody th,.brguide .loan5-tbl-con tbody td{letter-spacing:-0.25px}
+.brguide .loan5-tbl-con tbody td{color:#222}
+.brguide .sub-top-tit.mg{margin-top:100px}
+
+#loginContent{margin-top:60px}
+.login-box{max-width:660px;margin:0 auto;padding:150px 120px;background-color:#f3f3f3;letter-spacing:-0.25px}
+.login-box:after{display:block;clear:both;content:''}
+.inp-area{float:left;width:calc(100% - 170px)}
+.inp-box:after{display:block;clear:both;content:''}
+.inp-box label{float:left;width:90px;font-size:20px;color:#222;font-weight:700;line-height:56px;vertical-align:top}
+.inp-box input{float:left;width:calc(100% - 134px);padding:13px 20px;border:1px solid #c5c5c5;line-height:28px;background-color:#fff;font-size:20px;color:#222;height:28px}
+.inp-box + .inp-box{margin-top:10px}
+.btn-login{float:left;margin-left:20px;width:150px;background-color:#222;color:#fff;font-size:20px;text-align:center;line-height:122px}
+
+.inp-area.type .inp-box input{width:92%}
+
+.report .sub-tab01-list li span{height:auto}
+.report .sub-tab01-list{width:800px}
+.report-txt-area{margin:50px 0}
+.txt-type2{position:relative;padding-left:15px;font-size:18px;font-weight:200;line-height:1.6;color:#222}
+.txt-type2 span{position:absolute;top:0;left:0;}
+.txt-type3{font-size:18px;font-weight:200;line-height:1.6}
+.btn-download{color:#0099da;font-weight:400}
+.private .sub-tab01-list li span{height:auto}
+.private .sub-tab01-list{width:800px}
+.private-accordion > li{background-color:#f2f2f2}
+.private-accordion > li.on > a{border-bottom:0}
+.private-accordion > li.on > a:after{width:13px;height:8px;margin-top:-4px;background-image:url(../images/ico_arrow_down.png)}
+.private-accordion .pri-acc-tab{display:block;position:relative;padding:15px 60px 15px 123px;border-bottom:1px solid #888;font-size:20px;line-height:1.4}
+.private-accordion >li:first-child .pri-acc-tab{border-top:1px solid #888}
+.private-accordion .pri-acc-tab:after{position:absolute;top:50%;right:50px;margin-top:-6px;width:8px;height:13px;background:url(../images/ico_arrow_right.png) no-repeat;content:''}
+.private-accordion .pri-acc-box{display:none;padding:20px 85px 50px 123px;border:2px solid #222;border-left:0;border-right:0;background-color:#fff}
+.private-accordion .pri-acc-box .txt-type2{opacity:1 !important;transform:none !important}
+.pri-tit{margin-top:30px;font-size:18px;color:#222;line-height:1.7}
+.pri-tit + .pri-tbl table{margin-top:10px}
+.pri-tit.mt0{margin-top:0}
+.pri-desc{font-weight:200;font-size:18px;color:#222;line-height:1.7}
+.pri-tbl table{width:100%;margin-top:35px}
+.pri-tbl th,.pri-tbl td{border:1px solid #888;font-size:18px;color:#222;text-align:center;line-height:1.6}
+.pri-tbl th{height:49px;background-color:#f8f8f8;}
+.pri-tbl th:first-child,.pri-tbl td:first-child{border-left:0}
+.pri-tbl th:last-child,.pri-tbl td:last-child{border-right:0}
+.pri-tbl td{padding:10px 20px 10px 20px;font-weight:200}
+.pri-tbl .pri-desc{margin-top:35px}
+.pri-tbl .pri-desc + table{margin-top:5px}
+
+.view-area table{width:100%;border:2px solid #222;border-left:0;border-right:0;}
+.view-area th,.view-area td{line-height:1.6;color:#222}
+.view-area th{padding:12px 30px 12px 70px;background-color:#f2f2f2;font-size:22px;font-weight:700;text-align:left}
+.view-area td .wri-txt{display:inline-block;margin-right:50px;font-size:18px;color:#888;}
+.view-area td .wri-txt em{margin-right:15px;color:#777;font-weight:700}
+.view-area td.writer-area{padding:15px 30px 15px 70px;border:1px solid #c9c9c9;border-left:0;border-right:0}
+.view-area td.file-area{padding:15px 15px 15px 70px;border:1px solid #c9c9c9;border-left:0;border-right:0}
+.view-area td.file-area .wri-txt{margin-right:10px;vertical-align:top;}
+.view-area td.file-area .file-box{display:inline-block;margin-top:2px;width:calc(100% - 100px)}
+.view-area td.file-area .file-box .file-down{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px;color:#0099da}
+.view-area td.view-area{padding:100px 20px;text-align:center}
+.view-area td img{max-width:100%;text-align:center}
+.view-area .cm-btn-controls{padding-top:30px;text-align:right}
+.view-area .cm-btn-controls a + a{margin-left:5px}
+.btn-type{display:inline-block;padding:0 20px;background:#222;line-height:40px;color:#fff;font-weight:200;font-size:16px}
+
+.comment-con{display:table;width:100%}
+.comment-con li{display:table-cell;padding:10px;vertical-align:middle;height:80px;font-size:18px;color:#222;border-bottom:1px solid #c9c9c9;line-height:1.4}
+.comment-con li:first-child{width:15%;text-align:center;font-weight:700}
+.comment-con li:last-child{width:85%;padding-left:40px;font-weight:200;background-color:#f2f2f2}
+
+.talent-top-visual-txt1{font-size:34px;color:#fff;line-height:1.5}
+.talent-top-visual-txt2{font-size:34px;color:#44c0f4;font-weight:700;line-height:1.5}
+.talent-txt-box{margin-top:80px}
+.talent-txt-box ul li{display:table;margin-top:50px}
+.talent-txt-box ul li:first-child{margin-top:0}
+.talent-txt-box ul li:after{display:block;clear:both;content:''}
+.talent-txt-box .ico{display:table-cell;width:200px;height:200px;background:url(../images/ico_talent01.jpg) no-repeat}
+.talent-txt-box li:nth-child(2) .ico{background-image:url(../images/ico_talent02.jpg)}
+.talent-txt-box li:nth-child(3) .ico{background-image:url(../images/ico_talent03.jpg)}
+.talent-txt-box .talent-txt{display:table-cell;padding-left:90px;vertical-align:middle}
+.tal-txt1{font-size:26px;color:#0099da;font-weight:900}
+.tal-txt2{margin-top:14px;font-size:20px;color:#222;line-height:1.5}
+.person .tal-txt1{margin-top:80px}
+.tal-txt2.type{position:relative;padding-left:15px;margin-top:5px}
+.tal-txt2.type span{position:absolute;top:0;left:0;}
+.person .tal-txt1 + .tal-txt2.type{margin-top:20px}
+.person .img-box{margin-top:70px}
+.person .loan-top-visual{padding:84px 0 84px 80px}
+.person-top-visual-txt1{font-size:28px;font-weight:700;line-height:1.6;color:#222}
+.person-top-visual-txt1 span{font-size:22px}
+.person-top-visual-txt1 em{font-weight:900;color:#0099da}
+
+.benefit-con-list{margin-top:90px}
+.benefit-con-list .benefit-con-tit{position:relative;color:#222;font-size:26px;font-weight:900;}
+.benefit-con-list .benefit-con-tit span{position:relative;display:inline-block;padding-right:20px;background-color:#fff;z-index:1}
+.benefit-con-list .benefit-con-tit:after{position:absolute;top:50%;left:0;right:0;margin-top:-1px;height:2px;background-color:#222;content:''}
+.benefit-con-list .inner-con{margin:0 -0.5%}
+.benefit-con-list .inner-con:after{display:block;clear:both;content:''}
+.benefit-con-list .inner-con li{float:left;margin:0 0.5%;width:24%}
+.benefit-con-list .inner-con dl{margin-top:20px;min-height:335px;padding:44px 0 30px;border:1px solid #222;text-align:center;}
+.benefit-con-list .bene-txt-box .bene-txt1{position:relative;display:inline-block;margin-top:28px;padding-bottom:12px;font-size:22px;font-weight:900;color:#0099da}
+.benefit-con-list .bene-txt-box .bene-txt1:after{position:absolute;bottom:0;left:-10px;right:-10px;border-bottom:2px solid #0099da;content:''}
+.benefit-con-list .bene-txt-box .bene-txt2{margin-top:20px;font-size:18px;color:#222;line-height:1.5}
+
+
+/* ****************** Company  ********************** */
+/* -------- Compay :: 회사소개 -------- */
+/* ceo greeting :: 상단 */
+.ceo-top-content{position:relative; padding-top:38px; margin-bottom:55px}
+.ceo-top-content .bg_logo{position:absolute;top:0;right:0;z-index:-1;width:293px;height:287px;background:url(../images/sub_company_logo.png) no-repeat}
+.ceo-top-content .ceo-top-txt{color:#222; font-size:40px; font-weight:400; letter-spacing:-0.75px; line-height:1.44; margin-bottom:85px}
+.ceo-top-content .ceo-top-txt strong{color:#0099da; font-weight:700;}
+/* ceo greeting :: 하단 */
+.ceo-bottom-content{position:relative; margin-bottom:65px;}
+.ceo-bottom-content .ceo-bottom-txt1{margin:40px 0;color:#222; font-size:20px; font-weight:400; letter-spacing:-0.75px; line-height:1.8}
+.ceo-bottom-content .ceo-bottom-txt1 b{font-weight:700}
+.ceo-bottom-content .ceo-txt-con{margin-top:60px;background:#f3f4f4;padding:22px 46px}
+.ceo-bottom-content .ceo-txt-con p{font-size:26px;letter-spacing:-1px;color:#000;line-height:1.5}
+.ceo-bottom-content .ceo-txt-con .ceo-txt{float:left;width:calc(100% - 255px);padding-right:30px}
+.ceo-bottom-content .ceo-txt-con .ceo-txt p{font-weight:700}
+.ceo-bottom-content .ceo-txt-con .ceo-sign{float:left;width:225px;text-align:right}
+.ceo-bottom-content .ceo-txt-con .ceo-sign .ceo-name{margin-right:-18px}
+.ceo-bottom-content .ceo-txt-con .ceo-sign .ceo-name span{margin-left:10px;font-weight:700;letter-spacing:17px}
+
+/* -------- Compay :: 조직도 -------- */
+.organization{letter-spacing:-0.5px;text-align:center}
+.org-container{position:relative}
+.org-container:after{display:block;clear:both;content:''}
+.organization .org-tit{position:relative;margin:0 auto;width:250px;height:200px;font-size:30px;color:#fff;font-weight:700;background-color:#0056a4;text-align:center;line-height:200px}
+.organization .org-tit:after{position:absolute;bottom:-124px;left:50%;width:1px;height:124px;background-color:#aeaeae;content:''}
+.organization .org-type{position:absolute;top:70px;right:0;width:18.5%}
+.organization .org-type li{max-width:260px;box-sizing:border-box;line-height:1.4;padding:13px 0;text-align:center;font-size:22px;color:#fff;}
+.organization .org-type li:first-child{position:relative;background-color:#a6a6a6;}
+.organization .org-type li:first-child:after{position:absolute;bottom:-20px;left:50%;height:20px;width:1px;background-color:#aeaeae;content:''}
+.organization .org-type li:last-child{margin-top:20px;color:#222;background-color:#e7e7e7;border:1px solid #c5c5c5}
+.organization .org-tit2{margin-bottom:90px;width:350px;margin:0 auto;line-height:65px;font-size:22px;color:#fff;background-color:#222;}
+.organization .org-tit3{position:relative;margin-bottom:20px;line-height:1.4;padding:13px 0;text-align:center;font-size:22px;background-color:#a6a6a6;color:#fff;}
+.organization .org-tit3:after{position:absolute;top:-45px;left:50%;width:1px;height:45px;background-color:#aeaeae;content:''}
+.organization .org-tit4{font-weight:700;background:#e7e7e7}
+.organization .org-list{position:relative;margin-top:90px}
+.organization .org-list.type1{float:left;width:38%}
+.organization .org-list.type1 .org-tit2:after{position:absolute;top:34px;right:-100%;width:100%;height:1px;background-color:#aeaeae;z-index:-1;content:''}
+.organization .org-list.type2{float:right;width:57%}
+.organization .org-team{margin-top:20px;}
+.organization .org-team li{border:1px solid #c5c5c5;margin-top:-1px;padding:12px 0;line-height:1.4;color:#222;font-size:22px}
+.organization .org-div{position:relative;margin:90px -2% 0}
+.organization .org-div:after{display:block;clear:both;content:''}
+.organization .org-div:before{position:absolute;top:-45px;height:1px;background-color:#aeaeae;content:''}
+.organization .org-list.type1 .org-div:before{left:25%;right:25%;}
+.organization .org-list.type2 .org-div:before{left:16.5%;right:17.5%}
+.organization .org-list.type1 .org-div .org-inner{float:left;width:46%;margin:0 2%}
+.organization .org-list.type2 .org-div .org-inner{float:left;width:31.3%;margin:0 1%}
+.organization .org-list .org-tit2{position:relative}
+.organization .org-list .org-tit2:before{position:absolute;left:50%;bottom:-45px;height:45px;width:1px;background-color:#aeaeae;content:''}
+.organization .org-list.type2 .org-tit2:before{left:49.7%}
+/* -------- Compay :: 비전 -------- */
+/* 비전 :: 공통 */
+.vision-container{padding-bottom:115px}
+.vision-container .small-tit{margin-bottom:40px}
+/* 비전 :: VISION */
+.vision-top-txt{color:#444; font-size:24px;text-align:center;letter-spacing:-0.85px; margin-bottom:90px}
+.vision-top-con{position:relative;padding:93px 0 86px 10%; margin-bottom:200px;background:url(../images/vision_top_bg.jpg) no-repeat 50% 50%}
+.vision-top-con:after{position:absolute;bottom:-85px;left:-100%;right:-100%;height:1px;background-color:#d6d6d6;content:''}
+.vision-top-con p{color:#fff;font-size:30px;font-weight:700;line-height:1.3}
+.vision-top-con p span{display:inline-block;text-indent:120px;color:#636363;font-size:40px}
+.vision-img-con{text-align:center}
+.vision-con-list{margin-top:110px;border-top:2px solid #222;border-bottom:2px solid #222}
+.vision-con-list dl{padding:36px 0;border-top:1px solid #c9c9c9}
+.vision-con-list dl:first-child{border-top:0}
+.vision-con-list dl:nth-child(odd){background:#f4f4f4}
+.vision-con-list dl:after{display:block;clear:both;content:''}
+.vision-con-list dl dt{float:left;width:400px;font-size:26px;color:#0055a5;font-weight:700;text-align:center;line-height:28px}
+.vision-con-list dl dd{float:left;width:calc(100% - 468px);padding-left:68px;font-size:22px;color:#222;line-height:28px}
+
+/* -------- Compay :: 연혁 -------- */
+/* 연혁 :: 탭 */
+.history-tab{position:relative;margin:30px -8% 0}
+.history-tab br{display:none}
+.history-tab-container{margin-top:170px; min-height:500px}
+.history-tab:after{display:block;clear:both;content:''}
+.history-tab:before{position:absolute;bottom:0;left:-100%;right:-100%;height:1px;background-color:#222;content:''}
+.history-tab li{position:relative;float:left;width:25%}
+.history-tab li.on:after{position:absolute;bottom:0;left:-500%;right:50%;height:1px;background-color:#0055a5;content:''}
+.history-tab li a{position:relative;display:block;padding:30px 0;font-size:28px;font-weight:700;color:#222;text-align:center;letter-spacing:-1px}
+.history-tab li a span{position:absolute;bottom:-5px;left:50%;margin-left:-5px;width:10px;height:10px;border-radius:50%;background-color:#222;content:''}
+.history-tab li.on a{color:#0055a5}
+.history-tab li.on a span{background-color:#0055a5}
+.history-tab li.on a span:before{position:absolute;bottom:-10px;left:50%;margin-left:-15px;width:28px;height:28px;border:1px solid #0055a5;border-radius:50%;content:''}
+
+/* 연혁 :: 컨텐츠 */
+/* #historyCon02 .history-list-box .history-year-box .history-img-box{top:190px} */
+.history-year-list-con{border-top:2px solid #0055a5;border-bottom:2px solid #0055a5;padding:40px 0}
+.history-year-list-con + .history-year-list-con{margin-top:-2px}
+.history-list-box .history-year-box{overflow:hidden; position:relative; padding-left:48%}
+.history-list-box .history-year-box h4{position:absolute; left:0; top:0;  color:#222; font-size:120px; font-weight:600;letter-spacing:-1.5px; }
+.history-list-box .history-year-box h4 span{display:inline-block;text-indent:150px}
+.history-list-box .history-year-box .history-img-box{position:absolute;left:0;top:320px;width:420px;height:345px}
+
+.history-list-box .history-year-box .history-year-item {overflow:hidden; position:relative; padding-bottom:30px}
+.history-list-box .history-year-box .history-year-item:last-child{padding-bottom:0}
+.history-list-box .history-year-box .history-year-item .history-year{position:absolute; top:14px; left:0px; width:120px;}
+.history-list-box .history-year-box .history-year-item .history-year strong{color:#0055a5; font-weight:600; font-size:30px;font-style:italic}
+.history-list-box .history-year-box .history-year-item .history-info-con{padding-left:100px;}
+.history-list-box .history-year-box .history-year-item .history-info-con p{position:relative; padding:10px 0 ; padding-left:80px; border-top:1px solid #cecece;color:#222; font-size:22px; letter-spacing:-0.5px; line-height:1.8; word-break:keep-all}
+.history-list-box .history-year-box .history-year-item .history-info-con p:first-child{border-top:0}
+.history-list-box .history-year-box .history-year-item .history-info-con p .history-month{position:absolute; top:10px; left:20px;color:#0055a5; font-weight:700; }
+.history-list-box .history-year-box .history-year-item .history-info-con p span{position:relative}
+.history-list-box .history-year-box .history-year-item .history-info-con p span:after{position:absolute;top:12px;left:-18px;width:3px;height:3px;background:#0055a5;content:''}
+
+/* -------- Company :: 사업장소개 -------- */
+#locationContent{padding:30px 0 120px}
+.location-container .sub-tab01-list{width:940px}
+.location-txt-con{margin-bottom:70px;}
+.location-txt-con .location-txt1,.location-txt-con .location-txt2{line-height:1.8;text-align:center}
+.location-txt-con .location-txt1{color:#222;font-size:30px;}
+.location-txt-con .location-txt1 em{color:#0099da}
+.location-txt-con .location-txt2{font-size:22px;color:#222;}
+/* 사업장소개 :: 탭 */
+.sub-tab-wrap{margin-bottom:80px}
+/* 사업장소개 :: 지도 */
+.map-wrapper{margin-bottom:90px; border:2px solid #ddd;}
+.map-wrapper img{width:100%}
+/* 사업장소개 :: 테이블 */
+.map-tbl{width:100%;border-top:1px solid #222;border-bottom:1px solid #222;}
+.map-tbl th,.map-tbl td{padding:13px 20px 13px 50px; letter-spacing:-0.5px; font-size:22px; border-top:1px solid #dcdcdc; line-height:2}
+.map-tbl tr:first-child th,.map-tbl tr:first-child td{border-top:0}
+.map-tbl th{width:130px;color:#222;text-align:left; font-weight:900; background-color:#f3f4f4;vertical-align:top}
+.map-tbl td{color:#222; font-weight:400;}
+.map-tbl .type{margin-left:25px}
+.map-tbl .type:first-child{margin-left:0}
+.map-tbl .type b{color:#222; font-weight:700;}
+.map-tbl + .map-tbl{margin-top:-1px}
+
+/* -------- Company :: 경영철학 -------- */
+#philosophyContent{padding-bottom:70px}
+.philosophy-tab .sub-tab01-list li a{height:118px}
+.philosophy-tab .sub-tab01-list li span{position:absolute;height:auto;width:auto}
+.philosophy-tab .sub-tab01-list li span:first-child{top:13px;left:18px;font-size:18px;text-align:left}
+.philosophy-tab .sub-tab01-list li span:nth-child(2){bottom:15px;right:18px;font-size:20px;text-align:right}
+.philosophy-list-box{margin-top:95px}
+.philosophy-list-box p{display:inline-block;padding-bottom:6px;border-bottom:2px solid #0056a4;font-size:30px;color:#0056a4;font-weight:700}
+.philosophy-list-box dl{margin-top:55px}
+.philosophy-list-box dl + dl{margin-top:40px}
+.philosophy-list-box dl dt,.philosophy-list-box dl dd{font-size:20px;color:#222}
+.philosophy-list-box dl dt{font-weight:700}
+.philosophy-list-box dl dd{margin-top:5px;line-height:1.6}
+
+/* 에러페이지 */
+.error-wrap{padding:300px 0;text-align:center;letter-spacing:-0.5px;background-color:#f7f7f7}
+.error-wrap .err-tit{position:relative;display:inline-block;padding-right:130px;font-size:65px;font-weight:700;color:#222;line-height:1.4}
+.error-wrap .err-tit:after{position:absolute;top:0;right:0;width:100px;height:88px;background:url(../images/err-ico.png) no-repeat;content:''}
+.error-wrap .err-tit.type{padding-right:150px}
+.error-wrap .err-tit.type:after{top:-26px;width:118px;height:115px;background:url(../images/err-ico2.png) no-repeat;content:''}
+.error-wrap .err-desc{margin-top:30px;font-size:40px;color:#222;line-height:1.6}
+.error-wrap .btn-err{display:inline-block;margin-top:50px;width:280px;font-size:22px;color:#fff;text-align:center;line-height:60px;background-color:#222}
+.err-desc-box{display:table;margin:20px auto 0;max-width:60%;text-align:left}
+.err-desc-box .err-de-tit,.err-desc-box .err-de{display:table-cell;font-size:28px;color:#222;font-weight:900;line-height:1.4}
+.err-desc-box .err-de-tit{width:90px}
+.err-desc-box .err-de-tit span{margin-left:10px;font-size:6px;vertical-align:middle}
+
+/* 한자스타일 */
+.char-type{font-family:'play'}
