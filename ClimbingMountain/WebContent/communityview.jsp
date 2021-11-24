@@ -14,7 +14,8 @@
 	communityDAO community_dao = new communityDAO();
 	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
 	communityBoard_list = community_dao.viewBoard();
-	 
+	
+
 %>
 
 	<table border="1">
