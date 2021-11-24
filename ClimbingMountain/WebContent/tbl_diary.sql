@@ -8,10 +8,11 @@ CREATE TABLE tbl_diary
     diary_file1      VARCHAR2(200)     NULL, 
     diary_file2      VARCHAR2(200)     NULL, 
      PRIMARY KEY (diary_seq)
-
-     
      )
 /
+
+drop table tbl_diary
+
 select * from tbl_diary
 
 
@@ -21,20 +22,6 @@ INCREMENT BY 1
 NOCACHE;
 
 DROP SEQUENCE tbl_diary_SEQ;
-
-CREATE OR REPLACE TRIGGER tbl_diary_AI_TRG
-BEFORE INSERT ON tbl_diary 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT tbl_diary_SEQ.NEXTVAL
-    INTO :NEW.diary_seq
-    FROM DUAL;
-END;
-
-
-
-
-DROP TRIGGER tbl_diary_AI_TRG;
 
 
 INSERT INTO tbl_diary (diary_subject, diary_content, reg_date, member_id, diary_file1, diary_file2) VALUES ('diary_subject 1', 'diary_content 1', sysdate, 'member_id 1', 'diary_file1 1', 'diary_file2 1');

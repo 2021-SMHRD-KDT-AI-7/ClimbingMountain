@@ -1,45 +1,71 @@
 package Controller;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
+import java.io.IOException;
+import java.net.URLEncoder;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import Interface.Command;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import Model.DiaryDAO;
 import Model.DiaryDTO;
+import Model.MemberDTO;
 
+/**
+ * Servlet implementation class DiaryOneServiceCon
+ */
+@WebServlet("/DiaryOneServiceCon")
+public class DiaryOneServiceCon extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-public class DiaryOneServiceCon implements Command {
-
-	DiaryDAO diary_dao = new DiaryDAO();
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		int diary_seq = 1;   //수정필요
-		String diary_subject = request.getParameter("diary_subject");
-		String diary_content = request.getParameter("diary_content");
-		Date reg_date = new Date();
-		String member_id = "test_gso"; //수정필요
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String diary_file1 = request.getParameter("diary_file1");
-		String diary_file2 = request.getParameter("diary_file2");
-		if(diary_file1==null) {
-			diary_file1 ="1번사진없음";
-		}
-		if(diary_file2==null) {
-			diary_file2 ="2번사진없음";
-		}
-		DiaryDTO diary = new DiaryDTO(diary_seq,diary_subject,diary_content,reg_date,member_id,diary_file1,diary_file2);
-		int cnt = diary_dao.insert_Diary(diary);
+		System.out.println("[DiaryOneServiceCon]");
+		
+		request.setCharacterEncoding("EUC-KR");
+		HttpSession session = request.getSession();
+		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
+		int maxSize = 1024*1024*10;  // 10MB
+		String encoding = "EUC-KR";
+		String saveDirectory = request.getServletContext().getRealPath("file");
+		
+		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
+				
+		String diary_subject = multi.getParameter("diary_subject");
+		String diary_content = multi.getParameter("diary_content");
+		String member_id = mdto.getMember_id();
+		String diary_file1 = URLEncoder.encode(multi.getFilesystemName("diary_file1"),"EUC-KR");
+		String diary_file2 = URLEncoder.encode(multi.getFilesystemName("diary_file2"),"EUC-KR");
+		
+		System.out.println("diary_subject : "+diary_subject);
+		System.out.println("diary_content : "+diary_content);
+		System.out.println("member_id : "+ member_id);
+		System.out.println("diary_file1 : "+diary_file1);
+		System.out.println("diary_file2 : "+diary_file2);
+		
+		DiaryDTO dto = new DiaryDTO(diary_subject, diary_content, member_id, diary_file1, diary_file2);
+		DiaryDAO dao = new DiaryDAO();
+		int cnt = dao.upload(dto);																			
 		
 		if(cnt>0) {
-			System.out.println("전송성공");
+			System.out.println("파일 업로드 성공");
 		}else {
-			System.out.println("전송실패");
+			System.out.println("파일 업로드 실패");
 		}
 		
-		return "diaryView.jsp";
+		response.sendRedirect("diaryView.jsp");
+		
+		
 	}
 
-}
+
+
+	}
+
+

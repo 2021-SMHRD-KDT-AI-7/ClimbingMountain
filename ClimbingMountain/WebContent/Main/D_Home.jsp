@@ -216,19 +216,19 @@
 									</div>
 								</li>
 								<li class="gnb1">
-									<a href="#모두의 게시판">게시판</a>
+									<a href="../communityview.jsp">게시판</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list list-3">
 												<ul class="clearfix">
 													<li>
-														<a href="#모두의 게시판">
+														<a href="../communityview.jsp">
 															<span>모두의 게시판</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
 													<li>
-														<a href="#로그인시_다이어리/로그인 안했으면 로그인페이지로">
+														<a href="../diaryView.jsp">
 															<span>다이어리</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
