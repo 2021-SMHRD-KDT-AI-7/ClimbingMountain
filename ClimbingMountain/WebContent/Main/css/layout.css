@@ -73,7 +73,7 @@ body { background-color:#fff; }
 }
 /* GNB :: 2차 전체메뉴 */
 #gnbBg{
-	position:absolute; left:0; top:100px; width:100%; height:0; background:#ededed; z-index:98;
+	position:absolute; left:0; top:100px; width:100%; height:0; background:#ffffffB3; z-index:98;
 	-webkit-transition:height 0.3s;-moz-transition:height 0.3s;-o-transition:height 0.3s;-ms-transition:height 0.3s;transition:height 0.3s;
 }
 #gnbBg.open{height:410px; border-top:1px solid #e5e5e5; }
@@ -132,7 +132,9 @@ body { background-color:#fff; }
 .header-util-box .language-select > ul{background:none;border:0}
 .header-util-box .language-select > ul > li > a:hover{background:none}
 #wrap .language-select > ul li a{color:#fff;}
-.contact-tx{display:inline-block;margin-top:3px;padding:0 12px;font-weight:700;font-size:12px;color:#fff;letter-spacing:-0.25px;border-radius:12px;line-height:24px;background:rgba(255,255,255,0.2)}
+.contact-tx{display:inline-block;margin-top:0px;padding:0px 17px;font-weight:700;font-size:12px;color:#fff;letter-spacing:-0.25px;border-radius:12px;line-height:24px;background:rgba(255,255,255,0.2)}
+.contact-txx{display:revert; margin-top:0px;padding:5px 12px;font-weight:700;font-size:12px;color:#fff;letter-spacing:-0.25px;border-radius:12px;line-height:24px;background:rgba(255,255,255,0.2)}
+
 /* -------- Header :: 헤더 hover  -------- */
 #header.over  #headerInnerWrap{background-color:#38b000;}
 #header.over #gnb > ul > li > a{position:relative;color:#fff}
@@ -163,7 +165,7 @@ body { background-color:#fff; }
 
 /* ****************** FOOTER ********************** */
 /* -------- FOOTER :: 레이아웃 -------- */
-#footer{padding:0 100px; border-top:1px solid #e5e5e5;background:#38b000 }
+#footer{padding:0 100px; border-top:0px solid #e5e5e5;background:#38b000 }
 #footerPartnerListContent + #footer{border-top:0}
 #footerInner{position:relative; }
 .footer-left-con{float:left;margin-top:52px}
