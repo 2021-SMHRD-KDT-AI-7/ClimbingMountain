@@ -1,7 +1,9 @@
+<%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
 
 <head>
     <meta charset="utf-8">
@@ -224,10 +226,15 @@
         <div id="headerInnerWrap">
             <!-- ****************** 헤더상단 ********************** -->
             <div id="headerInner" class="clearfix">
-                <h1 class="logo"><a href="D_Home.jsp" title="메인"><img src="./img/logo.png" alt="산 타 클로스_로고"
+                <h1 class="logo"><a href="../Main/D_Home.jsp" title="메인"><img src="./img/logo.png" alt="산 타 클로스_로고"
                             class="pc-logo" width="160px" height="90px" /></a></h1>
                 <div class="header-util-box">
-                    <a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+                    <% if(info==null){ %>
+								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
+							<%}else{%>
+								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
+							<% } %>	
                 </div>
             </div>
 
@@ -238,13 +245,13 @@
                 <div id="gnbBg"></div>
                 <ul class="clearfix area">
                     <li class="gnb2">
-                        <a href="#산종합정보">산정보</a>
+                        <a href="M_info.jsp">산정보</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list">
                                     <ul class="clearfix">
                                         <li>
-                                            <a href="#산종합정보">
+                                            <a href="M_info.jsp">
                                                 <span>종합정보</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
@@ -261,22 +268,29 @@
                         </div>
                     </li>
                     <li class="gnb1">
-                        <a href="#모두의 게시판">게시판</a>
+                        <a href="../Board/list.jsp">게시판</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list list-3">
                                     <ul class="clearfix">
                                         <li>
-                                            <a href="#모두의 게시판">
+                                            <a href="../Board/list.jsp">
                                                 <span>모두의 게시판</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#로그인시_다이어리/로그인 안했으면 로그인페이지로">
+                                            <% if(info==null){ %>
+												<a href="../Login/login.jsp">
                                                 <span>다이어리</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
+											<%}else{%>
+												<a href="../Board/list.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<% } %>		
                                     </ul>
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
@@ -385,7 +399,7 @@
         <aside id="headerSubMenu">
             <div class="side-menu-inner">
                 <div class="cm-top-menu clearfix">
-                    <a href="/" class="location-to-home-btn" title="메인으로"><i class="xi-home-o"></i></a>
+                    <a href="../Main/D_Home.jsp" class="location-to-home-btn" title="메인으로"><i class="xi-home-o"></i></a>
 
 
 
@@ -399,7 +413,7 @@
                         </a>
 
                         <ul class="location-menu-con">
-                            <li><a href="#백암산">백암산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
+                            <li><a href="#백암산">곽승옥 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#방장산">방장산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#추월산">추월산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#강천산">강천산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
@@ -448,7 +462,7 @@
                                         <div class="Mountain-info-pic">
                                             <img src="/img/BA_Mountain.jpg" alt="">
                                         </div>
-                                        <div class="Mountain-info-text">
+                                        <div class="Mountain-info-text">  
                                             <h1>산 이름</h1>
                                             <p>산 정보</p>
                                         </div>
@@ -762,7 +776,7 @@
         <article id="footerTop">
             <!-- 푸터 하단 왼쪽 -->
             <article class="footer-left-con">
-                <a href="D_Home.html">
+                <a href="../Main/D_Home.jsp">
                     <div class="footer-logo"><img src="./img/logo_font.png" width="320px" height="160px"></div>
                 </a>
             </article>
