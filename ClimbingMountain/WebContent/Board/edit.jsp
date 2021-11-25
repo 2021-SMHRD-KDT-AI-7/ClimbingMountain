@@ -1,3 +1,4 @@
+
 <%@page import="Model.communityDAO"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.io.PrintWriter"%>
@@ -365,7 +366,7 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('유효하지 않는 글입니다')");
-		script.println("location.href='list.jsp'");
+		script.println("location.href='./Board/list.jsp'");
 		script.println("</script>");
 	}
 	communityDTO dto = new communityDAO().viewOneBoard(community_seq);
@@ -373,7 +374,7 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('권한이 없습니다')");
-		script.println("location.href='list.jsp'");
+		script.println("location.href='./Board/list.jsp'");
 		script.println("</script>");
 	}
 	
@@ -406,11 +407,12 @@
                 </div>
             </div>
             <div class="bt_wrap">
-                <a><button>수정</button></a>
-                <a href="view.jsp">취소</a>
+                <a href="CupdateAction.jsp" class="on">수정</a>
+                <a href="view.html">취소</a>
 				
             </div>
         </div>
     </div>
 </body>
+
 </html>

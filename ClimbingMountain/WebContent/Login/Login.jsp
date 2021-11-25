@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="산 타 클로스🎅">
+    <meta property="og:title" content="산 타 클로스_로그인🎅">
     <meta property="og:description" content="산 타 클로스 이용자에겐 매일매일이 크리스마스!!">
     <meta property="og:image" content="">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    <title>산 타 클로스🎅</title>
+    <title>산 타 클로스 : 로그인🎅</title>
     <link rel="stylesheet" type="text/css" href="./css/w_202105.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
 <div id="wrap" class="wrap">
     <header class="header" role="banner" >
         <div class="header_inner">
-            <a href="../Main/D_Home.html" class="logo">
+            <a href="../Main/D_Home.jsp" class="logo">
                 <h1 class="blind">산타클로스</h1>
             </a>
         </div>

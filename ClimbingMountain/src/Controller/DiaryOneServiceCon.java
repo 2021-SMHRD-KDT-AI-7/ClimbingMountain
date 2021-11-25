@@ -28,11 +28,11 @@ public class DiaryOneServiceCon extends HttpServlet {
 		
 		System.out.println("[DiaryOneServiceCon]");
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
 		int maxSize = 1024*1024*10;  // 10MB
-		String encoding = "EUC-KR";
+		String encoding = "UTF-8";
 		String saveDirectory = request.getServletContext().getRealPath("file");
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
@@ -40,8 +40,8 @@ public class DiaryOneServiceCon extends HttpServlet {
 		String diary_subject = multi.getParameter("diary_subject");
 		String diary_content = multi.getParameter("diary_content");
 		String member_id = mdto.getMember_id();
-		String diary_file1 = URLEncoder.encode(multi.getFilesystemName("diary_file1"),"EUC-KR");
-		String diary_file2 = URLEncoder.encode(multi.getFilesystemName("diary_file2"),"EUC-KR");
+		String diary_file1 = URLEncoder.encode(multi.getFilesystemName("diary_file1"),"UTF-8");
+		String diary_file2 = URLEncoder.encode(multi.getFilesystemName("diary_file2"),"UTF-8");
 		
 		System.out.println("diary_subject : "+diary_subject);
 		System.out.println("diary_content : "+diary_content);
@@ -59,7 +59,7 @@ public class DiaryOneServiceCon extends HttpServlet {
 			System.out.println("파일 업로드 실패");
 		}
 		
-		response.sendRedirect("diaryView.jsp");
+		response.sendRedirect("./Board/diary_list.jsp");
 		
 		
 	}

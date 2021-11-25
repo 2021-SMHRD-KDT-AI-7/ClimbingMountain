@@ -5,12 +5,12 @@
 <%@page import="Model.DiaryDAO"%>
 <%@page import="Model.DiaryDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <%
@@ -32,14 +32,14 @@
 
 	<table border="1">
 		<tr>
-			<th><b>¹øÈ£</b></th>
-			<th colspan="1"><b>Á¦¸ñ</b></th>
-			<th><b>ÀÛ¼ºÀÏ</b></th>
+			<th><b>ë²ˆí˜¸</b></th>
+			<th colspan="1"><b>ì œëª©</b></th>
+			<th><b>ìž‘ì„±ì¼</b></th>
 		</tr>
 
 		<%
-			//¹øÈ£ ³»¿ë (´ñ±Û) ÀÛ¼ºÀÚ ÀÛ¼ºÀÏ(ÃßÃµ¼ö)
-		//        Á¦¸ñ 
+			//ë²ˆí˜¸ ë‚´ìš© (ëŒ“ê¸€) ìž‘ì„±ìž ìž‘ì„±ì¼(ì¶”ì²œìˆ˜)
+		//        ì œëª© 
 		for (int i = 0; i < d_list.size(); i++) {
 		%>
 		<tr>
@@ -54,7 +54,7 @@
 	</table>
 	<hr>
 	<button>
-		<a href="diarywrite.jsp">Ä¿¹Â´ÏÆ¼ ±ÛÀÛ¼º</a>
+		<a href="diarywrite.jsp">ì»¤ë®¤ë‹ˆí‹° ê¸€ìž‘ì„±</a>
 	</button>
 
 </body>
