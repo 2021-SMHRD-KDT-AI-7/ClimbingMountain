@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Controller.CommunityDeleteServiceCon;
 import Controller.DiaryOneServiceCon;
 import Controller.JoinServiceCon;
 import Controller.LoginServiceCon;

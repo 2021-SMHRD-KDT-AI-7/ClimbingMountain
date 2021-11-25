@@ -41,9 +41,36 @@
 			<td><%= one_list.get(i).getCourse_exp()%></td>
 			<td><img src='<%= one_list.get(i).getCourse_exp_img()%>'></td>
 
-			<td><%= two_list.get(i).getCar()%></td>
-			<td><%= two_list.get(i).getBus()%></td>
-			<td><%= two_list.get(i).getTrain()%></td>
+
+
+
+			<% String[] car = two_list.get(i).getCar().split("¢Â"); %>
+			<td>
+			<% for(int c = 0; c<car.length;c++){ 	%>
+				<p><%= car[c]  %></p>
+			<%} %>
+			
+			</td>
+			
+			
+			<% String[] bus = two_list.get(i).getBus().split("¢Â"); %>
+			<td>
+			<% for(int b = 0; b<car.length;b++){ 	%>
+				<p><%= car[b]  %></p>
+			<%} %>
+			
+			</td>
+			
+			
+			<% String[] train = two_list.get(i).getTrain().split("¢Â"); %>
+			<td>
+			<% for(int t = 0; t<car.length;t++){ 	%>
+				<p><%= car[t]  %></p>
+			<%} %>
+			
+			</td>
+			
+			
 
 		</tr>
 		<%
