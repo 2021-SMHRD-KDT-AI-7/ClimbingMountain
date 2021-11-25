@@ -380,7 +380,7 @@
                     <div class="title">제목</div>
                     <div class="date">작성일</div>
                 </div>
-               <% for (int i = 1; i < d_list.size(); i++) {%>
+               <% for (int i = 0; i < d_list.size(); i++) {%>
                 <div>
                     <div class="num"><%=d_list.size() -i%></div>
                     <div class="title"><a href="diary_view.jsp?diary_seq=<%=d_list.get(i).getDiary_seq()%>"><%=d_list.get(i).getDiary_subject()%></a></div>
@@ -401,7 +401,7 @@
                 <a href="#" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
-                <a href="write.html" class="on">등록</a>
+                <a href="diary_write.jsp" class="on">글 쓰기</a>
                 <!--<a href="#">수정</a>-->
             </div>
         </div>

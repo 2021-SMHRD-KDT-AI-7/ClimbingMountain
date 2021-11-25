@@ -1,3 +1,5 @@
+<%@page import="Model.DiaryDAO"%>
+<%@page import="Model.DiaryDTO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -135,7 +137,17 @@
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="./js/layer_popup.js"></script>
 </head>
+
+<%
+	String member_id = (String) session.getAttribute("member_id");
+	DiaryDAO dao = new DiaryDAO();
+	int diary_seq = Integer.parseInt(request.getParameter("diary_seq"));
+	DiaryDTO dto = dao.viewOneBoard(diary_seq);
+	
+	
+%>
 <body>
+	
     <!-- accessibility -->
 	<div class="cm-accessibility">
 		<a href="#mainContainer">본문바로가기</a>
@@ -233,10 +245,7 @@
 								</li>
 							</ul>
 						</nav>
-						<!-- 사이트맵 버튼 ( 기본 라인 三 ) -->
-						<!-- <button class="sitemap-line-btn sitemap-open-btn" title="사이트맵 열기"> -->
-						<!-- <span class="line line1"></span><span class="line line2"></span><span class="line line3"></span> -->
-						<!-- </button> -->
+					
 					</div>
 					<!-- GNB Mobile -->
 					<button class="nav-open-btn" title="네비게이션 열기">
@@ -334,16 +343,16 @@
 						</div>
 					</nav>
                     <aside id="nav1">
+                    
                         <div id='c_up'>
-                          <p class='c_1'>다이어리 게시판
-                          <p>
+                        
+                          <p class='c_1'>다이어리 게시판 <p>
+                          
                           <p class='c_1_1'>Diary Board</p>
                         </div>
                     
-                    
                         <div id="left">
-                          <p class="c_2"><a class='c_2_f' href="#">글 목록</a>
-                        
+                          <p class="c_2"><a class='c_2_f' href="#">글 목록</a></p>
                         </div>
                     
                       </aside>
@@ -353,26 +362,34 @@
             <strong>내 다이어리 수정하기</strong>
         </div>
         <div class="board_write_wrap">
+		<form action="diary_update.jsp?member_id = <%= member_id %>" method="post" enctype="multipart/form-data">  
+			<input type="hidden" name="diary_seq" value="<%= diary_seq%>">      
             <div class="board_write">
                 <div class="title">
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력" ></dd>
+                        <dd><input type="text" name="diary_subject" placeholder=<%=dto.getDiary_subject() %> ></dd>
                     </dl>
                 </div>
+                
                 <div class="info">
-                    
                 </div>
+                
                 <div class="cont">
-                    <textarea placeholder="내용 입력">
-
-                    </textarea>
+                    <textarea name="diary_content" placeholder=><%=dto.getDiary_content() %> </textarea>
                 </div>
+                
+               	<div class="diary_file_cont">
+               	<dd>파일1 : <input  type="file" name="diary_file1";><br>
+					파일2 : <input  type="file" name="diary_file2";><br>
+				 </dd>
+               	</div>
             </div>
             <div class="bt_wrap">
-                <a href="view.html" class="on">수정</a>
-                <a href="view.html">취소</a>
+                <a class="on"><button>수정</button></a>
+                <a href="diary_list.jsp">취소</a>
             </div>
+            </form>
         </div>
     </div>
 </body>

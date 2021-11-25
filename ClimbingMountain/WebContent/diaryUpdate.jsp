@@ -41,6 +41,6 @@
 	파일1 : <input type="file" name="diary_file1";><br>
 	파일2 : <input type="file" name="diary_file2";><br>
 	<input type="submit" value="수정하기">
-
+	</form>
 </body>
 </html>
