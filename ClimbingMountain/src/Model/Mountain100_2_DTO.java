@@ -9,6 +9,7 @@ public class Mountain100_2_DTO {
 	
 	
 	public Mountain100_2_DTO(int mountain_seq, String reason, String servey, String information,String use) {
+		super();
 		this.mountain_seq = mountain_seq;
 		this.reason = reason;
 		this.servey = servey;

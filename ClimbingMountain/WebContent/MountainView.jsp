@@ -13,12 +13,16 @@
 <%	Mountain100_1_DAO one_dao = new Mountain100_1_DAO(); 
 	Mountain100_2_DAO two_dao = new Mountain100_2_DAO(); 	
 	
+	
+	
 	int mountain_seq = Integer.parseInt(request.getParameter("mountain_seq"));
-	
+	System.out.print(mountain_seq);
 	Mountain100_1_DTO one_dto = one_dao.selectOneMountaion100(mountain_seq);
+	
+	System.out.print(one_dto);
+	
 	Mountain100_2_DTO two_dto = two_dao.selectOneMountaion100(mountain_seq);
-	
-	
+	System.out.print(two_dto);
 	
 %>
 <body>
@@ -38,6 +42,10 @@
 	
 	<h4> 정보  </h4>
 	<%= two_dto.getInformation() %>
+	<hr>
+	
+	<a href = "CourseView.jsp?mountain_seq=<%=one_dto.getMountain_seq()%>"><button>등산로 정보 확인하기</button></a>
+	
 	
 	
 	

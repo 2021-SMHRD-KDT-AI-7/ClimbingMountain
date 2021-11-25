@@ -23,10 +23,27 @@ public class DiaryDTO {
 		this.diary_file2 = diary_file2;
 	}
 
-	public DiaryDTO(String diary_subject, String diary_content, String member_id) {
+	public DiaryDTO(int diary_seq, String diary_subject, Date reg_date, String member_id) {
+		this.diary_seq = diary_seq;
+		this.diary_subject = diary_subject;
+		this.reg_date = reg_date;
+		this.member_id = member_id;
+	}
+
+	public DiaryDTO(String diary_subject, String diary_content, String member_id, String diary_file1,
+			String diary_file2) {
+		super();
 		this.diary_subject = diary_subject;
 		this.diary_content = diary_content;
 		this.member_id = member_id;
+		this.diary_file1 = diary_file1;
+		this.diary_file2 = diary_file2;
+	}
+
+	public DiaryDTO(int diary_seq, String diary_subject, Date reg_date) {
+		this.diary_seq = diary_seq;
+		this.diary_subject = diary_subject;
+		this.reg_date = reg_date;
 	}
 
 	public int getDiary_seq() {

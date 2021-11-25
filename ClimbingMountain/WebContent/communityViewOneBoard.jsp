@@ -14,6 +14,7 @@
 	<%
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
+		
 		int community_seq = Integer.parseInt(request.getParameter("community_seq"));
 		System.out.println("community_seq :"+ community_seq);
 		
@@ -60,11 +61,12 @@
 				<%
 					if(member_id != "" && member_id.equals(dto.getMember_id())){
 				%>
-					<td colspan="2"><a href="#"><button>수정</button></a></td>
-					<td colspan="2"><a href="#"><button>삭제</button></a></td>
+					<td colspan="2"><a href="CommunityUpdate.jsp?community_seq=<%= community_seq %>"><button>수정</button></a></td>
+					<td colspan="2"><a href="communityDeleteOne.jsp?community_seq=<%= community_seq %>"><button>삭제</button></a></td>
 				<%
 					}
 				%>
+				
 	</div>
 
 </body>

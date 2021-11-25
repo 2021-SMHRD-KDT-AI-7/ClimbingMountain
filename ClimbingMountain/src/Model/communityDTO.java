@@ -1,11 +1,13 @@
 package Model;
 
+import java.sql.Date;
+
 public class communityDTO {
 
 	private int community_seq;	// 순번
 	private String community_subject;	// 제목
 	private String community_content;	// 내용
-	private String reg_date;	// 작성일자
+	private Date reg_date;	// 작성일자
 	private int community_cnt;	// 조회수
 	private String member_id;	// 작성자id
 	private String community_file1;	// 업로드파일1
@@ -30,10 +32,10 @@ public class communityDTO {
 	public void setCommunity_content(String community_content) {
 		this.community_content = community_content;
 	}
-	public String getReg_date() {
+	public Date getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(String reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 	public int getCommunity_cnt() {
@@ -67,7 +69,7 @@ public class communityDTO {
 		this.community_file3 = community_file3;
 	}
 	
-	public communityDTO(int community_seq, String community_subject, String community_content, String reg_date,
+	public communityDTO(int community_seq, String community_subject, String community_content, Date reg_date,
 			int community_cnt, String member_id, String community_file1) {
 		this.community_seq = community_seq;
 		this.community_subject = community_subject;
@@ -78,7 +80,7 @@ public class communityDTO {
 		this.community_file1 = community_file1;
 	}
 	
-	public communityDTO(int community_seq, String community_subject, String reg_date, int community_cnt,
+	public communityDTO(int community_seq, String community_subject, Date reg_date, int community_cnt,
 			String member_id) {
 		this.community_seq = community_seq;
 		this.community_subject = community_subject;
@@ -95,7 +97,7 @@ public class communityDTO {
 		this.community_file2 = community_file2;
 		this.community_file3 = community_file3;
 	}
-	public communityDTO(int community_seq, String community_subject, String community_content, String reg_date,
+	public communityDTO(int community_seq, String community_subject, String community_content, Date reg_date,
 			int community_cnt, String member_id, String community_file1, String community_file2,
 			String community_file3) {
 		super();

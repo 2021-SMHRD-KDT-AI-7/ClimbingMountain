@@ -119,7 +119,7 @@ public class Mountain100_1_DAO {
 			return dto_list;
 		}
 		
-		
+		// 산번호 로 산 정보 출력하기 한개만 출력
 		public Mountain100_1_DTO selectOneMountaion100(int seq){
 			try { 
 				getConn();

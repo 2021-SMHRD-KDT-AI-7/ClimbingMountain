@@ -55,16 +55,14 @@ public class Mountain100_2_DAO {
 			
 			rs = psmt.executeQuery();
 			
-		
-			
 			if(rs.next()) {
 				int mountain_seq = rs.getInt("num"); // 시퀀스
 				String reason = rs.getString("reason"); // 특징 및 선정이유
-				String servey = rs.getString("servey");// 개관
+				String survey = rs.getString("survey");// 개관
 				String information = rs.getString("information"); // 정보
 				String use = rs.getString("use"); // 사용여부
 				
-				dto = new Mountain100_2_DTO(mountain_seq,reason, servey,information,use);
+				dto = new Mountain100_2_DTO(mountain_seq,reason, survey,information,use);
 				
 
 			}

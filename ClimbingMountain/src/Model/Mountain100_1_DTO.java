@@ -12,6 +12,7 @@ public class Mountain100_1_DTO {
 	
 	public Mountain100_1_DTO(int mountain_seq, String mountain_name, String mountain_height, String mountain_location,
 			String mountain_season, String mountain_time, String difficulty, String mountain_use) {
+		super();
 		this.mountain_seq = mountain_seq;
 		this.mountain_name = mountain_name;
 		this.mountain_height = mountain_height;

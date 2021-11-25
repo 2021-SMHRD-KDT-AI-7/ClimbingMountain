@@ -28,13 +28,13 @@ public class communityServiceCon extends HttpServlet {
 		request.setCharacterEncoding("EUC-KR");
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
-		
 		int maxSize = 1024*1024*10;  // 10MB
 		String encoding = "EUC-KR";
 		String saveDirectory = request.getServletContext().getRealPath("file");
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 		
+				
 		String community_subject = multi.getParameter("community_subject");
 		String community_content = multi.getParameter("community_content");
 		String member_id = mdto.getMember_id();

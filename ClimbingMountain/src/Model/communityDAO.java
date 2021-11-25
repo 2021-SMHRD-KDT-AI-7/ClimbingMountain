@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,7 +61,7 @@ public class communityDAO {
 				while(rs.next()) {
 					int community_seq = rs.getInt("community_seq");
 					String community_subject = rs.getString("community_subject");
-					String reg_date = rs.getString("reg_date");
+					Date reg_date = rs.getDate("reg_date");
 					int community_cnt = rs.getInt("community_cnt");
 					String member_id = rs.getString("member_id");
 					
@@ -94,7 +95,7 @@ public class communityDAO {
 					int Community_seq = rs.getInt("community_seq");
 					String community_subject = rs.getString("community_subject");
 					String community_content = rs.getString("community_content");
-					String reg_date = rs.getString("reg_date");
+					Date reg_date = rs.getDate("reg_date");
 					int community_cnt = rs.getInt("community_cnt");
 					String Member_id = rs.getString("member_id");
 					String community_file1 = rs.getString("community_file1");
@@ -153,56 +154,49 @@ public class communityDAO {
 			}
 		}
 		
-		
 		// 글 수정하기
-		public boolean updateCommunity(communityDTO dto) {
+		public int updateCommunity(int community_seq, String community_subject, String community_content, String community_file1, String community_file2, String community_file3) {
 			getConn();
-			boolean ok = false;
 			try {
-				String sql = "update tbl_community set community_subject = ?, community_content = ?, community_file1 = ?, , community_file2 = ?, community_file3 = ?";
+				String sql = "update tbl_community set community_subject = ?, community_content = ?, community_file1 = ?, community_file2 = ?, community_file3 = ? where community_seq = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				
-				psmt.setString(1, dto.getCommunity_subject());
-				psmt.setString(2, dto.getCommunity_content());
-				psmt.setString(3, dto.getCommunity_file1());
-				psmt.setString(4, dto.getCommunity_file2());
-				psmt.setString(5, dto.getCommunity_file3());
+				psmt.setString(1, community_subject);
+				psmt.setString(2, community_content);
+				psmt.setString(3, community_file1);
+				psmt.setString(4, community_file2);
+				psmt.setString(5, community_file3);
+				psmt.setInt(6,community_seq);
 				
 				cnt = psmt.executeUpdate();
-				if(cnt==1) {
-					ok=true;
-				}
 				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				dbclose();
-			}return ok;
+			}return cnt;
 		}
 
 		// 글 삭제
-		public boolean deleteCommunity(int community_seq) {
+		public int deleteCommunity(int community_seq) {
 			getConn();
-			boolean ok = false;
 			try {
 				String sql = "delete from tbl_community where community_seq = ?";
 				
 				psmt = conn.prepareStatement(sql);			
-				psmt.setInt(1, dto.getCommunity_seq());	
+				psmt.setInt(1, community_seq);
 				
 				cnt = psmt.executeUpdate();
-				if(cnt==1) {
-					ok=true;
-				}
 				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				dbclose();
-			}return ok;
+			}return cnt;
 			
 			
 		}
 
+		
 }

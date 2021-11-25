@@ -163,7 +163,7 @@
 					<div id="headerInnerWrap">
 						<!-- ****************** 헤더상단 ********************** -->
 						<div id="headerInner" class="clearfix">
-							<h1 class="logo"><a href="D_Home.html" title="메인"><img src="./images/header_logo.png"
+							<h1 class="logo"><a href="D_Home.jsp" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
 							<% if(info==null){ %>
@@ -181,13 +181,13 @@
 							<div id="gnbBg"></div>
 							<ul class="clearfix area">
 								<li class="gnb2">
-									<a href="#산종합정보">산정보</a>
+									<a href="../Mountain/M_info.jsp">산정보</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list">
 												<ul class="clearfix">
 													<li>
-														<a href="#산종합정보">
+														<a href="../Mountain/M_info.jsp">
 															<span style="font-weight: bold;">종합정보</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
@@ -204,19 +204,19 @@
 									</div>
 								</li>
 								<li class="gnb1">
-									<a href="#모두의 게시판">게시판</a>
+									<a href="../Board/list.jsp">게시판</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list list-3">
 												<ul class="clearfix">
 													<li>
-														<a href="#모두의 게시판">
+														<a href="../Board/list.jsp">
 															<span style="font-weight: bold;">모두의 게시판</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
 													<li>
-														<a href="#로그인시_다이어리/로그인 안했으면 로그인페이지로">
+														<a href="../Board/diary_list.jsp">
 															<span style="font-weight: bold;">다이어리</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>

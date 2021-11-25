@@ -21,12 +21,7 @@
 		<a href="communityview.jsp">커뮤니티 게시판</a>
 	</button>
 	<hr>
-	<form action ="mountainView1.jsp" method = "post">
-	<div>검색 : 
-	<input name = "search" type ="text" >
-	<input type ="submit" value = "입력">
-	</div>
-	</form>
+	
 	<hr>
 	<h2>산 정보</h2>
 	

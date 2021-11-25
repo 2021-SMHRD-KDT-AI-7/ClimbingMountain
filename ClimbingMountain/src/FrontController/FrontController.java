@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Controller.DiaryOneServiceCon;
 import Controller.JoinServiceCon;
 import Controller.LoginServiceCon;
 import Controller.LogoutServiceCon;
@@ -45,9 +44,7 @@ public class FrontController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		if(servlet_Name.equals("DiaryOneServiceCon.do")) {
-			sc = new DiaryOneServiceCon();
-		}else if(servlet_Name.equals("Login/LoginServiceCon.do")){
+		if(servlet_Name.equals("Login/LoginServiceCon.do")){
 			sc = new LoginServiceCon();
 		}else if(servlet_Name.equals("Join/JoinServiceCon.do")){
 			sc = new JoinServiceCon();

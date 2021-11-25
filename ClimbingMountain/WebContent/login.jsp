@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <style>
 
+
            @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
         legend{
        		text-align : center;		 
