@@ -12,6 +12,7 @@
 <body>
 
 	<%
+		communityDAO dao = new communityDAO();
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
 		
@@ -26,6 +27,9 @@
 			script.println("</script>");
 		}
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+		int cnt = dto.getCommunity_cnt();
+		dao.updatehit(community_seq, cnt);
+		
 
 	%>
 
@@ -47,6 +51,10 @@
 			<tr>
 				<td colspan="2">내용</td>
 				<td><%= dto.getCommunity_content() %> <br>
+			</tr>
+			<tr>
+				<td>조회수</td>
+				<td colspan="2"><%=dto.getCommunity_cnt()%></td>
 			</tr>
 			<tr>
 				<td colspan="2"><img src="file/<%= dto.getCommunity_file1() %>">

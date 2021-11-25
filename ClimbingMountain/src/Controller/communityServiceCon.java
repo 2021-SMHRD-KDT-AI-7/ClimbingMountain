@@ -30,7 +30,8 @@ public class communityServiceCon extends HttpServlet {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
 		int maxSize = 1024*1024*10;  // 10MB
 		String encoding = "EUC-KR";
-		String saveDirectory = request.getServletContext().getRealPath("file");
+		String saveDirectory = "C:\\Users\\smhrd\\git\\ClimbingMountain\\ClimbingMountain\\WebContent\\file";
+		System.out.println(saveDirectory);
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 		
