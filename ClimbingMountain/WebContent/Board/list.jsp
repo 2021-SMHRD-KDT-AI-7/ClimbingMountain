@@ -1,3 +1,4 @@
+
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.communityDAO"%>
@@ -362,7 +363,8 @@
     </div>
 
   </aside>
-  
+
+
     <div class="board_wrap">
         <div class="board_title">
             <strong>산 게시판</strong>
@@ -371,6 +373,8 @@
         <div class="board_list_wrap">
             <div class="board_list">
                 <div class="top">
+                
+                
                 
               
 	
@@ -382,7 +386,9 @@
 		<td><%= communityBoard_list.get(i).getReg_date() %></td>
 		<td><%= communityBoard_list.get(i).getCommunity_cnt() %></td>
 		<td><%= communityBoard_list.get(i).getMember_id() %></td>
+
 	</tr>
+	
 	<% } %>
 	</table>
 	
@@ -400,7 +406,9 @@
                     <div class="writer"><%= communityBoard_list.get(i).getMember_id() %></div>
                     <div class="date"><%= communityBoard_list.get(i).getReg_date() %></div>
                     <div class="count"><%= communityBoard_list.get(i).getCommunity_cnt() %></div>
-                
+                    
+                    
+                    
                     <%} %>
                 </div>
               
@@ -417,7 +425,6 @@
                 <a href="#" class="bt next">></a>
                 <a href="#" class="bt last">>></a>
             </div>
-            
             <div class="bt_wrap">
                 <a href="write.jsp" class="on">등록</a>
                 <!--<a href="#">수정</a>-->

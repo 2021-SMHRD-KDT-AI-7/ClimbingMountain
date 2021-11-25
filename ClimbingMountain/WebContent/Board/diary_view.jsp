@@ -140,6 +140,7 @@
 </head>
     
 </head>
+
 <%
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
@@ -157,6 +158,7 @@
 		DiaryDTO dto = new DiaryDAO().viewOneBoard(diary_seq);
 
 	%>
+	
 	
 <body>
      <!-- accessibility -->

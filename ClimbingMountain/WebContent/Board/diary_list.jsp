@@ -1,3 +1,4 @@
+
 <%@page import="Model.DiaryDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.DiaryDAO"%>
@@ -140,6 +141,21 @@
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/layer_popup.js"></script>
 </head>
+
+<%
+	String member_id = null;
+	if (session.getAttribute("member_id") != null) {
+		member_id = (String) session.getAttribute("member_id");
+	}
+	MemberDTO mdto = (MemberDTO) session.getAttribute("info");
+	MemberDAO dao = new MemberDAO();
+
+	DiaryDAO DiaryDAO = new DiaryDAO();
+	ArrayList<DiaryDTO> d_list = new ArrayList<>();
+	if (mdto != null) {
+		d_list = DiaryDAO.viewBoard(mdto.getMember_id());
+	}
+	%>
 <body>
 	<div class="cafe-body-skin">
      <!-- accessibility -->
@@ -355,20 +371,8 @@
 
   </aside>
 
-	<%
-	String member_id = null;
-	if (session.getAttribute("member_id") != null) {
-		member_id = (String) session.getAttribute("member_id");
-	}
-	MemberDTO mdto = (MemberDTO) session.getAttribute("info");
-	MemberDAO dao = new MemberDAO();
+	
 
-	DiaryDAO DiaryDAO = new DiaryDAO();
-	ArrayList<DiaryDTO> d_list = new ArrayList<>();
-	if (mdto != null) {
-		d_list = DiaryDAO.viewBoard(mdto.getMember_id());
-	}
-%>
     <div class="board_wrap">
         <div class="board_title">
             <strong>내 다이어리 글 목록</strong>

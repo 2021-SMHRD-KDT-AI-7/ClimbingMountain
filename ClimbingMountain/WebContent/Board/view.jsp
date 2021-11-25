@@ -389,10 +389,7 @@
                     <%= dto.getCommunity_subject()%>
                 </div>
                 <div class="info">
-                    <dl>
-                        <dt>번호</dt>
-                        <dd><%= dto.getCommunity_seq()%></dd>
-                    </dl>
+                    
                     <dl>
                         <dt>글쓴이</dt>
                         <dd><%= dto.getMember_id()%></dd>
@@ -410,18 +407,22 @@
                 <div class="cont">
                   	<%= dto.getCommunity_content()%>
                 </div>
-                
+                <div class="file cont">
+               		 <td colspan="2"><img src="../file/<%= dto.getCommunity_file1() %>">
+					<td><img src="..file/<%= dto.getCommunity_file2() %>">
+					<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>
+                </div>
                 <div class="file_cont">
-                	 <a href="file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
-					 <a href="file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
-					 <a href="file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 
+                	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
+					 <a href="../file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
+					 <a href="../file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 
 				 </div>
             
             
             <div class="bt_wrap">
-                <a href="list.jsp" class="on">목록</a>
-                <a href="edit.jsp?Community_seq()=<%=dto.getCommunity_seq()%>">수정</a>
-				<a href="#삭제하고 글목록으로 이동 할 곳">삭제</a>
+                <a href="list.jsp?community_seq=<%= community_seq %>" class="on">목록</a>
+                <a href="edit.jsp?community_seq=<%= community_seq %>">수정</a>
+				<a href="../communityDeleteOne.jsp?community_seq=<%= community_seq %>">삭제</a>
             </div>
             
         </div>

@@ -1,3 +1,4 @@
+
 <%@page import="Model.DiaryDAO"%>
 <%@page import="Model.DiaryDTO"%>
 <%@page import="java.io.PrintWriter"%>
@@ -43,4 +44,5 @@
 	<input type="submit" value="수정하기">
 	</form>
 </body>
+
 </html>

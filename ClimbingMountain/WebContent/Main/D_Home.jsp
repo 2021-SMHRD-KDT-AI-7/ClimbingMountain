@@ -9,7 +9,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>산 타 클로스_메인🎅</title>
+	<title>산 타 클로스🎅</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- 모바일사이트, 반응형사이트 제작시 사용 -->
 	<meta name="format-detection" content="telephone=no" /><!-- ios 자동전화걸기 방지 -->
 	<meta name="theme-color" content="#222">
@@ -163,15 +163,15 @@
 					<div id="headerInnerWrap">
 						<!-- ****************** 헤더상단 ********************** -->
 						<div id="headerInner" class="clearfix">
-							<h1 class="logo"><a href="D_Home.html" title="메인"><img src="./images/header_logo.png"
+							<h1 class="logo"><a href="D_Home.jsp" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
 							<% if(info==null){ %>
 								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
 							<%}else{%>
 								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
 							<% } %>		
-							</div>
 						</div>
 						<!-- ****************** GNB ********************** -->
 						
@@ -181,29 +181,17 @@
 							<div id="gnbBg"></div>
 							<ul class="clearfix area">
 								<li class="gnb2">
-									<a href="#산종합정보">산정보</a>
+									<a href="../Mountain/M_info.jsp">산정보</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list">
 												<ul class="clearfix">
 													<li>
-														<a href="#산종합정보">
-															<span>종합정보</span>
+														<a href="../Mountain/M_info.jsp">
+															<span style="font-weight: bold;">종합정보</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
-													</li>
-													<li>
-														<a href="#지역별_산정보">
-															<span>지역별</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#난이도별_산정보">
-															<span>난이도별</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
-													</li>
+													</li>													
 												</ul>
 											</div>
 											<div class="gnb-2dep-menu-txt">
@@ -223,13 +211,13 @@
 												<ul class="clearfix">
 													<li>
 														<a href="../Board/list.jsp">
-															<span>모두의 게시판</span>
+															<span style="font-weight: bold;">모두의 게시판</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
 													<li>
 														<a href="../Board/diary_list.jsp">
-															<span>다이어리</span>
+															<span style="font-weight: bold;">다이어리</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 												</ul>
@@ -641,10 +629,11 @@
 			</section>
 			<!-- 까지 2페이지 -->
 
-			<section id="mainInformationCon" class="section">
+			<!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
+			<!-- <section id="mainInformationCon" class="section">
 
 				<article class="main-info-wrapper">
-					<!-- [start] main information -->
+					[start] main information
 
 					<aside class="main-info-tit-box">
 						<h3 class="main-info-tit main-txt-up"><span>날씨정보</span></h3>
@@ -657,7 +646,8 @@
 
 					
 				</article>
-			</section>
+			</section> -->
+			<!-- 까지 날씨정보 섹션 3페이지 끝 -->
 
 
 			<section id="mainFooterCon" class="section fp-auto-height">

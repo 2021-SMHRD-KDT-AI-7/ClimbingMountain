@@ -1,3 +1,4 @@
+
 <%@page import="Model.DiaryDAO"%>
 <%@page import="Model.DiaryDTO"%>
 <%@page import="Model.MemberDTO"%>
@@ -393,4 +394,5 @@
         </div>
     </div>
 </body>
+
 </html>
