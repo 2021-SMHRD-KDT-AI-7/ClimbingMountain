@@ -4,7 +4,7 @@ public class Course_3_img_DTO {
 	private int course_img_seq;  //등산로 코스 사진
 	private int mountain_seq; // 산 번호
 	private int course_seq ;   // 등산로 번호
-	private String course_name; // 등산로 이름
+	private String course_name; // 등산로 이미지 이름
 	private String course_img;  // 등산로 이미지 링크
 	
 	

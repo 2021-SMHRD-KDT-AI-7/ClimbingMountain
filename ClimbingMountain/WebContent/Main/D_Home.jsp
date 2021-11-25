@@ -215,11 +215,19 @@
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
-													<li>
-														<a href="../Board/diary_list.jsp">
-															<span style="font-weight: bold;">다이어리</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
+													 <li>
+                                            <% if(info==null){ %>
+												<a href="../Login/Login.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<%}else{%>
+												<a href="../Board/list.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<% } %>	
+											</li>	
 												</ul>
 											</div>
 											<div class="gnb-2dep-menu-txt">
