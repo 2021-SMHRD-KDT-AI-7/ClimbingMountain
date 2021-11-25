@@ -344,8 +344,8 @@
                     
                     
                         <div id="left">
-                          <p class="c_2"><a class='c_2_f' href="#">공지사항</a>
-                          <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
+
+                         <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
                     
                         </div>
                     
@@ -353,7 +353,7 @@
 
     <div class="board_wrap">
         <div class="board_title">
-            <strong>글쓰기</strong>
+            <strong>글쓰기 수정</strong>
         </div>
         <div class="board_write_wrap">
             <div class="board_write">
@@ -365,12 +365,7 @@
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="글쓴이 입력" ></dd>
-                    </dl>
-                    <dl>
-                        <dt>비밀번호</dt>
-                        <dd><input type="password" placeholder="비밀번호 입력" ></dd>
+                        <dt> </dt>
                     </dl>
                 </div>
                 <div class="cont">

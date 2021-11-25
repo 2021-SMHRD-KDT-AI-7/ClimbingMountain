@@ -283,3 +283,9 @@ a {
     border: 0;
     resize: vertical;
 }
+.file_cont a{
+	border-bottom : solid;
+	border-bottom-width :1px;
+	padding : 20px;
+	
+}

@@ -216,19 +216,19 @@
 									</div>
 								</li>
 								<li class="gnb1">
-									<a href="../communityview.jsp">게시판</a>
+									<a href="../Board/list.jsp">게시판</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list list-3">
 												<ul class="clearfix">
 													<li>
-														<a href="../communityview.jsp">
+														<a href="../Board/list.jsp">
 															<span>모두의 게시판</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
 													<li>
-														<a href="../diaryView.jsp">
+														<a href="../Board/diary_list.jsp">
 															<span>다이어리</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>

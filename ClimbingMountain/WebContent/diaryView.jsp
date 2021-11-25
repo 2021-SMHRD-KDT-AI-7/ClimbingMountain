@@ -44,8 +44,7 @@
 		%>
 		<tr>
 			<td><%=i + 1%></td>
-			<td><a
-				href="diaryviewoneBoard.jsp?diary_seq=<%=d_list.get(i).getDiary_seq()%>"><%=d_list.get(i).getDiary_subject()%></td>
+			<td><a href="diaryviewoneBoard.jsp?diary_seq=<%=d_list.get(i).getDiary_seq()%>"><%=d_list.get(i).getDiary_subject()%></td>
 			<td><%=d_list.get(i).getReg_date()%></td>
 
 		</tr>

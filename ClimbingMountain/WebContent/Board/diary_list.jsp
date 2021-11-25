@@ -1,3 +1,7 @@
+<%@page import="Model.DiaryDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.DiaryDAO"%>
+<%@page import="Model.MemberDAO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -351,7 +355,20 @@
 
   </aside>
 
+	<%
+	String member_id = null;
+	if (session.getAttribute("member_id") != null) {
+		member_id = (String) session.getAttribute("member_id");
+	}
+	MemberDTO mdto = (MemberDTO) session.getAttribute("info");
+	MemberDAO dao = new MemberDAO();
 
+	DiaryDAO DiaryDAO = new DiaryDAO();
+	ArrayList<DiaryDTO> d_list = new ArrayList<>();
+	if (mdto != null) {
+		d_list = DiaryDAO.viewBoard(mdto.getMember_id());
+	}
+%>
     <div class="board_wrap">
         <div class="board_title">
             <strong>내 다이어리 글 목록</strong>
@@ -361,18 +378,15 @@
                 <div class="top">
                     <div class="num">번호</div>
                     <div class="title">제목</div>
-                    <div class="writer">글쓴이</div>
                     <div class="date">작성일</div>
-                    <div class="count">조회</div>
                 </div>
+               <% for (int i = 1; i < d_list.size(); i++) {%>
                 <div>
-                    <div class="num">1</div>
-                    <div class="title"><a href="view.html">왈왈</a></div>
-                    <div class="writer">천사</div>
-                    <div class="date">2021.11.24</div>
-                    <div class="count">33</div>
+                    <div class="num"><%=d_list.size() -i%></div>
+                    <div class="title"><a href="diary_view.jsp?diary_seq=<%=d_list.get(i).getDiary_seq()%>"><%=d_list.get(i).getDiary_subject()%></a></div>
+                    <div class="date"><%=d_list.get(i).getReg_date()%></div>
                 </div>
-              
+              <%} %>
                 
             </div>
             <div class="board_page">

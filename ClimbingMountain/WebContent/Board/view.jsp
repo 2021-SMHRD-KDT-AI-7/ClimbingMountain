@@ -1,14 +1,18 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="Model.communityDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.communityDAO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
-    <link rel="stylesheet" href="css/board_css.css">
-
+    <link rel="stylesheet" href="./css/board_css.css">
     <link rel="stylesheet" href="./css/default.css">
 	<link rel="stylesheet" href="./css/layout.css">
 	<link rel="stylesheet" href="./css/content.css">
@@ -16,13 +20,13 @@
 	<link rel="stylesheet" href="./css/layout_responsive.css">
 	<link rel="stylesheet" href="./css/content_responsive.css">
 	<link rel="stylesheet" href="./css/main_responsive.css">
-    <link rel="stylesheet" href="./css/categori.css">
+    
 	<script src="./js/vendor/jquery-1.8.3.min.js"></script>
 	<script src="./js/vendor/jquery.easing.1.3.js"></script>
 	<script src="./js/common.js"></script>
-    <link rel="stylesheet" href="css/board_css.css">
+    
     <!-- 아이콘폰트 -->
-	<link href="/css/icon.css" rel="stylesheet">
+	 <link href="./css/icon.css" rel="stylesheet">
 	<!-- <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"  rel="stylesheet"> google -->
 	<link rel="stylesheet" href="./css/xeicon.min.css">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -140,6 +144,23 @@
 </head>
     
 </head>
+<%
+		String member_id = (String) session.getAttribute("member_id");
+		System.out.println("member_id :"+ member_id);
+		
+		int community_seq = Integer.parseInt(request.getParameter("Community_seq"));
+		System.out.println("community_seq :"+ community_seq);
+		
+		if(community_seq == 0){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('유효하지 않는 글입니다')");
+			script.println("location.href='communityview.jsp'");
+			script.println("</script>");
+		}
+		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+
+%>
 <body>
      <!-- accessibility -->
 	<div class="cm-accessibility">
@@ -347,7 +368,7 @@
                     
                     
                         <div id="left">
-                          <p class="c_2"><a class='c_2_f' href="#">공지사항</a>
+                        
                           <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
                     
                         </div>
@@ -358,39 +379,51 @@
             <strong>공지사항</strong>
             <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
         </div>
+        
+        
+        
+        
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    글 제목이 들어갑니다.
+                    <%= dto.getCommunity_subject()%>
                 </div>
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>1</dd>
+                        <dd><%= dto.getCommunity_seq()%></dd>
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd>김이름</dd>
+                        <dd><%= dto.getMember_id()%></dd>
                     </dl>
                     <dl>
                         <dt>작성일</dt>
-                        <dd>2021.1.16</dd>
+                        <dd><%= dto.getReg_date()%></dd>
                     </dl>
                     <dl>
                         <dt>조회</dt>
-                        <dd>33</dd>
+                        <dd><%= dto.getCommunity_cnt()%></dd>
                     </dl>
                 </div>
+               
                 <div class="cont">
-                    글 내용이 들어갑니다
-                  
+                  	<%= dto.getCommunity_content()%>
                 </div>
-            </div>
+                
+                <div class="file_cont">
+                	 <a href="file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
+					 <a href="file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
+					 <a href="file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 
+				 </div>
+            
+            
             <div class="bt_wrap">
-                <a href="list.html" class="on">목록</a>
-                <a href="edit.html">수정</a>
+                <a href="list.jsp" class="on">목록</a>
+                <a href="edit.jsp?Community_seq()=<%=dto.getCommunity_seq()%>">수정</a>
 				<a href="#삭제하고 글목록으로 이동 할 곳">삭제</a>
             </div>
+            
         </div>
     </div>
 </body>

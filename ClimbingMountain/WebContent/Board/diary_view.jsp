@@ -1,3 +1,6 @@
+<%@page import="Model.DiaryDAO"%>
+<%@page import="Model.DiaryDTO"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -350,29 +353,55 @@
                       </aside>
     <div class="board_wrap">
         <div class="board_title">
+        <%
+		String member_id = (String) session.getAttribute("member_id");
+		System.out.println("member_id :"+ member_id);
+		
+		int diary_seq = Integer.parseInt(request.getParameter("diary_seq"));
+		System.out.println("diary_seq :"+ diary_seq);
+		
+		if(diary_seq == 0){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('유효하지 않는 글입니다')");
+			script.println("location.href='diaryView.jsp'");
+			script.println("</script>");
+		}
+		DiaryDTO dto = new DiaryDAO().viewOneBoard(diary_seq);
+
+	%>
             <strong>내 다이어리 글 보기</strong>
         </div>
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    글 제목이 들어갑니다.
+                    <%= dto.getDiary_subject() %>
                 </div>
                 <div class="info">
                    
                
                     <dl>
                         <dt>작성일</dt>
-                        <dd>2021.1.16</dd>
+                        <dd><%= dto.getReg_date() %></dd>
+                    </dl>
+                    <dl>
+                        <dt>작성자</dt>
+                        <dd><%= dto.getMember_id() %></dd>
                     </dl>
                   
                 </div>
                 <div class="cont">
-                    글 내용이 들어갑니다
+                    <%= dto.getDiary_content() %>
+                  
+                </div>
+                 <div class="cont">
+                    <%= dto.getDiary_file1() %>
+                    <%= dto.getDiary_file2() %>
                   
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="list.html" class="on">목록</a>
+                <a href="diary_list.html" class="on">목록</a>
                 <a href="edit.html">수정</a>
                 <a href="#삭제하고 목록으로 이동">삭제</a>
             </div>
