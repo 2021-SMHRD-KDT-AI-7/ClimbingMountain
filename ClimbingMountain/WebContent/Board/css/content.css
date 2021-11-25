@@ -118,6 +118,9 @@
 
 /* ******************  Business  ********************** */
 /* -------- Business :: 공통 -------- */
+
+.file_cont > a{margin:55px;}
+
 #visual.sub-visual-business .visual-img-con{background-position:30% 50% !important}
 #loanContent{padding-bottom:100px}
 /* 컨텐츠 박스 */

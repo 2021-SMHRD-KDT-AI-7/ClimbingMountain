@@ -3,17 +3,17 @@
 <%@page import="Model.communityDAO"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.io.PrintWriter"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<%
-		System.out.println("¼öÁ¤¿Ï·áÆäÀÌÁö");
+		System.out.println("ìˆ˜ì •ì™„ë£Œí˜ì´ì§€");
 		String member_id = null;
 		if(session.getAttribute("member_id") != null){
 			 member_id = (String) session.getAttribute("member_id");
@@ -21,13 +21,13 @@
 		if(member_id == null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('·Î±×ÀÎÀ» ÇÏ¼¼¿ä')");
+			script.println("alert('ë¡œê·¸ì¸ì„ í•˜ì„¸ìš”')");
 			script.println("location.href = 'login.jsp'");
 			script.println("</script>");
 		}
 		
 		int maxSize = 1024*1024*10;  // 10MB
-		String encoding = "EUC-KR";
+		String encoding = "UTF-8";
 		String saveDirectory = request.getServletContext().getRealPath("file");
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
@@ -42,7 +42,7 @@
 		if(community_seq == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('À¯È¿ÇÏÁö ¾ÊÀº ±ÛÀÔ´Ï´ç')");
+			script.println("alert('ìœ íš¨í•˜ì§€ ì•Šì€ ê¸€ì…ë‹ˆë‹¹')");
 			script.println("location.href='communityView.jsp'");
 			script.println("</script>");
 		}
@@ -50,27 +50,17 @@
 			if(!member_id.equals(dto.getMember_id())){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('±ÇÇÑÀÌ ¾ø½À´Ï´Ù')");
+				script.println("alert('ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤')");
 				script.println("location.href='communityView.jsp'");
 				script.println("</script>");
 			}else{
-				if(multi.getParameter("community_subject") == null || multi.getParameter("community_content") == null
-						|| multi.getFilesystemName("community_file1") == null || multi.getFilesystemName("community_file2") == null 
-						|| multi.getFilesystemName("community_file3") == null || multi.getParameter("community_subject").equals("") 
-						|| multi.getParameter("community_content").equals("")){
-					PrintWriter script = response.getWriter();
-					script.println("<script>");
-					script.println("alert('ÀÔ·ÂµÇÁö¾ÊÀº »çÇ×ÀÌ ÀÖ½À´Ï´Ù')");
-					script.println("history.back()");
-					script.println("</script>");
-				}else{
 					communityDAO dao = new communityDAO();
 					int result = dao.updateCommunity(community_seq, multi.getParameter("community_subject"),multi.getParameter("community_content"),
 							multi.getFilesystemName("community_file1"),multi.getFilesystemName("community_file2"),multi.getFilesystemName("community_file3"));
 					if(result == -1){
 						PrintWriter script = response.getWriter();
 						script.println("<script>");
-						script.println("alert('±Û¼öÁ¤ ½ÇÆĞ')");
+						script.println("alert('ê¸€ìˆ˜ì • ì‹¤íŒ¨')");
 						script.println("history.back()");
 						script.println("</script>");
 					}else{
@@ -81,7 +71,7 @@
 					}
 					
 				}
-			}
+			
 			
 		
 				

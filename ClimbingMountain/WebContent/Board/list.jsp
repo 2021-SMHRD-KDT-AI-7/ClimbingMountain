@@ -1,3 +1,6 @@
+<%@page import="Model.communityDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.communityDAO"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,7 +20,7 @@
 	<script src="./js/vendor/jquery-1.8.3.min.js"></script>
 	<script src="./js/vendor/jquery.easing.1.3.js"></script>
 	<script src="./js/common.js"></script>
-    <link rel="stylesheet" href="css/board_css.css">
+    <link rel="stylesheet" href="./css/board_css.css">
     <!-- 아이콘폰트 -->
 	<link href="/css/icon.css" rel="stylesheet">
 	<!-- <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"  rel="stylesheet"> google -->
@@ -29,7 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/plugin/slick.css">
 	<script src="./js/plugin/slick.js"></script>
 
-  <link rel="stylesheet" href="css/categori.css">
+  
   <script>
     $(function () {
         dep1 = 0,
@@ -137,6 +140,14 @@
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/layer_popup.js"></script>
 </head>
+
+<%
+	communityDAO community_dao = new communityDAO();
+	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
+	communityBoard_list = community_dao.viewBoard();
+	
+
+%>
 <body>
      <!-- accessibility -->
 	<div class="cm-accessibility">
@@ -345,8 +356,8 @@
 
 
     <div id="left">
-      <p class="c_2"><a class='c_2_f' href="#">공지사항</a>
-      <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
+      
+      <p class="c_2"><a class='c_2_f' href="list.jsp">산 게시판</a>
 
     </div>
 
@@ -355,12 +366,31 @@
 
     <div class="board_wrap">
         <div class="board_title">
-            <strong>공지사항</strong>
-            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+            <strong>산 게시판</strong>
+            <p>산에 관련된 정보를 공유하는 게시판입니다.</p>
         </div>
         <div class="board_list_wrap">
             <div class="board_list">
                 <div class="top">
+                
+                
+                
+              
+	
+	<% //번호 제목 글쓴이 작성일 조회
+	for(int i=0;i<communityBoard_list.size();i++){   %>
+	<tr>
+		<td><%= i+1 %></td>
+		<td><a href="communityViewOneBoard.jsp?community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></a></td>
+		<td><%= communityBoard_list.get(i).getReg_date() %></td>
+		<td><%= communityBoard_list.get(i).getCommunity_cnt() %></td>
+		<td><%= communityBoard_list.get(i).getMember_id() %></td>
+
+	</tr>
+	
+	<% } %>
+	</table>
+	
                     <div class="num">번호</div>
                     <div class="title">제목</div>
                     <div class="writer">글쓴이</div>
@@ -368,11 +398,17 @@
                     <div class="count">조회</div>
                 </div>
                 <div>
-                    <div class="num">1</div>
-                    <div class="title"><a href="view.html">왈왈</a></div>
-                    <div class="writer">천사</div>
-                    <div class="date">2021.11.24</div>
-                    <div class="count">33</div>
+                	<% //번호 제목 글쓴이 작성일 조회
+					for(int i=0;i<communityBoard_list.size();i++){   %>
+                    <div class="num"><%=communityBoard_list.size() -i%></div>
+                    <div class="title"><a href="view.jsp?Community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></a></div>
+                    <div class="writer"><%= communityBoard_list.get(i).getMember_id() %></div>
+                    <div class="date"><%= communityBoard_list.get(i).getReg_date() %></div>
+                    <div class="count"><%= communityBoard_list.get(i).getCommunity_cnt() %></div>
+                    
+                    
+                    
+                    <%} %>
                 </div>
               
                 
@@ -389,7 +425,7 @@
                 <a href="#" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
-                <a href="write.html" class="on">등록</a>
+                <a href="write.jsp" class="on">등록</a>
                 <!--<a href="#">수정</a>-->
             </div>
         </div>

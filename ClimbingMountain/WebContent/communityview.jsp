@@ -42,7 +42,10 @@
 	
 	<% } %>
 	</table>
+
+	<div>
 	
+	</div>
 	<hr>
 	<button><a href = "communitywrite.jsp">커뮤니티 글작성</a></button>
 

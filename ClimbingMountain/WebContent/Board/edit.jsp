@@ -1,3 +1,6 @@
+<%@page import="Model.communityDAO"%>
+<%@page import="Model.communityDTO"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -344,44 +347,67 @@
                     
                     
                         <div id="left">
-                          <p class="c_2"><a class='c_2_f' href="#">공지사항</a>
-                          <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
+
+                         <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
                     
                         </div>
                     
                       </aside>
 
+    <%
+	System.out.println("수정페이지");
+	String member_id = (String) session.getAttribute("member_id");
+	System.out.println("member_id :"+ member_id);
+	int community_seq = Integer.parseInt(request.getParameter("community_seq"));
+	System.out.println("community_seq :"+ community_seq);
+	
+	if(community_seq == 0){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않는 글입니다')");
+		script.println("location.href='list.jsp'");
+		script.println("</script>");
+	}
+	communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+	if(!member_id.equals(dto.getMember_id())){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('권한이 없습니다')");
+		script.println("location.href='list.jsp'");
+		script.println("</script>");
+	}
+	
+%>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>글쓰기</strong>
+            <strong>글쓰기 수정</strong>
         </div>
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
+                <form action="CupdateAction.jsp?member_id = <%= member_id %>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="community_seq" value="<%= community_seq%>">
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력" ></dd>
+                        <dd><input type="text" name="community_subject" value="<%= dto.getCommunity_subject() %>" placeholder="제목 입력" ></dd>
                     </dl>
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>글쓴이</dt>
-                        <dd><input type="text" placeholder="글쓴이 입력" ></dd>
-                    </dl>
-                    <dl>
-                        <dt>비밀번호</dt>
-                        <dd><input type="password" placeholder="비밀번호 입력" ></dd>
-                    </dl>
+                        <dt>파일1 : <input type="file" name="community_file1" value="<%= dto.getCommunity_file1() %>"><br>
+							파일2 : <input type="file" name="community_file2" value="<%= dto.getCommunity_file2()  %>"><br>
+							파일3 : <input type="file" name="community_file3" value="<%= dto.getCommunity_file3()  %>"><br> </dt>
+                   </dl>
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력">
+                    <textarea name="community_content" value="<%= dto.getCommunity_content() %>" placeholder="내용 입력">
 
                     </textarea>
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="view.html" class="on">수정</a>
-                <a href="view.html">취소</a>
+                <a><button>수정</button></a>
+                <a href="view.jsp">취소</a>
 				
             </div>
         </div>
