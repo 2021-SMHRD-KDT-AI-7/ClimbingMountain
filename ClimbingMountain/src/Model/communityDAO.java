@@ -199,5 +199,22 @@ public class communityDAO {
 			
 		}
 
-		
+		public int getcount() {
+			getConn();
+			try {
+				String sql = "select count(*) from tbl_community";
+				
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					System.out.println(rs.getInt(1));
+					return rs.getInt(1);
+				}		
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbclose();
+			}
+			return -1;
+		}
 }

@@ -1,3 +1,6 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.sun.corba.se.pept.transport.Connection"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.communityDAO"%>
@@ -7,8 +10,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
-
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); 	
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,11 +148,11 @@
 </head>
 
 <%
+	
 	communityDAO community_dao = new communityDAO();
 	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
 	communityBoard_list = community_dao.viewBoard();
-	
-
+	int pagenum =1;
 %>
 <body>
      <!-- accessibility -->
@@ -308,30 +311,35 @@
                 </div>
                 <div>
                 	<% //번호 제목 글쓴이 작성일 조회
-					for(int i=0;i<communityBoard_list.size();i++){   %>
+                	for(int i=0;i<communityBoard_list.size();i++){   %>
                     <div class="num"><%=communityBoard_list.size() -i%></div>
                     <div class="title"><a href="view.jsp?Community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></a></div>
                     <div class="writer"><%= communityBoard_list.get(i).getMember_id() %></div>
                     <div class="date"><%= communityBoard_list.get(i).getReg_date() %></div>
                     <div class="count"><%= communityBoard_list.get(i).getCommunity_cnt() %></div>
-                    
-                    
-                    
-                    <%} %>
+                   <%} %> 
                 </div>
               
                 
             </div>
             <div class="board_page">
-                <a href="#" class="bt first"><<</a>
-                <a href="#" class="bt prev"><</a>
-                <a href="#" class="num on">1</a>
-                <a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a>
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt last">>></a>
+                <%
+               if (pagenum != 1) {//이전페이지로
+            %>
+                <a href="list.jsp?number=<%=pagenum -1 %>" class="bt prev"> 이전 </a>
+                <%
+               }
+            %>
+              <%
+              	int n = (int)(community_dao.getcount() / 5+1);
+              	for (int i = 1; i <= n; i++) {
+              %>
+                <a href="list.jsp?number=<%=i%>" class="num"><%=i%></a>
+                <%
+               }
+            %>
+                <a href="list.jsp?number=<%=pagenum +1 %>" class="bt next"> 다음</a>
+                
             </div>
             <div class="bt_wrap">
                 <a href="write.jsp" class="on">등록</a>
