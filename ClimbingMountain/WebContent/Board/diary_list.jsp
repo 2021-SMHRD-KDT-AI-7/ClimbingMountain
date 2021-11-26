@@ -187,7 +187,7 @@
 								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
 								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
 							<%}else{%>
-								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
+								<a href="LogoutServiceCon.do" class="contact-tx" style="background-color:#000000">로그아웃</a>
 							<% } %>		
 						</div>
 						</div>
