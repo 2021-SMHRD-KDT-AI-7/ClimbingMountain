@@ -15,6 +15,7 @@
 	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
 	communityBoard_list = community_dao.viewBoard();
 	
+	
 
 %>
 
@@ -34,13 +35,14 @@
 		<td><%= i+1 %></td>
 		<td><a href="communityViewOneBoard.jsp?community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></td>
 		<td><%= communityBoard_list.get(i).getReg_date() %></td>
-		<td><%= communityBoard_list.get(i).getCommunity_cnt() %></td>
+		<td><%= communityBoard_list.get(i).getCommunity_cnt()%></td>
 		<td><%= communityBoard_list.get(i).getMember_id() %></td>
 
 	</tr>
 	
 	<% } %>
 	</table>
+
 	<div>
 	
 	</div>

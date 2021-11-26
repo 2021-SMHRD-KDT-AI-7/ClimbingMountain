@@ -1,4 +1,3 @@
-
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.communityDAO"%>
@@ -174,9 +173,13 @@
 							<h1 class="logo"><a href="../Main/D_Home.jsp" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
-							----
+                   			<% if(info==null){ %>
 								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
-							</div>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
+							<%}else{%>
+								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
+							<% } %>	
+                			</div>
 						</div>
 						<!-- ****************** GNB ********************** -->
 						
@@ -251,101 +254,7 @@
 						<!-- <span class="line line1"></span><span class="line line2"></span><span class="line line3"></span> -->
 						<!-- </button> -->
 					</div>
-					<!-- GNB Mobile -->
-					<button class="nav-open-btn" title="네비게이션 열기">
-						<span class="line line1"></span><span class="line line2"></span><span class="line line3"></span>
-					</button>
-					<div class="gnb-overlay-bg-m"></div>
-					<nav id="gnbM" class="gnb-style-basic">
-						<h2 class="blind">주메뉴</h2>
-						<div class="gnb-navigation-wrapper">
-							<div class="gnb-navigation-inner">
-								<ul id="navigation">
-									<li>
-										<a href="javascript:;">산</a>
-										<ul class="gnb-2dep">
-											<li>
-												<a href="/ir/intro">
-													<span>종합정보</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#지역별">
-															<span>지역별</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#난이도별">
-															<span>난이도별</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<span>추가하고싶은내용</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="">게시판</a>
-										<ul class="gnb-2dep">
-											<li>
-												<a href="#모두의게시판으로">
-													<span>모두의게시판</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#게시글작성">
-															<span>게시글작성</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#내가 쓴 게시글목록">
-															<span>내가 쓴 게시글</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-											<li>
-												<a href="#다이어리로">
-													<span>다이어리</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#다이어리작성">
-															<span>다이어리쓰기</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#내가쓴다이어리">
-															<span>나의 다이어리</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-
-								</ul>
-								<div class="lang-select-list">
-									<a href="D_Home.html">홈</a>
-									<a href="../Login/Login.jsp">로그인</a>
-								</div>
-							</div>
-						</div>
-					</nav>
+					
 
   <aside id="nav1">
     <div id='c_up'>

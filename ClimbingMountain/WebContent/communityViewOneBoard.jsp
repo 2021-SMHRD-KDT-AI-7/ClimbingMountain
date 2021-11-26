@@ -1,17 +1,18 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="Model.communityDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<%
+		communityDAO dao = new communityDAO();
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
 		
@@ -21,32 +22,39 @@
 		if(community_seq == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('À¯È¿ÇÏÁö ¾Ê´Â ±ÛÀÔ´Ï´Ù')");
+			script.println("alert('ìœ íš¨í•˜ì§€ ì•ŠëŠ” ê¸€ì…ë‹ˆë‹¤')");
 			script.println("location.href='communityView.jsp'");
 			script.println("</script>");
 		}
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+		int cnt = dto.getCommunity_cnt();
+		dao.updatehit(community_seq, cnt);
+		
 
 	%>
 
 	<div id="board">
 		<table id="list">
 			<tr>
-				<td>Á¦¸ñ</td>
+				<td>ì œëª©</td>
 				<td><%= dto.getCommunity_subject() %></td>
 			</tr>
 			<tr>
-				<td>ÀÛ¼ºÀÚ</td>
+				<td>ì‘ì„±ì</td>
 				<td><%= dto.getMember_id()%></td>
 			</tr>
 			<tr>
-				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file1() %>" download> ÆÄÀÏ1 ´Ù¿î·Îµå </a> </td>
-				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file2() %>" download> ÆÄÀÏ2 ´Ù¿î·Îµå </a> </td>
-				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file3() %>" download> ÆÄÀÏ3 ´Ù¿î·Îµå </a> </td>
+				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file1() %>" download> íŒŒì¼1 ë‹¤ìš´ë¡œë“œ </a> </td>
+				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file2() %>" download> íŒŒì¼2 ë‹¤ìš´ë¡œë“œ </a> </td>
+				 <td colspan="2"> <a href="file/<%= dto.getCommunity_file3() %>" download> íŒŒì¼3 ë‹¤ìš´ë¡œë“œ </a> </td>
 			</tr>
 			<tr>
-				<td colspan="2">³»¿ë</td>
+				<td colspan="2">ë‚´ìš©</td>
 				<td><%= dto.getCommunity_content() %> <br>
+			</tr>
+			<tr>
+				<td>ì¡°íšŒìˆ˜</td>
+				<td colspan="2"><%=dto.getCommunity_cnt()%></td>
 			</tr>
 			<tr>
 				<td colspan="2"><img src="file/<%= dto.getCommunity_file1() %>">
@@ -57,12 +65,12 @@
 				
 			</tr>
 		</table>
-				<td colspan="2"><a href="communityview.jsp"><button>¸ñ·Ï</button></a></td>
+				<td colspan="2"><a href="communityview.jsp"><button>ëª©ë¡</button></a></td>
 				<%
 					if(member_id != "" && member_id.equals(dto.getMember_id())){
 				%>
-					<td colspan="2"><a href="CommunityUpdate.jsp?community_seq=<%= community_seq %>"><button>¼öÁ¤</button></a></td>
-					<td colspan="2"><a href="communityDeleteOne.jsp?community_seq=<%= community_seq %>"><button>»èÁ¦</button></a></td>
+					<td colspan="2"><a href="CommunityUpdate.jsp?community_seq=<%= community_seq %>"><button>ìˆ˜ì •</button></a></td>
+					<td colspan="2"><a href="communityDeleteOne.jsp?community_seq=<%= community_seq %>"><button>ì‚­ì œ</button></a></td>
 				<%
 					}
 				%>

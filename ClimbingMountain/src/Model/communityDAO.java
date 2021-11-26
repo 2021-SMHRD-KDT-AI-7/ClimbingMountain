@@ -137,21 +137,22 @@ public class communityDAO {
 		}
 		
 		// 조회수 증가
-		public void updatehit(int community_seq) {
+		public int updatehit(int community_seq, int community_cnt) {
 			getConn();
 			try {
-				String sql = "update community set community_cnt=community_cnt+1 where community_seq = ?";
+				String sql = "update tbl_community set community_cnt=? where community_seq = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				
-				psmt.setInt(1, community_seq);
+				psmt.setInt(1, community_cnt + 1);
+				psmt.setInt(2, community_seq);
 				cnt = psmt.executeUpdate();
 				
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				dbclose();
-			}
+			}return cnt;
 		}
 		
 		// 글 수정하기

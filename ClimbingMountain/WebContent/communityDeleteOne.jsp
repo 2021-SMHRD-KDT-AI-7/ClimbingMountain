@@ -1,3 +1,4 @@
+
 <%@page import="Model.communityDAO"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.io.PrintWriter"%>
@@ -48,4 +49,5 @@
 
 
 </body>
+
 </html>

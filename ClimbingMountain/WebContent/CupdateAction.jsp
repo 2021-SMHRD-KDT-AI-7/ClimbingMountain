@@ -1,3 +1,4 @@
+
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="Model.communityDAO"%>
@@ -92,4 +93,5 @@
 	%>
 
 </body>
+
 </html>

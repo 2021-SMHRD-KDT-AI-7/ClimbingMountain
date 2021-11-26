@@ -25,12 +25,13 @@ public class communityServiceCon extends HttpServlet {
 		
 		System.out.println("[communityServiceCon]");
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("info");
 		int maxSize = 1024*1024*10;  // 10MB
-		String encoding = "EUC-KR";
-		String saveDirectory = request.getServletContext().getRealPath("file");
+		String encoding = "UTF-8";
+		String saveDirectory = "C:\\Users\\smhrd\\git\\ClimbingMountain\\ClimbingMountain\\WebContent\\file";
+		System.out.println(saveDirectory);
 		
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 		
@@ -38,9 +39,24 @@ public class communityServiceCon extends HttpServlet {
 		String community_subject = multi.getParameter("community_subject");
 		String community_content = multi.getParameter("community_content");
 		String member_id = mdto.getMember_id();
-		String community_file1 = URLEncoder.encode(multi.getFilesystemName("community_file1"),"EUC-KR");
-		String community_file2 = URLEncoder.encode(multi.getFilesystemName("community_file2"),"EUC-KR");
-		String community_file3 = URLEncoder.encode(multi.getFilesystemName("community_file3"),"EUC-KR");
+		
+		
+		
+		String community_file1 ="";
+		String community_file2 ="";
+		String community_file3 ="";
+		if(multi.getFilesystemName("community_file1")!=null) {
+			community_file1 = URLEncoder.encode(multi.getFilesystemName("community_file1"),"UTF-8");	
+		}
+		if(multi.getFilesystemName("community_file2")!=null) {
+			community_file2 = URLEncoder.encode(multi.getFilesystemName("community_file2"),"UTF-8");
+		}
+		if(multi.getFilesystemName("community_file3")!=null) {
+			community_file3 = URLEncoder.encode(multi.getFilesystemName("community_file3"),"UTF-8");
+		}
+		
+		
+		
 		
 		System.out.println("community_subject : "+community_subject);
 		System.out.println("community_content : "+community_content);
@@ -59,7 +75,7 @@ public class communityServiceCon extends HttpServlet {
 			System.out.println("파일 업로드 실패");
 		}
 		
-		response.sendRedirect("communityview.jsp");
+		response.sendRedirect("./Board/list.jsp");
 		
 		
 	}

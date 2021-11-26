@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -342,7 +343,7 @@
                     
                     
                         <div id="left">
-                          <p class="c_2"><a class='c_2_f' href="#">글 목록</a>
+                          <p class="c_2"><a class='c_2_f' href="diary_list.jsp">글 목록</a>
                        
                     
                         </div>
@@ -356,23 +357,30 @@
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
+                <form action="../DiaryOneServiceCon" method="post" enctype="multipart/form-data">
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력"></dd>
+                        <dd><input type="text" name="diary_subject" placeholder="제목 입력"></dd>
                     </dl>
                 </div>
                 <div class="info">
                    
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력"></textarea>
+                    <textarea name="diary_content" placeholder="내용 입력"></textarea>
                 </div>
+                	<div class="diary_file_cont">
+               	<dd>파일1 : <input type="file" name="diary_file1";><br>
+					파일2 : <input type="file" name="diary_file2";><br>
+				 </dd>
+               	</div>
             </div>
             <div class="bt_wrap">
-                <a href="view.html" class="on">등록</a>
-                <a href="list.html">취소</a>
+                <a><button>등록</button></a>
+                <a href="diary_list.jsp">취소</a>
             </div>
         </div>
     </div>
 </body>
+
 </html>
