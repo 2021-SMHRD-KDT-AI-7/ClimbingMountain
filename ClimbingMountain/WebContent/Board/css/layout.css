@@ -132,7 +132,7 @@ body { background-color:#fff; }
 .header-util-box .language-select > ul{background:none;border:0}
 .header-util-box .language-select > ul > li > a:hover{background:none}
 #wrap .language-select > ul li a{color:#fff;}
-.contact-tx{display:inline-block;margin-top:3px;padding:0 12px;font-weight:700;font-size:12px;color:#fff;letter-spacing:-0.25px;border-radius:12px;line-height:24px;background:rgba(255,255,255,0.2)}
+.contact-tx{display:inline-block;margin-top:3px;padding:0 12px;font-weight:700;font-size:12px;color:#fff;letter-spacing:-0.25px;border-radius:12px;line-height:24px;background:#000000;}
 /* -------- Header :: 헤더 hover  -------- */
 #header.over  #headerInnerWrap{background-color:#38b000;}
 #header.over #gnb > ul > li > a{position:relative;color:#fff}

@@ -1,3 +1,5 @@
+<%@page import="Model.Mountain100_3_img_DTO"%>
+<%@page import="Model.Mountain100_3_img_DAO"%>
 <%@page import="Model.Course_3_img_DTO"%>
 <%@page import="Model.Course_3_img_DAO"%>
 <%@page import="Model.Course_2_DTO"%>
@@ -28,12 +30,13 @@
 	}
 
 
-
+// 산 정보 dao 선언
 	Mountain100_1_DAO mountain100_1_dao = new Mountain100_1_DAO();
 	Mountain100_2_DAO mountain100_2_dao = new Mountain100_2_DAO();
 	
-	
-	
+	Mountain100_3_img_DAO mountain100_3_img_dao = new Mountain100_3_img_DAO();
+
+// 등산로 정보 dao 선언
 	Course_1_DAO course_1_dao = new Course_1_DAO();
 	Course_2_DAO course_2_dao = new Course_2_DAO();
 	
@@ -41,14 +44,16 @@
 	
 	
 	
-	
+// 산 정보 dto 선언	
 	Mountain100_1_DTO mountain100_1_dto = mountain100_1_dao.selectOneMountaion100(mountain_seq);
 	Mountain100_2_DTO mountain100_2_dto = mountain100_2_dao.selectOneMountaion100(mountain_seq);
 	
+	Mountain100_3_img_DTO mountain100_3_img_dto = mountain100_3_img_dao.selectMountain_img(mountain_seq);
+// 산정보 저장된 리스트	
 	ArrayList<Mountain100_1_DTO> mountain13_list = mountain100_1_dao.selectuseMountain100_1();
 	
 	
-	
+// 등산로 정보 저장된 리스트	
 	ArrayList<Course_1_DTO> course_1_list = course_1_dao.selectallCourse(mountain_seq);
 	ArrayList<Course_2_DTO> course_2_list = course_2_dao.selectallCourse(mountain_seq);
 			
@@ -95,6 +100,36 @@
 	<link rel="stylesheet" href="@{/css/ie8.css">
 <![endif]-->
     <style>
+    #M_N{font-size: xxx-large;font-weight: 700;text-align: right;color: #006400;}
+	#M_L{font-size: x-large;margin-top: 25px;color: black;text-indent: -5px;}
+	#M_H{font-size: large;margin-top: 10px;color: black;text-indent: 10px;}
+	#R_S{font-size: large;margin-top: 10px;text-indent: 10px;color: black;}
+	#M_T{font-size: xx-large;text-align: center;color: red;margin-top: 35px;}
+	#C_D{font-size: xxx-large;text-align: right;color: black;margin-top: 50px;}
+	#M_C_T{font-size: xx-large;color: black;margin-top: 25px;}
+	#M_C{font-size: large;word-spacing: 2px;line-height: 25px;color: black;}
+	#M_S_T{font-size: xx-large;color: black;margin-top: 25px;}
+	#M_S{font-size: medium;word-spacing: 2px;line-height: 20px;color: black;}
+	#M_I_T{font-size: xx-large;color: black;margin-top: 25px;}
+	#M_I{font-size: medium;word-spacing: 3px;line-height: 24px;color: black;}
+	#C_I_I{font-size: xxx-large;text-align: center;-webkit-text-emphasis-style:triangle;color: #006400;margin-bottom: 25px;}
+	#C_CN{font-size: xx-large;text-indent: 20px;color:red;margin-bottom: 30px;}
+	#C_I{margin-block: 50px;margin-left: 115px;}
+	#C_E{font-size: large;word-spacing: 4px;color:black;line-height: 30px;}
+	#C_CN2{font-size: medium;color: black;position: absolute;margin-left:-240px;margin-top:10px;})
+	#C_I2{}
+    #T_I{font-size: xxx-large;color: #006400;text-align: right;}
+    #T_C{font-size: x-large;text-align: center;color: black;margin-top: 50px;}
+    .T_CC{font-size: x-large;color: black;}
+    .T_CCC{font-size: medium;line-height: 30px;color: #000000;}
+    .T_R{font-size: large;line-height: 30px;font-weight: 600;}
+    .line_info{display: block;height: 5px;border: 0;border-top: 3px solid #006400;margin: 2em 0;padding: 0;}
+    .line-traffic{display: block;height:2px;border:0;border-top:1px solid #000000;margin:1em 0;}
+    .line_course{display:block;height:1px;border:0;border-top:1px solid #000000;margin:2em 0;}
+        
+        
+        
+        
         .map_wrap,
         .map_wrap * {
             margin: 0;
@@ -267,7 +302,8 @@
         .course_3_img{
         	height:200px;
         	width:200px;
-        
+        	margin:40px;
+        	border-radius: 5%;
         }
     </style>
 </head>
@@ -306,14 +342,14 @@
                 <div id="gnbBg"></div>
                 <ul class="clearfix area">
                     <li class="gnb2">
-                        <a href="M_info.jsp">산정보</a>
+                        <a href="M_info.jsp" style="text-shadow: 3px 3px 3px #666;">산정보</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list">
                                     <ul class="clearfix">
                                         <li>
                                             <a href="M_info.jsp">
-                                                <span>종합정보</span>
+                                                <span style="font-weight: bold;">종합정보</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
                                         </li>
@@ -329,26 +365,26 @@
                         </div>
                     </li>
                     <li class="gnb1">
-                        <a href="../Board/list.jsp">게시판</a>
+                        <a href="../Board/list.jsp" style="text-shadow: 3px 3px 3px #666;">게시판</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list list-3">
                                     <ul class="clearfix">
                                         <li>
                                             <a href="../Board/list.jsp">
-                                                <span>모두의 게시판</span>
+                                                <span style="font-weight: bold;">모두의 게시판</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
                                         </li>
                                         <li>
                                             <% if(info==null){ %>
 												<a href="../Login/Login.jsp">
-                                                <span>다이어리</span>
+                                                <span style="font-weight: bold;">다이어리</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
 											<%}else{%>
 												<a href="../Board/diary_list.jsp">
-                                                <span>다이어리</span>
+                                                <span style="font-weight: bold;">다이어리</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
 											<% } %>	
@@ -379,12 +415,12 @@
 
         <!-- 여기가 배경들어가고 이름나오는곳 -->
         <section id="visual" class="sub-visual-company">
-            <div class="visual-img-con" style="background:#fff url(#산_헤더_사진_경로) no-repeat 50% 50%">
+            <div class="visual-img-con" style="background:#fff url(./img/M_info_bg.jpg) no-repeat 50% 50%;text-shadow: 3px 3px 3px #666;">
             </div> <!-- 여기에 산 사진으로 배경 나오게 한다 -->
             <div class="area visual-txt-con">
                 <div class="table-cell-layout">
                     <div class="visual-txt-container">
-                        <h2 class="visual-tit trans400">#여기에 산 이름 나오게 한다</h2>
+                        <h2 class="visual-tit trans400"><%= mountain100_1_dto.getMountain_name()%></h2>
                     </div>
                 </div>
             </div>
@@ -513,7 +549,7 @@
 
 
         <!-- middleArea -->
-        <div id="middleArea">
+        <div id="middleArea" style="background-color: #fefae0;">
             <!-- content -->
             <section id="content" class="area">
                 <h1 class="Info-title">Information</h1>
@@ -533,30 +569,35 @@
                                 <div class="history-tab-con cm-tab-con" id="historyCon01">
                                     <article class="history-list-box">
                                         <div class="Mountain-info-pic">
-                                            <img src="/img/BA_Mountain.jpg" alt="">
+                                            <img src="<%=mountain100_3_img_dto.getMountain_img() %>" alt="">
+                                           
                                         </div>
                                         <div class="Mountain-info-text">  
-                                            <h1><%= mountain100_1_dto.getMountain_name()%></h1>
-                                            <p>산 위치 <%=mountain100_1_dto.getMountain_location()%></p>
-                                            <p>산 높이 <%=mountain100_1_dto.getMountain_height()%></p>
-                                            <p>추천계절 <%=mountain100_1_dto.getMountain_season()%></p>
-                                            <p>등산시간 <%=mountain100_1_dto.getMountain_time()%></p>
-                                            <p>등산 난이도 <%=mountain100_1_dto.getDifficulty()%></p>
+                                        	
+                                            <p id=M_N><i class="xi-signal"></i> <%= mountain100_1_dto.getMountain_name()%> <i class="xi-signal xi-rotate-90"></i><p>
+                                            <p id=M_L><i class="xi-gps"></i> 산 위치 : <%=mountain100_1_dto.getMountain_location()%></p>
+                                            <p id=M_H>산 높이 : <%=mountain100_1_dto.getMountain_height()%>m</p>
+                                            <p id=R_S>추천계절 : <%=mountain100_1_dto.getMountain_season()%></p>
+                                            
+                                            <p id=M_T><i class="xi-time-o"></i> 등산시간 = <%=mountain100_1_dto.getMountain_time()%></p>
+                                            <p id=C_D><i class="xi-run"></i> 등산 난이도 : <%=mountain100_1_dto.getDifficulty()%></p>
                                              
                                              
                                              <br>
-                                             <p>특징</p>
+                                             <p id=M_C_T>-특징-</p>
                                              <br>
-                                             <p><%=mountain100_2_dto.getReason()%></p>
+                                             <p id=M_C><%=mountain100_2_dto.getReason()%></p>
+                                             <hr class=line_info>
                                              <br>
-                                             <p>개관</p>
+                                             <p id=M_S_T>-개관-</p>
                                              <br>
-                                             <p><%=mountain100_2_dto.getServey()%></p>
+                                             <p id=M_S><%=mountain100_2_dto.getServey()%></p>
+                                             <hr class=line_info>
                                              <br>
-                                             <p>정보</p>
+                                             <p id=M_I_T>-정보-</p>
                                              <br>
-                                             <p><%=mountain100_2_dto.getInformation()%></p>
-                                               
+                                             <p id=M_I><%=mountain100_2_dto.getInformation()%></p>
+                                             <hr class=line_info>
                                         </div>
                                     </article>
                                 </div>
@@ -565,30 +606,23 @@
                                 <div class="history-tab-con cm-tab-con" id="historyCon02">
                                     <article class="history-list-box">
                                         <div class="Mountain-route">
-                                            <h1>등산로 정보</h1>
+                                            <h1 id=C_I_I>등산로 정보</h1>
                                             
                                             <% for(int i=0;i<course_1_list.size();i++) {%>
-                                            <p><%= course_1_list.get(i).getCourse_name()%></p>
-                                            <hr>
-                                            <img class = 'course_exp_img' src='<%= course_1_list.get(i).getCourse_exp_img()%>'>
-                                            <br>                                          
-                                            <br>
-                                            <p><%= course_1_list.get(i).getCourse_exp()%></p>
-                                            <br>
-                                            <hr>
+                                            <p id=C_CN><i class="xi-walk"></i> <%= course_1_list.get(i).getCourse_name()%></p>
+                                            <hr class=line_course>
+                                            <img id=C_I class = 'course_exp_img' src='<%= course_1_list.get(i).getCourse_exp_img()%>'>
+
+                                            <p id=C_E><%= course_1_list.get(i).getCourse_exp()%></p>
+
+                                            <hr class=line_course>
                                             <% int course_seq =course_1_list.get(i).getCourse_seq(); 
                                             ArrayList<Course_3_img_DTO> course_3_img_list = course_3_img_dao.selectCourse(course_seq);
                                             for(int j=0;j<course_3_img_list.size();j++){    %>
-                                            <p><%= course_3_img_list.get(j).getCourse_name() %></p>
-                                            <br>
-                                            <img class='course_3_img' src='<%=course_3_img_list.get(j).getCourse_img()%>'>
-                                            <br>
-                                            	
-                                            
+                                            <img id=C_I2 class='course_3_img' src='<%=course_3_img_list.get(j).getCourse_img()%>'>
+                                            <span id=C_CN2><%= course_3_img_list.get(j).getCourse_name() %></span>
                                             <%}%>
-                                            	
-                                            
-                                            <hr>
+                                            <hr class=line_course>
                                             <%} %>         
                                            
                                         </div>
@@ -600,33 +634,45 @@
                                 <div class="history-tab-con cm-tab-con" id="historyCon03">
                                     <article class="history-list-box">
                                         <div class="Traffic-info">
-                                            <h1>교통정보</h1>
-                                            <img src="" alt="">
+                                            <h1 id=T_I><i class="xi-location-arrow"></i> 교통정보</h1>
                                             <% for(int i=0;i<course_2_list.size();i++) {%>
-                                            	<h1><%= course_2_list.get(i).getCourse_name() %></h1>
+                                            	<h1 id=T_C>= <%= course_2_list.get(i).getCourse_name() %> =</h1>
                                             	<br>
                                             	<% String[] car = course_2_list.get(i).getCar().split("◈"); %>
-                                            	<p>차</p>
+                                            	<p class=T_CC><i class="xi-car"></i> 차</p>                                            	
                                             	<br>
-												<% for(int c = 0; c<car.length;c++){ 	%>
-													<p><%= car[c]  %></p>
-												<%}%>
+												<% for(int c = 0; c<car.length;c++){ 	
+													if(c%2==1){                      %>
+														<p class=T_R><%= car[c]  %></p>                     
+													<% }else{                        %>
+														<p class=T_CCC><%= car[c]  %></p>
+													<%}%>
+												<%} %>
+												<hr class=line-traffic>
 												<br>
-			
 												<% String[] bus = course_2_list.get(i).getBus().split("◈"); %>
-												<p>버스</p>
+												<p class=T_CC><i class="xi-bus"></i> 버스</p>
 												<br>
-												<% for(int c = 0; c<bus.length;c++){ 	%>
-													<p><%= car[c]  %></p>																	
-												<%}%>
+												<% for(int c = 0; c<bus.length;c++){ 	
+													if(c%2==1){                      %>
+														<p class=T_R><%= car[c]  %></p>                     
+													<% }else{                        %>
+														<p class=T_CCC><%= car[c]  %></p>
+													<%}%>
+												<%} %>
+												<hr class=line-traffic>
 												<br>
 												<% String[] train = course_2_list.get(i).getTrain().split("◈"); %>
-												<p>기차</p>
+												<p class=T_CC><i class="xi-train"></i> 기차</p>
 												<br>
-												<% for(int c = 0; c<train.length;c++){ 	%>
-													<p><%= car[c]  %></p>
+												<% for(int c = 0; c<train.length;c++){ 	
+													if(c%2==1){                      %>
+														<p class=T_R><%= car[c]  %></p>                     
+													<% }else{                        %>
+														<p class=T_CCC><%= car[c]  %></p>
 													<%}%>
-                                            	<br>
+												<%} %>
+                                            	<hr class=line-traffic>
                                            	 	<%} %>
                                             	
                                             	<!-- 코스별 교통정보 출력인데  그냥 출력하면 개행 할 때 검색할 용도로 쓴 특수 기호 있어서 split로 특수기호 기준으로
@@ -918,7 +964,7 @@
 
 <!-- // 컨텐츠 -->
 <!-- footer -->
-<footer id="footer">
+<footer id="footer" style="margin-top: -15px;">
     <div id="footerInner" class="clearfix">
         <!-- 푸터 상단 -->
         <article id="footerTop">

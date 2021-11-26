@@ -1,11 +1,11 @@
 <%@page import="Model.DiaryDAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
 		if (member_id == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('·Î±×ÀÎÇØÁÖ¼¼¿ä')");
+			script.println("alert('ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”')");
 			script.println("location.href='diaryView.jsp'");
 			script.println("</script>");
 		}
@@ -31,13 +31,13 @@
 		if (result == 0) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('±Û»èÁ¦ ½ÇÆĞ')");
+			script.println("alert('ê¸€ì‚­ì œ ì‹¤íŒ¨')");
 			script.println("history.back()");
 			script.println("</script>");
 		} else {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('»èÁ¦¼º°ø')");
+			script.println("alert('ì‚­ì œì„±ê³µ')");
 			script.println("location.href='diary_list.jsp'");
 			script.println("</script>");
 		}

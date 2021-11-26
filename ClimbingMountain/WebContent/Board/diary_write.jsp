@@ -1,9 +1,11 @@
-<<<<<<< HEAD
 <%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,8 +160,7 @@
 							<h1 class="logo"><a href="D_Home.html" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
-							----
-								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+								<a href="LogoutServiceCon.do" class="contact-tx" style="background-color:#000000">로그아웃</a>
 							</div>
 						</div>
 						<!-- ****************** GNB ********************** -->
@@ -170,29 +171,17 @@
 							<div id="gnbBg"></div>
 							<ul class="clearfix area">
 								<li class="gnb2">
-									<a href="#산종합정보">산정보</a>
+									<a href="../Mountain/M_info.jsp">산정보</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list">
 												<ul class="clearfix">
 													<li>
-														<a href="#산종합정보">
+														<a href="../Mountain/M_info.jsp">
 															<span>종합정보</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
-													</li>
-													<li>
-														<a href="#지역별_산정보">
-															<span>지역별</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#난이도별_산정보">
-															<span>난이도별</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
-													</li>
+													</li>													
 												</ul>
 											</div>
 											<div class="gnb-2dep-menu-txt">
@@ -205,22 +194,30 @@
 									</div>
 								</li>
 								<li class="gnb1">
-									<a href="#모두의 게시판">게시판</a>
+									<a href="list.jsp">게시판</a>
 									<div class="gnb-2dep">
 										<article class="gnb-2dep-inner area clearfix">
 											<div class="gnb-2dep-menu-list list-3">
 												<ul class="clearfix">
 													<li>
-														<a href="#모두의 게시판">
+														<a href="list.jsp">
 															<span>모두의 게시판</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
 													<li>
-														<a href="#로그인시_다이어리/로그인 안했으면 로그인페이지로">
-															<span>다이어리</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
+                                            <% if(info==null){ %>
+												<a href="../Login/Login.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<%}else{%>
+												<a href="../Board/diary_list.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<% } %>	
+											</li>	
 												</ul>
 											</div>
 											<div class="gnb-2dep-menu-txt">
