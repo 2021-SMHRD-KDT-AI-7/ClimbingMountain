@@ -7,6 +7,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -180,9 +183,13 @@
 							<h1 class="logo"><a href="../Main/D_Home.jsp" title="메인"><img src="./images/header_logo.png"
 										alt="산타 클로스" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
-							----
+							<% if(info==null){ %>
 								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
-							</div>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
+							<%}else{%>
+								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
+							<% } %>		
+						</div>
 						</div>
 						<!-- ****************** GNB ********************** -->
 						

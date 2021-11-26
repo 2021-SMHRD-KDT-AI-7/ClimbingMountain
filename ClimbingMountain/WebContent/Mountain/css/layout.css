@@ -163,7 +163,7 @@ body { background-color:#fff; }
 
 /* ****************** FOOTER ********************** */
 /* -------- FOOTER :: 레이아웃 -------- */
-#footer{padding:0 100px; border-top:1px solid #e5e5e5;background:#38b000 }
+#footer{padding:0 100px; border-top:1px solid #e5e5e5;background:#38b000; margin-top: -20px;}
 #footerPartnerListContent + #footer{border-top:0}
 #footerInner{position:relative; }
 .footer-left-con{float:left;margin-top:52px}
