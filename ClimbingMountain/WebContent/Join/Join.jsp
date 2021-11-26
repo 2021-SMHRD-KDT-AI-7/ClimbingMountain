@@ -23,7 +23,7 @@
 <!-- //스킵네비게이션 -->
 <!-- header -->
 <div id="header" class="join_membership" role="banner">
-    <h1><a href="../Main/D_Home.html" class="h_logo"><span class="blind">산 타 클로스(메인)</span></a></h1>
+    <h1><a href="../Main/D_Home.jsp" class="h_logo"><span class="blind">산 타 클로스(메인)</span></a></h1>
 </div>
 <!-- // header -->
 

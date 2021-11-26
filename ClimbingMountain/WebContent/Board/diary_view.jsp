@@ -140,6 +140,26 @@
 </head>
     
 </head>
+
+<%
+		String member_id = (String) session.getAttribute("member_id");
+		System.out.println("member_id :"+ member_id);
+		
+		int diary_seq = Integer.parseInt(request.getParameter("diary_seq"));
+		System.out.println("diary_seq :"+ diary_seq);
+		
+		if(diary_seq == 0){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('유효하지 않는 글입니다')");
+			script.println("location.href='diaryView.jsp'");
+			script.println("</script>");
+		}
+		DiaryDTO dto = new DiaryDAO().viewOneBoard(diary_seq);
+
+	%>
+	
+	
 <body>
      <!-- accessibility -->
 	<div class="cm-accessibility">
@@ -353,23 +373,7 @@
                       </aside>
     <div class="board_wrap">
         <div class="board_title">
-        <%
-		String member_id = (String) session.getAttribute("member_id");
-		System.out.println("member_id :"+ member_id);
-		
-		int diary_seq = Integer.parseInt(request.getParameter("diary_seq"));
-		System.out.println("diary_seq :"+ diary_seq);
-		
-		if(diary_seq == 0){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('유효하지 않는 글입니다')");
-			script.println("location.href='diaryView.jsp'");
-			script.println("</script>");
-		}
-		DiaryDTO dto = new DiaryDAO().viewOneBoard(diary_seq);
-
-	%>
+        
             <strong>내 다이어리 글 보기</strong>
         </div>
         <div class="board_view_wrap">
@@ -401,9 +405,9 @@
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="diary_list.html" class="on">목록</a>
-                <a href="edit.html">수정</a>
-                <a href="#삭제하고 목록으로 이동">삭제</a>
+                <a href="diary_list.jsp" class="on">목록</a>
+                <a href="diary_edit.jsp?diary_seq=<%=dto.getDiary_seq() %>">수정</a>
+                <a href="diary_delete.jsp?diary_seq=<%=dto.getDiary_seq() %>">삭제</a>
             </div>
         </div>
     </div>

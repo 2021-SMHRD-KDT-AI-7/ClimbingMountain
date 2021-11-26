@@ -1,3 +1,4 @@
+
 <%@page import="java.io.PrintWriter"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -9,16 +10,10 @@
 <html lang="ko">
 
 <head>
-<style type="text/css">
-	.file_cont{
-	font-weight: 900;
-	}
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
     <link rel="stylesheet" href="./css/board_css.css">
-    <link rel="stylesheet" href="./css/board_style.css">
     <link rel="stylesheet" href="./css/default.css">
 	<link rel="stylesheet" href="./css/layout.css">
 	<link rel="stylesheet" href="./css/content.css">
@@ -167,14 +162,6 @@
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
 
 %>
-<style>
-.file_size{
-	height:200px;
-	width:200px;
-
-}
-
-</style>
 <body>
      <!-- accessibility -->
 	<div class="cm-accessibility">
@@ -421,31 +408,15 @@
                 <div class="cont">
                   	<%= dto.getCommunity_content()%>
                 </div>
-                <div class="file cont" style="padding: 30px;">
-                
-                <%if(dto.getCommunity_file1()!=null){ %>
-                <p><img class = "file_size" src="../file/<%= dto.getCommunity_file1() %>">  
-                <% }%>
-                <%if(dto.getCommunity_file2()!=null){ %>
-                <img class = "file_size" src="../file/<%= dto.getCommunity_file2() %>">
-                <% }%>
-                <%if(dto.getCommunity_file3()!=null){ %>
-                <img class = "file_size" src="../file/<%= dto.getCommunity_file3() %>"></p>
-                <% }%>
-               
-                
-                
-               		<%-- 	<td><img src="..file/<%= dto.getCommunity_file1() %>"></td>
-					    	<td><img src="..file/<%= dto.getCommunity_file2() %>"></td>
-							<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>           --%>
+                <div class="file cont">
+               		 <td colspan="2"><img src="../file/<%= dto.getCommunity_file1() %>">
+					<td><img src="..file/<%= dto.getCommunity_file2() %>">
+					<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>
                 </div>
-                <div class="file_cont" style="margin-top:20px">
-                	 <a style="margin:60px;" href="../file/<%= dto.getCommunity_file1() %>" download>파일1 다운로드 </a> 
-                	 
-					 <a style="margin:60px;" href="../file/<%= dto.getCommunity_file2() %>" download>파일2 다운로드 </a> 
-					 
-					 <a style="margin:60px;" href="../file/<%= dto.getCommunity_file3() %>" download>파일3 다운로드 </a> 
-					 <%System.out.print(dto.getCommunity_file1() ); %>
+                <div class="file_cont">
+                	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
+					 <a href="../file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
+					 <a href="../file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 
 				 </div>
             
             
@@ -458,4 +429,5 @@
         </div>
     </div>
 </body>
+
 </html>
