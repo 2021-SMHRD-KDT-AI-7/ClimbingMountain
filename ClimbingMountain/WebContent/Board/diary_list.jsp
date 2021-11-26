@@ -141,6 +141,21 @@
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/layer_popup.js"></script>
 </head>
+
+<%
+	String member_id = null;
+	if (session.getAttribute("member_id") != null) {
+		member_id = (String) session.getAttribute("member_id");
+	}
+	MemberDTO mdto = (MemberDTO) session.getAttribute("info");
+	MemberDAO dao = new MemberDAO();
+
+	DiaryDAO DiaryDAO = new DiaryDAO();
+	ArrayList<DiaryDTO> d_list = new ArrayList<>();
+	if (mdto != null) {
+		d_list = DiaryDAO.viewBoard(mdto.getMember_id());
+	}
+	%>
 <body>
 	<div class="cafe-body-skin">
      <!-- accessibility -->
@@ -344,20 +359,8 @@
 
   </aside>
 
-	<%
-	String member_id = null;
-	if (session.getAttribute("member_id") != null) {
-		member_id = (String) session.getAttribute("member_id");
-	}
-	MemberDTO mdto = (MemberDTO) session.getAttribute("info");
-	MemberDAO dao = new MemberDAO();
+	
 
-	DiaryDAO DiaryDAO = new DiaryDAO();
-	ArrayList<DiaryDTO> d_list = new ArrayList<>();
-	if (mdto != null) {
-		d_list = DiaryDAO.viewBoard(mdto.getMember_id());
-	}
-%>
     <div class="board_wrap">
         <div class="board_title">
             <strong>내 다이어리 글 목록</strong>
@@ -369,7 +372,7 @@
                     <div class="title">제목</div>
                     <div class="date">작성일</div>
                 </div>
-               <% for (int i = 1; i < d_list.size(); i++) {%>
+               <% for (int i = 0; i < d_list.size(); i++) {%>
                 <div>
                     <div class="num"><%=d_list.size() -i%></div>
                     <div class="title"><a href="diary_view.jsp?diary_seq=<%=d_list.get(i).getDiary_seq()%>"><%=d_list.get(i).getDiary_subject()%></a></div>
@@ -390,7 +393,7 @@
                 <a href="#" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
-                <a href="write.html" class="on">등록</a>
+                <a href="diary_write.jsp" class="on">글 쓰기</a>
                 <!--<a href="#">수정</a>-->
             </div>
         </div>

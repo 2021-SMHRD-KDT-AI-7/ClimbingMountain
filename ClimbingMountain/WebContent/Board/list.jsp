@@ -1,3 +1,4 @@
+
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.communityDAO"%>
