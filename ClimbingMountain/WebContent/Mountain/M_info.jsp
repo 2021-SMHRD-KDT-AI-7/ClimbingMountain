@@ -1,7 +1,59 @@
+<%@page import="Model.Course_3_img_DTO"%>
+<%@page import="Model.Course_3_img_DAO"%>
+<%@page import="Model.Course_2_DTO"%>
+<%@page import="Model.Course_1_DTO"%>
+<%@page import="Model.Course_2_DAO"%>
+<%@page import="Model.Course_1_DAO"%>
+<%@page import="Model.Mountain100_2_DTO"%>
+<%@page import="Model.Mountain100_2_DAO"%>
+<%@page import="Model.Mountain100_1_DAO"%>
+<%@page import="Model.Mountain100_1_DTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+<% 	MemberDTO info = (MemberDTO)session.getAttribute("info"); 
+
+	int mountain_seq = 0;
+	if( request.getParameter("mountain_seq")!=null ){
+		mountain_seq = Integer.parseInt(request.getParameter("mountain_seq"));
+	}else{
+		mountain_seq = 35;
+	}
+
+
+
+	Mountain100_1_DAO mountain100_1_dao = new Mountain100_1_DAO();
+	Mountain100_2_DAO mountain100_2_dao = new Mountain100_2_DAO();
+	
+	
+	
+	Course_1_DAO course_1_dao = new Course_1_DAO();
+	Course_2_DAO course_2_dao = new Course_2_DAO();
+	
+	Course_3_img_DAO course_3_img_dao = new Course_3_img_DAO();
+	
+	
+	
+	
+	Mountain100_1_DTO mountain100_1_dto = mountain100_1_dao.selectOneMountaion100(mountain_seq);
+	Mountain100_2_DTO mountain100_2_dto = mountain100_2_dao.selectOneMountaion100(mountain_seq);
+	
+	ArrayList<Mountain100_1_DTO> mountain13_list = mountain100_1_dao.selectuseMountain100_1();
+	
+	
+	
+	ArrayList<Course_1_DTO> course_1_list = course_1_dao.selectallCourse(mountain_seq);
+	ArrayList<Course_2_DTO> course_2_list = course_2_dao.selectallCourse(mountain_seq);
+			
+	
+%>
 
 <head>
     <meta charset="utf-8">
@@ -206,6 +258,17 @@
             font-size: 11px;
             margin-top: 0;
         }
+        /* 밑에 두개 승옥이가 함 ㅋ */
+        .course_exp_img{
+        	height: 300px;
+        	width : 800px;
+        }
+        
+        .course_3_img{
+        	height:200px;
+        	width:200px;
+        
+        }
     </style>
 </head>
 
@@ -224,10 +287,15 @@
         <div id="headerInnerWrap">
             <!-- ****************** 헤더상단 ********************** -->
             <div id="headerInner" class="clearfix">
-                <h1 class="logo"><a href="D_Home.jsp" title="메인"><img src="./img/logo.png" alt="산 타 클로스_로고"
+                <h1 class="logo"><a href="../Main/D_Home.jsp" title="메인"><img src="./img/logo.png" alt="산 타 클로스_로고"
                             class="pc-logo" width="160px" height="90px" /></a></h1>
                 <div class="header-util-box">
-                    <a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+                    <% if(info==null){ %>
+								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
+							<%}else{%>
+								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
+							<% } %>	
                 </div>
             </div>
 
@@ -238,13 +306,13 @@
                 <div id="gnbBg"></div>
                 <ul class="clearfix area">
                     <li class="gnb2">
-                        <a href="#산종합정보">산정보</a>
+                        <a href="M_info.jsp">산정보</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list">
                                     <ul class="clearfix">
                                         <li>
-                                            <a href="#산종합정보">
+                                            <a href="M_info.jsp">
                                                 <span>종합정보</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
@@ -261,22 +329,30 @@
                         </div>
                     </li>
                     <li class="gnb1">
-                        <a href="#모두의 게시판">게시판</a>
+                        <a href="../Board/list.jsp">게시판</a>
                         <div class="gnb-2dep">
                             <article class="gnb-2dep-inner area clearfix">
                                 <div class="gnb-2dep-menu-list list-3">
                                     <ul class="clearfix">
                                         <li>
-                                            <a href="#모두의 게시판">
+                                            <a href="../Board/list.jsp">
                                                 <span>모두의 게시판</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#로그인시_다이어리/로그인 안했으면 로그인페이지로">
+                                            <% if(info==null){ %>
+												<a href="../Login/Login.jsp">
                                                 <span>다이어리</span>
                                                 <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
                                             </a>
+											<%}else{%>
+												<a href="../Board/diary_list.jsp">
+                                                <span>다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<% } %>	
+											</li>	
                                     </ul>
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
@@ -385,7 +461,7 @@
         <aside id="headerSubMenu">
             <div class="side-menu-inner">
                 <div class="cm-top-menu clearfix">
-                    <a href="/" class="location-to-home-btn" title="메인으로"><i class="xi-home-o"></i></a>
+                    <a href="../Main/D_Home.jsp" class="location-to-home-btn" title="메인으로"><i class="xi-home-o"></i></a>
 
 
 
@@ -398,8 +474,19 @@
                             <em class="arrow"><i class="xi-caret-down-min"></i></em>
                         </a>
 
+
+
                         <ul class="location-menu-con">
-                            <li><a href="#백암산">백암산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
+                        	
+                        	<% for(int i =0;i<mountain13_list.size();i++){%>
+                        	
+                        	<li><a href="M_info.jsp?mountain_seq=<%=mountain13_list.get(i).getMountain_seq()%>"> <%=mountain13_list.get(i).getMountain_name()%> <em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
+                        	<%} %>
+                            
+              				
+              				
+              				
+              				<!--  <li><a href="#백암산">백암산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#방장산">방장산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#추월산">추월산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#강천산">강천산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
@@ -411,7 +498,7 @@
                             <li><a href="#월출산">월출산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#두륜산">두륜산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
                             <li><a href="#천관산">천관산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
-                            <li><a href="#팔영산">팔영산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li>
+                            <li><a href="#팔영산">팔영산<em class="gnb-icon"><i class="xi-angle-right-min"></i></em></a></li> -->          
                         </ul>
                     </div>
                 </div>
@@ -448,9 +535,28 @@
                                         <div class="Mountain-info-pic">
                                             <img src="/img/BA_Mountain.jpg" alt="">
                                         </div>
-                                        <div class="Mountain-info-text">
-                                            <h1>산 이름</h1>
-                                            <p>산 정보</p>
+                                        <div class="Mountain-info-text">  
+                                            <h1><%= mountain100_1_dto.getMountain_name()%></h1>
+                                            <p>산 위치 <%=mountain100_1_dto.getMountain_location()%></p>
+                                            <p>산 높이 <%=mountain100_1_dto.getMountain_height()%></p>
+                                            <p>추천계절 <%=mountain100_1_dto.getMountain_season()%></p>
+                                            <p>등산시간 <%=mountain100_1_dto.getMountain_time()%></p>
+                                            <p>등산 난이도 <%=mountain100_1_dto.getDifficulty()%></p>
+                                             
+                                             
+                                             <br>
+                                             <p>특징</p>
+                                             <br>
+                                             <p><%=mountain100_2_dto.getReason()%></p>
+                                             <br>
+                                             <p>개관</p>
+                                             <br>
+                                             <p><%=mountain100_2_dto.getServey()%></p>
+                                             <br>
+                                             <p>정보</p>
+                                             <br>
+                                             <p><%=mountain100_2_dto.getInformation()%></p>
+                                               
                                         </div>
                                     </article>
                                 </div>
@@ -460,6 +566,31 @@
                                     <article class="history-list-box">
                                         <div class="Mountain-route">
                                             <h1>등산로 정보</h1>
+                                            
+                                            <% for(int i=0;i<course_1_list.size();i++) {%>
+                                            <p><%= course_1_list.get(i).getCourse_name()%></p>
+                                            <hr>
+                                            <img class = 'course_exp_img' src='<%= course_1_list.get(i).getCourse_exp_img()%>'>
+                                            <br>                                          
+                                            <br>
+                                            <p><%= course_1_list.get(i).getCourse_exp()%></p>
+                                            <br>
+                                            <hr>
+                                            <% int course_seq =course_1_list.get(i).getCourse_seq(); 
+                                            ArrayList<Course_3_img_DTO> course_3_img_list = course_3_img_dao.selectCourse(course_seq);
+                                            for(int j=0;j<course_3_img_list.size();j++){    %>
+                                            <p><%= course_3_img_list.get(j).getCourse_name() %></p>
+                                            <br>
+                                            <img class='course_3_img' src='<%=course_3_img_list.get(j).getCourse_img()%>'>
+                                            <br>
+                                            	
+                                            
+                                            <%}%>
+                                            	
+                                            
+                                            <hr>
+                                            <%} %>         
+                                           
                                         </div>
 
                                     </article>
@@ -471,6 +602,37 @@
                                         <div class="Traffic-info">
                                             <h1>교통정보</h1>
                                             <img src="" alt="">
+                                            <% for(int i=0;i<course_2_list.size();i++) {%>
+                                            	<h1><%= course_2_list.get(i).getCourse_name() %></h1>
+                                            	<br>
+                                            	<% String[] car = course_2_list.get(i).getCar().split("◈"); %>
+                                            	<p>차</p>
+                                            	<br>
+												<% for(int c = 0; c<car.length;c++){ 	%>
+													<p><%= car[c]  %></p>
+												<%}%>
+												<br>
+			
+												<% String[] bus = course_2_list.get(i).getBus().split("◈"); %>
+												<p>버스</p>
+												<br>
+												<% for(int c = 0; c<bus.length;c++){ 	%>
+													<p><%= car[c]  %></p>																	
+												<%}%>
+												<br>
+												<% String[] train = course_2_list.get(i).getTrain().split("◈"); %>
+												<p>기차</p>
+												<br>
+												<% for(int c = 0; c<train.length;c++){ 	%>
+													<p><%= car[c]  %></p>
+													<%}%>
+                                            	<br>
+                                           	 	<%} %>
+                                            	
+                                            	<!-- 코스별 교통정보 출력인데  그냥 출력하면 개행 할 때 검색할 용도로 쓴 특수 기호 있어서 split로 특수기호 기준으로
+                                            	개행 주고 배열에 들어가서 배열길이만큼 반복문 돌려서 출력 -->
+           
+                           
                                         </div>
                                     </article>
                                 </div>
@@ -762,7 +924,7 @@
         <article id="footerTop">
             <!-- 푸터 하단 왼쪽 -->
             <article class="footer-left-con">
-                <a href="D_Home.html">
+                <a href="../Main/D_Home.jsp">
                     <div class="footer-logo"><img src="./img/logo_font.png" width="320px" height="160px"></div>
                 </a>
             </article>

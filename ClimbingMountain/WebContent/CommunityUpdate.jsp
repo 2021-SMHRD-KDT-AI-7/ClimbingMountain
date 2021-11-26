@@ -21,15 +21,15 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('유효하지 않는 글입니다')");
-		script.println("location.href='communityView.jsp'");
+		script.println("location.href='./list.jsp'");
 		script.println("</script>");
 	}
 	communityDTO dto = new communityDAO().viewOneBoard(community_seq);
 	if(!member_id.equals(dto.getMember_id())){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('권한이 없습니다')");
-		script.println("location.href='communityView.jsp'");
+		script.println("alert('권한이 없습니다2')");
+		script.println("location.href='./list.jsp'");
 		script.println("</script>");
 	}
 	

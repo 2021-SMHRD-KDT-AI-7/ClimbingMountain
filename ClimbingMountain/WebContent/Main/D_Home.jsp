@@ -215,11 +215,19 @@
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a>
 													</li>
-													<li>
-														<a href="../Board/diary_list.jsp">
-															<span style="font-weight: bold;">다이어리</span>
-															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
-														</a>
+													 <li>
+                                            <% if(info==null){ %>
+												<a href="../Login/Login.jsp">
+                                                <span style="font-weight: bold;">다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<%}else{%>
+												<a href="../Board/list.jsp">
+                                                <span style="font-weight: bold;">다이어리</span>
+                                                <em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
+                                            </a>
+											<% } %>	
+											</li>	
 												</ul>
 											</div>
 											<div class="gnb-2dep-menu-txt">
@@ -238,103 +246,9 @@
 						<!-- <span class="line line1"></span><span class="line line2"></span><span class="line line3"></span> -->
 						<!-- </button> -->
 					</div>
-					<!-- GNB Mobile -->
-					<button class="nav-open-btn" title="네비게이션 열기">
-						<span class="line line1"></span><span class="line line2"></span><span class="line line3"></span>
-					</button>
-					<div class="gnb-overlay-bg-m"></div>
-					<nav id="gnbM" class="gnb-style-basic">
-						<h2 class="blind">주메뉴</h2>
-						<div class="gnb-navigation-wrapper">
-							<div class="gnb-navigation-inner">
-								<ul id="navigation">
-									<li>
-										<a href="javascript:;">산</a>
-										<ul class="gnb-2dep">
-											<li>
-												<a href="/ir/intro">
-													<span>종합정보</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#지역별">
-															<span>지역별</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#난이도별">
-															<span>난이도별</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<span>추가하고싶은내용</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="">게시판</a>
-										<ul class="gnb-2dep">
-											<li>
-												<a href="#모두의게시판으로">
-													<span>모두의게시판</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#게시글작성">
-															<span>게시글작성</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#내가 쓴 게시글목록">
-															<span>내가 쓴 게시글</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-											<li>
-												<a href="#다이어리로">
-													<span>다이어리</span>
-													<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-												</a>
-												<ul class="gnb-3dep">
-													<li>
-														<a href="#다이어리작성">
-															<span>다이어리쓰기</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-													<li>
-														<a href="#내가쓴다이어리">
-															<span>나의 다이어리</span>
-															<em class="gnb-icon"><i class="xi-angle-right"></i></em>
-														</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-
-								</ul>
-								<div class="lang-select-list">
-									<a href="D_Home.html">홈</a>
-									<a href="../Login/Login.jsp">로그인</a>
-								</div>
-							</div>
-						</div>
-					</nav>
-
 				</header>
+				
+				
 				<div class="main-visual-con">
 					<div class="main-visual-item" data-title="무등산" data-en-title="M.M1">
 						<div class="main-visual-pc-img"
@@ -409,7 +323,7 @@
 					<article class="main-news-list-con">
 						<ul class="clearfix">
 							<li class="no-thumb">
-								<a href="#백암산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=42">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Back_am_Mountain.jpg) no-repeat 50% 50%">
@@ -425,7 +339,7 @@
 							</li>
 
 							<li class="no-thumb">
-								<a href="#방장산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=39">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Bang_Jang_Mountain.jpg) no-repeat 50% 50%">
@@ -441,7 +355,7 @@
 							</li>
 
 							<li class="no-thumb">
-								<a href="#추월산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=84">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Chu_wol_Mountain.jpg) no-repeat 50% 50%">
@@ -456,7 +370,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#강천산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=6">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Gang_chun_Mounatin.jpg) no-repeat 50% 50%">
@@ -472,7 +386,7 @@
 							</li>
 
 							<li class="no-thumb">
-								<a href="#무등산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=35">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Mudeung_Mounatin.jpg) no-repeat 50% 50%">
@@ -488,7 +402,7 @@
 							</li>
 
 							<li class="no-thumb">
-								<a href="#조계산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=74">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Jo_gye_Mountain.jpg) no-repeat 50% 50%">
@@ -504,7 +418,7 @@
 							</li>
 
 							<li class="no-thumb">
-								<a href="#지리산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=77">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Ji_ri_Mountain.jpg) no-repeat 50% 50%">
@@ -519,7 +433,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#백운산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=43">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Back_un_Mounatin.jpg) no-repeat 50% 50%">
@@ -534,7 +448,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#깃대봉정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=16">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Git_dae_bong.jpg) no-repeat 50% 50%">
@@ -549,7 +463,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#월출산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=67">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Wol_chul_Mountain.jpg) no-repeat 50% 50%">
@@ -564,7 +478,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#두륜산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=28">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Du_ryun_Mountain.jpg) no-repeat 50% 50%">
@@ -579,7 +493,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#천관산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=79">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Cheon_gwan_Mountain.jpg) no-repeat 50% 50%">
@@ -594,7 +508,7 @@
 								</a>
 							</li>
 							<li class="no-thumb">
-								<a href="#팔영산정보">
+								<a href="../Mountain/M_info.jsp?mountain_seq=92">  
 									<div class="main-news-inner">
 										<div class="main-news-bg"
 											style="background:url(./images/Pal_young_Mountain.jpg) no-repeat 50% 50%">
@@ -629,8 +543,8 @@
 			</section>
 			<!-- 까지 2페이지 -->
 
-			<!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
-			<!-- <section id="mainInformationCon" class="section">
+			<!-- <!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
+			<section id="mainInformationCon" class="section">
 
 				<article class="main-info-wrapper">
 					[start] main information
@@ -646,8 +560,8 @@
 
 					
 				</article>
-			</section> -->
-			<!-- 까지 날씨정보 섹션 3페이지 끝 -->
+			</section>
+			까지 날씨정보 섹션 3페이지 끝 -->
 
 
 			<section id="mainFooterCon" class="section fp-auto-height">

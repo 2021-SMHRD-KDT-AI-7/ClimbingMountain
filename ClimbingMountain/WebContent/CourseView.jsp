@@ -16,8 +16,8 @@
 	Course_1_DAO one_dao = new Course_1_DAO();
 	Course_2_DAO two_dao = new Course_2_DAO();
 	
-	ArrayList<Course_1_DTO> one_list = one_dao.selectCourse(seq);
-	ArrayList<Course_2_DTO> two_list = two_dao.selectCourse(seq);
+	ArrayList<Course_1_DTO> one_list = one_dao.selectallCourse(seq);
+	ArrayList<Course_2_DTO> two_list = two_dao.selectallCourse(seq);
 %>
 <body>
 	<div>

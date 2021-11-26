@@ -50,6 +50,8 @@ public class FrontController extends HttpServlet {
 			sc = new JoinServiceCon();
 		}else if(servlet_Name.equals("Main/LogoutServiceCon.do")) {
 			sc = new LogoutServiceCon();
+		}else if(servlet_Name.equals("Mountain/LogoutServiceCon.do")) {
+			sc = new LogoutServiceCon();
 		}
 		
 		String path = sc.execute(request, response);

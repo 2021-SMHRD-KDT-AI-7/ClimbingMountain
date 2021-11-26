@@ -1,10 +1,11 @@
+
 @charset "utf-8";
 
-/* ******************  서브공통 ********************** */
-/* -------- 공통 스크롤바  -------- */
+/* ******************  �꽌釉뚭났�넻 ********************** */
+/* -------- 怨듯넻 �뒪�겕濡ㅻ컮  -------- */
 .custom-scrollbar-cover{display:none;}
 
-/* -------- 공통 Fixed Move Tab -------- */
+/* -------- 怨듯넻 Fixed Move Tab -------- */
 .fixed-tab-container{position:relative}
 /* tab */
 .fixed-move-tab-list-wrapper,
@@ -16,7 +17,7 @@
 .fixed-change-tab-list {height:60px; position:relative; margin:0px auto;  transition: width 0.2s;}
 /* fixed */
 .fixed-move-tab-list.fixed,
-.fixed-change-tab-list.fixed {position:fixed; top:49px; left:0; width:100%; z-index:99; background-color: #fff; transition: width 0.2s;/*  border-bottom:1px solid #ddd; */} /* fixed top 변경*/
+.fixed-change-tab-list.fixed {position:fixed; top:49px; left:0; width:100%; z-index:99; background-color: #fff; transition: width 0.2s;/*  border-bottom:1px solid #ddd; */} /* fixed top 蹂�寃�*/
 .fixed-move-tab-list.fixed ul,
 .fixed-change-tab-list.fixed ul {max-width:1200px; margin:0px auto; }
 .fixed-move-tab-list.fixed ul li,
@@ -24,16 +25,16 @@
 .fixed-move-tab-list.fixed .sub-tab02-list li.selected ,
 .fixed-change-tab-list.fixed .sub-tab02-list li.selected {border-top:1px solid #222;}
 
-/* content(임시) */
+/* content(�엫�떆) */
 .fixed-tab-content{padding:30px 0; border:1px solid #ddd; margin-top:50px; min-height:300px; }
 
-/* -------- 공통 :: 이미지 박스 -------- */
+/* -------- 怨듯넻 :: �씠誘몄� 諛뺤뒪 -------- */
 .img-box{position:relative;margin-top:20px;text-align:center}
 .img-box img{vertical-align:top;max-width:100%}
 @media screen and (max-width: 800px) {
 	.img-box:after{position:absolute;background:rgba(0,0,0,0.6) url('../images/img_arrow.png')no-repeat center;width:13.3vw;height:13.3vw;right:0;bottom:0;background-size:6.2vw;cursor:pointer;content:'';}
 }
-/* -------- 공통 :: 버튼 -------- */
+/* -------- 怨듯넻 :: 踰꾪듉 -------- */
 .cm-button-style04,
 .cm-button-style04 strong,
 .cm-button-style04 i{-webkit-transition:all 0.3s;-moz-transition:all 0.3s;-o-transition:all 0.3s;-ms-transition:all 0.3s;transition:all 0.3s}
@@ -50,22 +51,22 @@
 .cm-button-style04:hover i{color:#333}
 .cm-button-style04:hover:before{left:-10%; opacity:1.0;filter:Alpha(opacity=100);}
 
-/* 버튼02 */
+/* 踰꾪듉02 */
 .business-btn-box{text-align:center; margin-top:85px;}
 .business-btn-box a{display:inline-block; width: 350px; height:70px; margin:0 5px; background-color:#ed1d25;}
 .business-btn-box a span {display:table; width: 100%; height:100%;}
 .business-btn-box a em {display:table-cell; vertical-align:middle; color: #fff; font-size: 16px; letter-spacing:-0.25px; }
  
-/* -------- 공통 테이블 -------- */
+/* -------- 怨듯넻 �뀒�씠釉� -------- */
 .sub-tbl {width:100%; border-top: 1px solid #222; table-layout:fixed; }
 .sub-tbl th {font-size: 16px; letter-spacing:-0.5px; color: #222; border-bottom:1px solid #ddd; }
 .sub-tbl td {font-size: 16px; line-height:26px; letter-spacing:-0.5px; color: #222;  border-bottom: 1px solid #ddd;}
 
-/* 공통 테이블 :: sub-tbl01 */
+/* 怨듯넻 �뀒�씠釉� :: sub-tbl01 */
 .sub-tbl01 tbody th {background-color: #f5f5f5; padding: 0 20px; text-align:left;}
 .sub-tbl01 tbody td { padding:14px 20px;}
 
-/* 공통 테이블 :: sub-tbl02 */
+/* 怨듯넻 �뀒�씠釉� :: sub-tbl02 */
 .sub-tbl02 thead th {padding: 20px 0; background-color: #f7f7f7; font-weight: 400; color: #666; border-left: 1px solid #ddd; }
 .sub-tbl02 tbody td {border-left:1px solid #ddd; padding:13px 5px 13px 10px;  }
 .sub-tbl02 .no-line-left {border-left:0;}
@@ -73,7 +74,7 @@
 .sub-tbl02 tbody tr td:first-child{border-left:0;}
 .sub-tbl02 tbody tr td.bor{border-left:1px solid #ddd;}
 
-/* -------- 공통 Box Tab :: sub-tab01-list -------- */
+/* -------- 怨듯넻 Box Tab :: sub-tab01-list -------- */
 .business-page .gnb-icon {display:none;}
 .sub-tab01 {margin-bottom:100px;}
 .sub-tab01-list {border:1px solid #e5e5e5; width:50%; margin:0px auto;  }
@@ -95,7 +96,7 @@
 .sub-tab01-list.menu07 {width: 100%;}
 .sub-tab01-list.menu07 li {width:14.28%;}
 
-/* -------- 공통 Box Tab :: sub-tab02-list -------- */
+/* -------- 怨듯넻 Box Tab :: sub-tab02-list -------- */
 .sub-tab02-list li {float:left; width:50%; text-align:center; border:1px solid  #e5e5e5; border-left:0; background-color:#fff; -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
  box-sizing: border-box; }
@@ -108,7 +109,7 @@
 .sub-tab02-list.menu04 li {width: 25%;}
 .sub-tab02-list.menu05 li {width: 20%;}
 
-/* -------- 공통 :: 작은 타이틀 -------- */
+/* -------- 怨듯넻 :: �옉�� ���씠�� -------- */
 .small-tit {text-align:center; font-size: 20px; letter-spacing:-0.5px; color: #222;  margin-bottom:24px; } 
 .small-tit span {position:relative; padding-bottom: 8px;/*  display:inline-block; */}
 .small-tit span:before {content:"";  width: 100%; height: 2px; background-color: #222;  position:absolute; bottom:0; left:0; display:block;}
@@ -117,10 +118,10 @@
 
 
 /* ******************  Business  ********************** */
-/* -------- Business :: 공통 -------- */
+/* -------- Business :: 怨듯넻 -------- */
 #visual.sub-visual-business .visual-img-con{background-position:30% 50% !important}
 #loanContent{padding-bottom:100px}
-/* 컨텐츠 박스 */
+/* 而⑦뀗痢� 諛뺤뒪 */
 .content-box{position:relative;padding-bottom:100px}
 .content-box + .content-box{padding-top:120px}
 .content-box:after{position:absolute;bottom:0;left:-100%;right:-100%;border-top:1px solid #d6d6d6;content:''}
@@ -130,7 +131,7 @@
 .loan-top-visual p{letter-spacing:-1px;}
 .loan-top-visual-txt1{margin-bottom:30px;font-size:30px;color:#44c0f4;font-weight:700;line-height:1.4}
 .loan-top-visual-txt2{width:55%;font-size:22px;color:#fff;font-weight:200;line-height:1.6;text-shadow:2px 1px black}
-/* 원형 리스트 */
+/* �썝�삎 由ъ뒪�듃 */
 .circle-list-con{margin:0 -0.5%;}
 .circle-list-con li{position:relative;float:left;width:24%;padding-bottom:24%;margin:0 0.5%;font-size:26px;color:#222;text-align:center}
 .circle-list-con li > div{position:absolute;top:0;left:0;bottom:0;display:table;width:100%;height:100%;border-radius:50%;background-color:#f3f4f4;line-height:1.5}
@@ -139,9 +140,9 @@
 /* arrow */
 .ico-arrow-box{margin:60px 0;padding-bottom:5%;background:url(../images/ico_arrow.jpg) no-repeat 50% 50%;background-size:contain}
 .ico-arrow-box.type{margin:40px 0;padding:0;background:url(../images/arrow_finance.jpg) no-repeat 50% 50%;height:109px}
-/* 서브 타이틀 텍스트 */
+/* �꽌釉� ���씠�� �뀓�뒪�듃 */
 .loan-sub-tit{font-size:26px;font-weight:900;color:#fff;background-color:#0056a4;line-height:100px;text-align:center}
-/* 구성도 */
+/* 援ъ꽦�룄 */
 .config-list{column-width:249px;column-gap: 15px;margin-top:20px}
 .config-list li{margin-bottom:20px;text-align:center}
 .config-list dl{display:inline-block;width:100%}
@@ -149,7 +150,7 @@
 .config-list dt{font-weight:700;background-color:#e7e7e7}
 .config-list dd{margin-top:-1px}
 
-/* -------- Business :: 플랫폼 사업 -------- */
+/* -------- Business :: �뵆�옯�뤌 �궗�뾽 -------- */
 .platform-con{margin:-0.4%}
 .platform-con:after{display:block;clear:both;content:''}
 .platform-con > li{overflow:hidden;width:49%;margin:0.4%}
@@ -179,7 +180,7 @@
 .cloud-logo-con li:first-child:after{display:none}
 .cloud-logo-con li img{max-width:100%}
 
-/* -------- Business :: 개발실적 -------- */
+/* -------- Business :: 媛쒕컻�떎�쟻 -------- */
 #performanceContent{padding-bottom:160px}
 .performance-list-con{border-top:2px solid #0055a5;border-bottom:2px solid #0055a5;padding:30px 0}
 .performance-list-con + .performance-list-con,.hide-box{margin-top:-2px}
@@ -203,7 +204,7 @@
 }
 .view-btn-box a:hover{background-color:#0056a4}
 
-/* -------- Business :: 여신사후관리시스템 -------- */
+/* -------- Business :: �뿬�떊�궗�썑愿�由ъ떆�뒪�뀥 -------- */
 .loan-txt-box ul{margin:0 -0.8%}
 .loan-txt-box ul li{float:left;width:31.7%;margin:0 0.8%;color:#222}
 .loan-txt-box ul li span{display:block;border:1px solid #9d9d9d;text-align:center;line-height:68px;white-space:nowrap}
@@ -225,7 +226,7 @@
 .biz-list-con dd p{position:relative;font-size:22px;line-height:1.8;color:#444;padding-left:17px}
 .biz-list-con dd p:before{display:block;width:3px;height:3px;background-color:#222;position:absolute; left:0; top: 17px; -webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%;content:''}
 
-/* -------- Business :: 연체종합관리시스템 -------- */
+/* -------- Business :: �뿰泥댁쥌�빀愿�由ъ떆�뒪�뀥 -------- */
 .circle-list-con.type{margin:-2.5% -3% 0}
 .circle-list-con.type li{width:27.33%;padding-bottom:27.33%;margin:2.5% 3% 0}
 
@@ -241,13 +242,13 @@
 .loan-bottom-txt{margin:0 -0.5%}
 .loan-bottom-txt li{float:left;width:49%;margin:0 0.5%;font-size:30px;font-weight:700;color:#fff;line-height:100px;text-align:center;background-color:#878787}
 
-/* -------- Business :: 조기경보시스템 -------- */
+/* -------- Business :: 議곌린寃쎈낫�떆�뒪�뀥 -------- */
 .loan-top-visual.type{padding:0}
 .loan-top-visual.type .loan-top-visual-txt1 span{color:#222}
 .loan-top-visual.type .loan-top-visual-txt2{width:100%;color:#222;text-shadow:none}
 .loan-top-visual.type .loan-top-visual-txt2 strong{font-weight:900}
 .loan-top-visual.type img{width:100%;margin-top:30px}
-/* 전체업무 구성도 */
+/* �쟾泥댁뾽臾� 援ъ꽦�룄 */
 .loan-tbl-con{border-top:2px solid #222;border-bottom:2px solid #222}
 .loan-tbl-con table{width:100%;table-layout:fixed}
 .loan-tbl-con tr:nth-child(odd){background-color:#f2f2f2}
@@ -257,13 +258,13 @@
 .loan-tbl-con th span{margin-right:40px;font-size:36px;color:#c8c7c7;font-style:italic}
 .loan-tbl-con th em{display:inline-block;line-height:42px;vertical-align:top;font-weight:900}
 .loan-tbl-con td{padding:15px 15px 15px 8%;font-size:20px;color:#666;line-height:1.6;border-left:1px solid #c9c9c9}
-/* 기대효과 */
+/* 湲곕��슚怨� */
 .card-list-con2{display:table;border-spacing:20px 0;margin:0 -20px}
 .card-list-con2 > li{position:relative;display:table-cell;width:25%;height:298px;padding:0 26px;font-size:22px;line-height:1.5;text-align:center;border:1px solid #a5a5a5;vertical-align:middle;color:#222}
 .card-list-con2 > li em{color:#0056a4}
 .card-list-con2 > li:after{position:absolute;top:-1px;left:50%;width:33%;margin-left:-16.5%;border-top:2px solid #0056a4;content:''}
 
-/* -------- Business :: 손부실률정보시스템 -------- */
+/* -------- Business :: �넀遺��떎瑜좎젙蹂댁떆�뒪�뀥 -------- */
 .loan-txt-box .txt3{background-color:#0056a4;padding:20px;font-size:22px;line-height:1.4}
 .loan-txt-box .txt4{background-color:#b6b6b6;padding:20px;font-size:22px;line-height:1.4}
 .loan-txt-box .txt5{background-color:#787e8e;padding:20px;font-size:22px;line-height:1.4}
@@ -273,7 +274,7 @@
 .sub-txt{margin:40px 0;color:#222;font-size:22px;line-height:1.6}
 .sub-txt em{font-weight:900}
 .sub-txt span{color:#0099da;font-weight:700}
-/* 주요기능 및 특징 */
+/* 二쇱슂湲곕뒫 諛� �듅吏� */
 .system-list-con{margin:0 -0.7%;}
 .system-list-con > li{float:left;width:23.6%;margin:0 0.7%;font-weight:700;text-align:center}
 .system-list-con dl dt,.system-list-con dl dd{display:table;width:100%;line-height:1.4;}
@@ -283,7 +284,7 @@
 .system-list-con dl dd + dd{margin-top:-1px}
 .system-list-con.type{margin:0 -0.7%}
 .system-list-con.type > li{width:18.6%;margin:0 0.7%}
-/* 기대효과 및 활용방안 */
+/* 湲곕��슚怨� 諛� �솢�슜諛⑹븞 */
 .info-tbl-con{margin-top:100px;border-top:2px solid #222;border-bottom:2px solid #222}
 .info-tbl-con table{width:100%}
 .info-tbl-con table th,.info-tbl-con table td{border-top:1px solid #c9c9c9}
@@ -298,9 +299,9 @@
 .info-tbl-con .tbl-txt-list > li > ul li{margin-top:5px;padding-left:12px;line-height:1.6}
 .info-tbl-con .tbl-txt-list > li > ul li:after{position:absolute;top:13px;left:0;width:4px;height:4px;border-radius:50%;background-color:#666;content:''}
 
-/* -------- Business :: 재정기금관리시스템 -------- */
+/* -------- Business :: �옱�젙湲곌툑愿�由ъ떆�뒪�뀥 -------- */
 .circle-list-con.type li strong{display:block;margin-top:12px;font-size:22px;font-weight:400}
-/* 전체업무 구성도 */
+/* �쟾泥댁뾽臾� 援ъ꽦�룄 */
 .loan5-sub-tit{font-size:24px;font-weight:700;background-color:#0056a4;text-align:center}
 .loan5-circle-con{padding:25px 30px;background-color:#f2f2f2}
 .loan5-circle-con ul{margin:0 -0.6%;}
@@ -323,10 +324,10 @@
 .loan5-list-con dl dd + dd{margin-top:-1px}
 .loan5-list-con dl dd ul{margin-top:15px;}
 .loan5-list-con dl dd ul li{color:#666;line-height:1.6}
-/* 기대효과 */
+/* 湲곕��슚怨� */
 .loan-tbl-con.type{margin-top:80px}
 .loan-tbl-con.type th{text-align:center}
-/* 구축사이트 */
+/* 援ъ텞�궗�씠�듃 */
 .loan5-tbl-con{text-align:center}
 .loan5-tbl-con table{width:100%}
 .loan5-tbl-con thead th{height:70px;font-size:22px;background-color:#222;color:#fff;border-left:1px solid #fff}
@@ -337,7 +338,7 @@
 .loan5-tbl-con tbody td{border-left:1px solid #c9c9c9}
 .loan5-tbl-con .bg th,.loan5-tbl-con .bg td{background:#f2f2f2}
 
-/* -------- Business :: 종합수익관리시스템 -------- */
+/* -------- Business :: 醫낇빀�닔�씡愿�由ъ떆�뒪�뀥 -------- */
 .result-content .loan-tbl-con.type th{text-align:left;padding-left:50px}
 .hr_arrow_icon{display:inline-block;margin:0 5px;width:6px;height:8px;background:url(../images/hr_arrow_icon.png) no-repeat}
 .result01 .loan5-list-con > li:nth-child(1) dl,.result01 .loan5-list-con > li:nth-child(2) dl,.result01 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
@@ -359,14 +360,14 @@
 .result-dl-con ul{}
 .result-dl-con ul li{float:left;width:calc(50% - 40px);position:relative;margin-bottom:12px;padding-left:20px;margin-right:20px;line-height:1.4;letter-spacing:-0.25px}
 .result-dl-con ul li:after{position:absolute;top:12px;left:0;width:6px;height:6px;border-radius:50%;background-color:#0055a5;content:''}
-/* -------- Business :: 신용리스크관리시스템 -------- */
+/* -------- Business :: �떊�슜由ъ뒪�겕愿�由ъ떆�뒪�뀥 -------- */
 .result02 .loan-top-visual-txt2{width:70%}
 .result-list-con{margin-bottom:50px;}
 .result-list-con ul{float:left;width:48.5%}
 .result-list-con ul + ul{float:right;width:48.5%}
 .result-list-con ul li{padding:15px 10px;margin-top:-1px;border:1px solid #878787;background-color:#f2f2f2;line-height:1.4;text-align:center;font-size:22px;color:#222}
 
-/* -------- Business :: 캐피탈 -------- */
+/* -------- Business :: 罹먰뵾�깉 -------- */
 .capital01 .loan-top-visual-txt2{width:64%}
 .capital01 .loan-txt-box{margin-top:80px}
 .capital01 .loan5-list-con dl{min-height:auto}
@@ -389,7 +390,7 @@
 .card-list-con-wrap .card-list-con2{margin:30px 0 0;width:100%}
 .card-list-con-wrap .card-list-con2 > li{height:280px;color:#666;font-size:20px;letter-spacing:-0.25px}
 .card-list-con-wrap .card-list-con2 > li strong{display:block;margin-bottom:40px;color:#222;font-weight:900;font-size:22px}
-/* 할부금융시스템 */
+/* �븷遺�湲덉쑖�떆�뒪�뀥 */
 .capital02 .loan-top-visual-txt2{font-weight:400}
 .capital02 .loan-top-visual-txt2 strong{color:#0099da;font-weight:700}
 .capital02 .loan5-tbl-con thead th{background-color:#787e8e}
@@ -403,7 +404,7 @@
 .ul-list-3col > li{display:table-cell;width:33.33%;padding:10px 0;background-color:#f2f2f2;vertical-align:middle;text-align:center}
 .ul-list-3col > li > div{display:inline-block;text-align:left}
 .ul-list-3col > li > div p{font-size:22px;font-weight:700;color:#222;line-height:1.8}
-/* 팩토링금융시스템 */
+/* �뙥�넗留곴툑�쑖�떆�뒪�뀥 */
 .capital03 .loan5-tbl-con thead th{background-color:#787e8e}
 .capital03 .loan5-tbl-con{border-bottom:2px solid #222}
 .capital03 .loan5-tbl-con tbody td{padding:30px;text-align:left;line-height:1.6;vertical-align:top}
@@ -429,13 +430,13 @@
 .capital-type .loan-bottom-txt.m4 li{width:24%;margin:0 0.5%}
 .capital-type .loan-bottom-txt.m3{margin-left:-0.5%;margin-right:-0.5%}
 .capital-type .loan-bottom-txt.m3 li{width:32.3%;margin:0 0.5%}
-/* 개인금융시스템 */
+/* 媛쒖씤湲덉쑖�떆�뒪�뀥 */
 .capital04 .loan5-tbl-con{border-bottom:2px solid #222}
 .capital04 .loan5-tbl-con td:nth-child(2),
 .capital04 .loan5-tbl-con td:nth-child(4){padding:30px;text-align:left;line-height:1.6;}
 .loan5-tbl-con.tbl2{border-top:2px solid #222}
 .loan5-tbl-con.tbl2 th{text-align:left;padding-left:35px}
-/* 기업금융시스템 */
+/* 湲곗뾽湲덉쑖�떆�뒪�뀥 */
 .capital05 .loan5-list-con{margin:0 -0.7%}
 .capital05 .loan5-list-con > li{width:23.6%;margin:30px 0.7% 0;}
 .capital05 .loan5-list-con > li:nth-child(1) dl,.capital05 .loan5-list-con > li:nth-child(2) dl,.capital05 .loan5-list-con > li:nth-child(3) dl{min-height:auto}
@@ -446,7 +447,7 @@
 .capital05 .loan5-tbl-con tbody td strong{display:block;margin:20px 0 5px;color:#222}
 .capital05 .loan5-tbl-con tbody td strong:first-child{margin-top:0}
 
-/* -------- Business :: 보험,증권(방카슈랑스) -------- */
+/* -------- Business :: 蹂댄뿕,利앷텒(諛⑹뭅�뒋�옉�뒪) -------- */
 .stock .circle-list-con{margin:50px 0 70px}
 .stock .loan5-list-con > li:nth-child(1) dl,.stock .loan5-list-con > li:nth-child(2) dl,.stock .loan5-list-con > li:nth-child(3) dl{min-height:auto}
 .stock-type .loan5-list-con dl{min-height:auto}
@@ -461,7 +462,7 @@
 .stock-type2{margin-top:40px}
 .stock-type2 .loan5-list-con dl dd{padding:10px;text-align:center}
 .stock-type2 .loan5-list-con > li{width:48%}
-/* -------- Business :: 카드 -------- */
+/* -------- Business :: 移대뱶 -------- */
 .card .loan5-list-con > li:nth-child(1) dl,.card .loan5-list-con > li:nth-child(2) dl,.card .loan5-list-con > li:nth-child(3) dl{min-height:auto}
 .sub-tab01-list li a{padding:20px 5px;line-height:1.5}
 .card-tab{display:table;width:100%}
@@ -536,7 +537,7 @@
 .ibkbox .loan5-list-con > li:nth-child(1) dl,.ibkbox .loan5-list-con > li:nth-child(2) dl,.ibkbox .loan5-list-con > li:nth-child(3) dl{min-height:202px}
 .ibkbox .loan5-list-con dl dd{padding:20px 10px;text-align:center;font-size:20px}
 
-/* -------- Business :: 금융기타 -------- */
+/* -------- Business :: 湲덉쑖湲고� -------- */
 .financial .loan5-list-con > li:nth-child(1) dl,.financial .loan5-list-con > li:nth-child(2) dl,.financial .loan5-list-con > li:nth-child(3) dl{min-height:auto}
 .financial .loan5-list-con.type2 p{background-color:#787e8e}
 .financial .loan5-list-con.type2 dl dt{background-color:#94a2af}
@@ -614,7 +615,7 @@
 .financial07 .loan5-tbl-con td:nth-child(2){padding:30px;text-align:left;line-height:1.6;}
 .financial07 .capital-type .loan-bottom-txt li{margin-bottom:1%}
 
-/* -------- Business :: 고객센터 -------- */
+/* -------- Business :: 怨좉컼�꽱�꽣 -------- */
 .brguide .loan5-tbl-con{border-bottom:2px solid #222}
 .brguide .loan5-tbl-con tbody th{height:65px;font-size:20px;font-weight:700;text-align:left}
 .brguide .loan5-tbl-con tbody th,.brguide .loan5-tbl-con tbody td{letter-spacing:-0.25px}
@@ -720,13 +721,13 @@
 
 
 /* ****************** Company  ********************** */
-/* -------- Compay :: 회사소개 -------- */
-/* ceo greeting :: 상단 */
+/* -------- Compay :: �쉶�궗�냼媛� -------- */
+/* ceo greeting :: �긽�떒 */
 .ceo-top-content{position:relative; padding-top:38px; margin-bottom:55px}
 .ceo-top-content .bg_logo{position:absolute;top:0;right:0;z-index:-1;width:293px;height:287px;background:url(../images/sub_company_logo.png) no-repeat}
 .ceo-top-content .ceo-top-txt{color:#222; font-size:40px; font-weight:400; letter-spacing:-0.75px; line-height:1.44; margin-bottom:85px}
 .ceo-top-content .ceo-top-txt strong{color:#0099da; font-weight:700;}
-/* ceo greeting :: 하단 */
+/* ceo greeting :: �븯�떒 */
 .ceo-bottom-content{position:relative; margin-bottom:65px;}
 .ceo-bottom-content .ceo-bottom-txt1{margin:40px 0;color:#222; font-size:20px; font-weight:400; letter-spacing:-0.75px; line-height:1.8}
 .ceo-bottom-content .ceo-bottom-txt1 b{font-weight:700}
@@ -738,7 +739,7 @@
 .ceo-bottom-content .ceo-txt-con .ceo-sign .ceo-name{margin-right:-18px}
 .ceo-bottom-content .ceo-txt-con .ceo-sign .ceo-name span{margin-left:10px;font-weight:700;letter-spacing:17px}
 
-/* -------- Compay :: 조직도 -------- */
+/* -------- Compay :: 議곗쭅�룄 -------- */
 .organization{letter-spacing:-0.5px;text-align:center}
 .org-container{position:relative}
 .org-container:after{display:block;clear:both;content:''}
@@ -769,11 +770,11 @@
 .organization .org-list .org-tit2{position:relative}
 .organization .org-list .org-tit2:before{position:absolute;left:50%;bottom:-45px;height:45px;width:1px;background-color:#aeaeae;content:''}
 .organization .org-list.type2 .org-tit2:before{left:49.7%}
-/* -------- Compay :: 비전 -------- */
-/* 비전 :: 공통 */
+/* -------- Compay :: 鍮꾩쟾 -------- */
+/* 鍮꾩쟾 :: 怨듯넻 */
 .vision-container{padding-bottom:115px}
 .vision-container .small-tit{margin-bottom:40px}
-/* 비전 :: VISION */
+/* 鍮꾩쟾 :: VISION */
 .vision-top-txt{color:#444; font-size:24px;text-align:center;letter-spacing:-0.85px; margin-bottom:90px}
 .vision-top-con{position:relative;padding:93px 0 86px 10%; margin-bottom:200px;background:url(../images/vision_top_bg.jpg) no-repeat 50% 50%}
 .vision-top-con:after{position:absolute;bottom:-85px;left:-100%;right:-100%;height:1px;background-color:#d6d6d6;content:''}
@@ -788,8 +789,8 @@
 .vision-con-list dl dt{float:left;width:400px;font-size:26px;color:#0055a5;font-weight:700;text-align:center;line-height:28px}
 .vision-con-list dl dd{float:left;width:calc(100% - 468px);padding-left:68px;font-size:22px;color:#222;line-height:28px}
 
-/* -------- Compay :: 연혁 -------- */
-/* 연혁 :: 탭 */
+/* -------- Compay :: �뿰�쁺 -------- */
+/* �뿰�쁺 :: �꺆 */
 .history-tab{position:relative;margin:30px -8% 0}
 .history-tab br{display:none}
 .history-tab-container{margin-top:170px; min-height:500px}
@@ -803,7 +804,7 @@
 .history-tab li.on a span{background-color:#0055a5}
 .history-tab li.on a span:before{position:absolute;bottom:-10px;left:50%;margin-left:-15px;width:28px;height:28px;border:1px solid #0055a5;border-radius:50%;content:''}
 
-/* 연혁 :: 컨텐츠 */
+/* �뿰�쁺 :: 而⑦뀗痢� */
 /* #historyCon02 .history-list-box .history-year-box .history-img-box{top:190px} */
 .history-year-list-con{border-top:2px solid #0055a5;border-bottom:2px solid #0055a5;padding:40px 0}
 .history-year-list-con + .history-year-list-con{margin-top:-2px}
@@ -823,7 +824,7 @@
 .history-list-box .history-year-box .history-year-item .history-info-con p span{position:relative}
 .history-list-box .history-year-box .history-year-item .history-info-con p span:after{position:absolute;top:12px;left:-18px;width:3px;height:3px;background:#0055a5;content:''}
 
-/* -------- Company :: 사업장소개 -------- */
+/* -------- Company :: �궗�뾽�옣�냼媛� -------- */
 #locationContent{padding:30px 0 120px}
 .location-container .sub-tab01-list{width:940px}
 .location-txt-con{margin-bottom:70px;}
@@ -831,12 +832,12 @@
 .location-txt-con .location-txt1{color:#222;font-size:30px;}
 .location-txt-con .location-txt1 em{color:#0099da}
 .location-txt-con .location-txt2{font-size:22px;color:#222;}
-/* 사업장소개 :: 탭 */
+/* �궗�뾽�옣�냼媛� :: �꺆 */
 .sub-tab-wrap{margin-bottom:80px}
-/* 사업장소개 :: 지도 */
+/* �궗�뾽�옣�냼媛� :: 吏��룄 */
 .map-wrapper{margin-bottom:90px; border:2px solid #ddd;}
 .map-wrapper img{width:100%}
-/* 사업장소개 :: 테이블 */
+/* �궗�뾽�옣�냼媛� :: �뀒�씠釉� */
 .map-tbl{width:100%;border-top:1px solid #222;border-bottom:1px solid #222;}
 .map-tbl th,.map-tbl td{padding:13px 20px 13px 50px; letter-spacing:-0.5px; font-size:22px; border-top:1px solid #dcdcdc; line-height:2}
 .map-tbl tr:first-child th,.map-tbl tr:first-child td{border-top:0}
@@ -847,7 +848,7 @@
 .map-tbl .type b{color:#222; font-weight:700;}
 .map-tbl + .map-tbl{margin-top:-1px}
 
-/* -------- Company :: 경영철학 -------- */
+/* -------- Company :: 寃쎌쁺泥좏븰 -------- */
 #philosophyContent{padding-bottom:70px}
 .philosophy-tab .sub-tab01-list li a{height:118px}
 .philosophy-tab .sub-tab01-list li span{position:absolute;height:auto;width:auto}
@@ -861,7 +862,7 @@
 .philosophy-list-box dl dt{font-weight:700}
 .philosophy-list-box dl dd{margin-top:5px;line-height:1.6}
 
-/* 에러페이지 */
+/* �뿉�윭�럹�씠吏� */
 .error-wrap{padding:300px 0;text-align:center;letter-spacing:-0.5px;background-color:#f7f7f7}
 .error-wrap .err-tit{position:relative;display:inline-block;padding-right:130px;font-size:65px;font-weight:700;color:#222;line-height:1.4}
 .error-wrap .err-tit:after{position:absolute;top:0;right:0;width:100px;height:88px;background:url(../images/err-ico.png) no-repeat;content:''}
@@ -874,5 +875,5 @@
 .err-desc-box .err-de-tit{width:90px}
 .err-desc-box .err-de-tit span{margin-left:10px;font-size:6px;vertical-align:middle}
 
-/* 한자스타일 */
+/* �븳�옄�뒪���씪 */
 .char-type{font-family:'play'}

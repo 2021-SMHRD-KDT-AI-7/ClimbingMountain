@@ -49,7 +49,7 @@ public class Course_1_DAO {
 		
 		// 산 번호 받아서  산에 있는 등산로 전체 출력 ( 리스트로 반환)   
 		// course_1  >> 등산로 이름 , 설명 , 설명 이미지
-  		public ArrayList<Course_1_DTO> selectCourse(int seq){
+  		public ArrayList<Course_1_DTO> selectallCourse(int seq){
 			try { 
 				getConn();
 				String sql = "select * from course_1 where mountain_seq = ?";
