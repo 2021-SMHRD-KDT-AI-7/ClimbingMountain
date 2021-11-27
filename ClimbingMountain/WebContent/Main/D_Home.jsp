@@ -208,8 +208,8 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 
 						var tableHtml = '<tr>' 
 								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ currentTime + '</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + min_temp+ '</td>' 
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ max_temp + '</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + min_temp+ '℃</td>' 
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ max_temp + '℃</td>'
 								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + w_img + '</td>'
 								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ w_des + '</td>'
 								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + clouds+ '%</td>'
@@ -420,7 +420,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 							<span style="text-shadow:-1px 0 #000, 0 6px #000, 2px 0 #000, 0 0px #000">광주 / 전남 13대명산</span>
 						</h3>
 						<p class="main-news-sub-txt main-txt-up" style="letter-spacing:4px; font-size:26px;">
-							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의<span style="color:#b7e4c7;">"등삶"</span>이 항상 산 타 클로스와 함께 행복하길.</span>
+							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의<span style="color:#b7e4c7;">"등삶"</span>이 항상 <span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스와 함께 행복하길.</span>
 						</p>
 					</aside>
 					<article class="main-news-list-con">
@@ -640,7 +640,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 			<!-- 까지 2페이지 -->
 
 			<!-- <!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
-			<section id="mainInformationCon" class="section">
+			<section id="mainInformationCon" class="section" style="background: url('./images/sky_mountain.jpg') 50% 50% no-repeat; background-size: cover;">
 
 				<article class="main-info-wrapper">
 					<aside class="main-info-tit-box">
@@ -688,7 +688,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 						<article id="footerTop">
 							<!-- 푸터 하단 왼쪽 -->
 							<article class="footer-left-con">
-								<a href="D_Home.html">
+								<a href="D_Home.jsp">
 									<div class="footer-logo">
 										<img src="./images/logo_font.png" width="320px" height="160px">
 									</div>
@@ -703,14 +703,14 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 									</dl>
 									<br>
 									<dl>
-										<dt>조장 :</dt>
-										<dd>류태욱</dd>
-										<dt>역할/조원 :</dt>
-										<dd>Backend : 정현수, 곽승옥, 최혜준 / Front : 류태욱, 정찬준</dd>
+										<dt>조장 : </dt>
+										<dd style="color:black;"> 류태욱</dd>
+										<dt>역할/조원 : </dt>
+										<dd style="color:black;letter-spacing:2px;"> Backend : 정현수, 곽승옥, 최혜준 <span style="color:white;"> / </span> Front : 류태욱, 정찬준</dd>
 									</dl>
 									<br>
 								</div>
-								<div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(드가자)
+								<div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(<span style="color:red;">드</span><span style="color:blue;">가</span><span style="color:gold;">자</span>)
 								</div>
 							</article>
 						</article>

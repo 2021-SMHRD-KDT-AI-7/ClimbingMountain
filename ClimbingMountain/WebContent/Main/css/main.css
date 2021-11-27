@@ -292,7 +292,7 @@
 /* Information :: 타이틀 */
 .main-info-wrapper{position:relative; z-index:1; margin:0 100px}
 .main-info-tit-box{text-align:left; margin-bottom:8%; margin-bottom:14vh}
-.main-info-tit-box .main-info-tit{color:#161616; font-size:43px; letter-spacing:-0.35px; font-weight:700;}
+.main-info-tit-box .main-info-tit{color:#161616; font-size:43px; letter-spacing:-0.35px; font-weight:700;margin-top: 1%;}
 .main-info-tit-box .main-info-sub-txt{margin-top:20px; color:#888; font-size:16px; letter-spacing:-0.5px; font-weight:400;}
 /* Information :: Information 리스트 */
 .main-info-list-con{margin-bottom:6%; margin-bottom:10vh}

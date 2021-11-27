@@ -109,9 +109,9 @@
 	#M_C_T{font-size: xx-large;color: black;margin-top: 25px;}
 	#M_C{font-size: large;word-spacing: 2px;line-height: 25px;color: black;}
 	#M_S_T{font-size: xx-large;color: black;margin-top: 25px;}
-	#M_S{font-size: medium;word-spacing: 2px;line-height: 20px;color: black;}
+	#M_S{font-size: large;word-spacing: 2px;line-height: 26px;color: black;}
 	#M_I_T{font-size: xx-large;color: black;margin-top: 25px;}
-	#M_I{font-size: medium;word-spacing: 3px;line-height: 24px;color: black;}
+	#M_I{font-size: large;word-spacing: 3px;line-height: 26px;color: black;}
 	#C_I_I{font-size: xxx-large;text-align: center;-webkit-text-emphasis-style:triangle;color: #006400;margin-bottom: 25px;}
 	#C_CN{font-size: xx-large;text-indent: 20px;color:red;margin-bottom: 30px;}
 	#C_I{margin-block: 50px;margin-left: 115px;}
@@ -119,7 +119,7 @@
 	#C_CN2{font-size: medium;color: black;position: absolute;margin-left:-240px;margin-top:10px;})
 	#C_I2{}
     #T_I{font-size: xxx-large;color: #006400;text-align: right;}
-    #T_C{font-size: x-large;text-align: center;color: black;margin-top: 50px;}
+    #T_C{font-size: xxx-large;text-align: center;color: black;margin-top: 50px;}
     .T_CC{font-size: x-large;color: black;}
     .T_CCC{font-size: medium;line-height: 30px;color: #000000;}
     .T_R{font-size: large;line-height: 30px;font-weight: 600;color:black;}
@@ -984,14 +984,14 @@
                     </dl>
                     <br>
                     <dl>
-                        <dt>조장 : </dt>
-                        <dd>류태욱</dd>
-                        <dt>역할/조원 : </dt>
-                        <dd>Backend : 정현수, 곽승옥, 최혜준 / Front : 류태욱, 정찬준</dd>
-                    </dl>
+										<dt>조장 : </dt>
+										<dd style="color:black;"> 류태욱</dd>
+										<dt>역할/조원 : </dt>
+										<dd style="color:black;letter-spacing:2px;"> Backend : 정현수, 곽승옥, 최혜준 <span style="color:white;"> / </span> Front : 류태욱, 정찬준</dd>
+									</dl>
                     <br>
                 </div>
-                <div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(드가자)
+                <div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(<span style="color:red;">드</span><span style="color:blue;">가</span><span style="color:gold;">자</span>)
                 </div>
             </article>
         </article>
