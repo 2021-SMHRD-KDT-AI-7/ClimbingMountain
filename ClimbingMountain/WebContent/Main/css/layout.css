@@ -3,13 +3,13 @@
 @import url('https://fonts.googleapis.com/css?family=Play:400,700&display=swap');
 
 /* ****************** LAYOUT ********************** */
-body, table, th, td, button, select, input, textarea {
-	font-family:'Play','NanumSquare',sans-serif, /*'Noto Sans KR', "나눔고딕", NanumGothic, "Nanum Gothic"*/"돋움", Dotum, Arial;
-	font-size:13px;
-	color:#666;
-	-webkit-text-size-adjust:none;
-	word-break:keep-all;
+body, table, th, td, button, select, input, textarea{
+    font-family: 'Vitro_core';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 body { background-color:#fff; }
 .blind,legend,caption{overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:1px;line-height:100px;*line-height:0;white-space:nowrap}
 #wrap {overflow:hidden; width:100%; min-width:320px; position:relative; }

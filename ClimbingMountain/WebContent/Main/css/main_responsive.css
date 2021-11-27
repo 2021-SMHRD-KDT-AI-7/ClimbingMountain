@@ -211,7 +211,7 @@
 	.main-news-list-con li .news-info-box{top:166px;}
 	.main-news-list-con li .news-info-box-inner{padding:20px;}
 	.main-news-list-con li.no-thumb .news-info-box-inner{padding:30px 20px}
-	.main-news-list-con li.no-thumb .news-tit{font-size:24px;}
+	.main-news-list-con li.no-thumb .news-tit{font-size:24px; }
 	.main-news-list-con li .news-sub-txt{font-size:13px; line-height:24px;}
 	.main-news-list-con li .news-date{margin-top:30px}
 	/* News :: 컨트롤영역 */

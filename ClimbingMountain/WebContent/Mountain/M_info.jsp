@@ -122,7 +122,7 @@
     #T_C{font-size: x-large;text-align: center;color: black;margin-top: 50px;}
     .T_CC{font-size: x-large;color: black;}
     .T_CCC{font-size: medium;line-height: 30px;color: #000000;}
-    .T_R{font-size: large;line-height: 30px;font-weight: 600;}
+    .T_R{font-size: large;line-height: 30px;font-weight: 600;color:black;}
     .line_info{display: block;height: 5px;border: 0;border-top: 3px solid #006400;margin: 2em 0;padding: 0;}
     .line-traffic{display: block;height:2px;border:0;border-top:1px solid #000000;margin:1em 0;}
     .line_course{display:block;height:1px;border:0;border-top:1px solid #000000;margin:2em 0;}
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
                                     <div class="gnb-2dep-menu-info">
-                                        <p>Climbing Mountain</p>
+                                        <p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
                                         <div class="gnb-2dep-menu-img"></div>
                                     </div>
                                 </div>
@@ -393,7 +393,7 @@
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
                                     <div class="gnb-2dep-menu-info">
-                                        <p>Board</p>
+                                        <p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
                                         <div class="gnb-2dep-menu-img"></div>
                                     </div>
                                 </div>
@@ -415,7 +415,7 @@
 
         <!-- 여기가 배경들어가고 이름나오는곳 -->
         <section id="visual" class="sub-visual-company">
-            <div class="visual-img-con" style="background:#fff url(./img/M_info_bg.jpg) no-repeat 50% 50%;text-shadow: 3px 3px 3px #666;">
+            <div class="visual-img-con" style="background:#fff url(./img/M_info_bg.jpg) no-repeat 50% 18%;text-shadow: 3px 3px 3px #666;">
             </div> <!-- 여기에 산 사진으로 배경 나오게 한다 -->
             <div class="area visual-txt-con">
                 <div class="table-cell-layout">

@@ -1,3 +1,6 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.sun.corba.se.pept.transport.Connection"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.communityDAO"%>
@@ -204,7 +207,7 @@
 											</div>
 											<div class="gnb-2dep-menu-txt">
 												<div class="gnb-2dep-menu-info">
-													<p>Climbing Mountain</p>
+													<p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
 													<div class="gnb-2dep-menu-img"></div>
 												</div>
 											</div>
@@ -240,7 +243,7 @@
 											</div>
 											<div class="gnb-2dep-menu-txt">
 												<div class="gnb-2dep-menu-info">
-													<p>Board</p>
+													<p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
 													<div class="gnb-2dep-menu-img"></div>
 												</div>
 											</div>
@@ -314,10 +317,7 @@
                     <div class="writer"><%= communityBoard_list.get(i).getMember_id() %></div>
                     <div class="date"><%= communityBoard_list.get(i).getReg_date() %></div>
                     <div class="count"><%= communityBoard_list.get(i).getCommunity_cnt() %></div>
-                    
-                    
-                    
-                    <%} %>
+                   <%} %> 
                 </div>
               
                 

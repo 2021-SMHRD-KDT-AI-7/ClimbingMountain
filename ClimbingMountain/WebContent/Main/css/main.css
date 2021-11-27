@@ -291,7 +291,7 @@
 .main-info-grid-con li:first-child:before{right:auto; left:0;}
 /* Information :: 타이틀 */
 .main-info-wrapper{position:relative; z-index:1; margin:0 100px}
-.main-info-tit-box{text-align:center; margin-bottom:8%; margin-bottom:14vh}
+.main-info-tit-box{text-align:left; margin-bottom:8%; margin-bottom:14vh}
 .main-info-tit-box .main-info-tit{color:#161616; font-size:43px; letter-spacing:-0.35px; font-weight:700;}
 .main-info-tit-box .main-info-sub-txt{margin-top:20px; color:#888; font-size:16px; letter-spacing:-0.5px; font-weight:400;}
 /* Information :: Information 리스트 */
@@ -396,7 +396,7 @@
 /* 이미지 없을때, hover */
 .main-news-list-con li.no-thumb .news-info-box{top:0px; }
 .main-news-list-con li.no-thumb .news-info-box-inner{padding:50px;}
-.main-news-list-con li.no-thumb .news-tit{position:absolute;bottom:25px;left:27px;color:#fff;font-size:27px; -webkit-line-clamp: 2;}
+.main-news-list-con li.no-thumb .news-tit{position:absolute;bottom:25px;left:27px;color:#fff;font-size:40px; -webkit-line-clamp: 2;}
 .main-news-list-con li.no-thumb .news-sub-txt{position:absolute;bottom:20px;left:27px;color:#fff;opacity:1.0;filter:Alpha(opacity=100);}
 
 /* News :: 컨트롤영역 */
