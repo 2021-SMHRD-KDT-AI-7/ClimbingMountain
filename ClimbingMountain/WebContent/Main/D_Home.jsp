@@ -155,6 +155,7 @@
 <script type="text/javascript" src="./js/layer_popup.js"></script>
 
 
+
 </head>
 
 <body>
@@ -206,15 +207,15 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 						} 
 
 						var tableHtml = '<tr>' 
-								+ '<td style="padding-right: 80px;font-size:larger">'+ currentTime + '</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">' + min_temp+ '</td>' 
-								+ '<td style="padding-right: 80px;font-size:larger">'+ max_temp + '</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">' + w_img + '</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">'+ w_des + '</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">' + clouds+ '%</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">'+ pop * 100 + '%</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">' + rain+ 'mm</td>'
-								+ '<td style="padding-right: 80px;font-size:larger">'+ snow + 'mm</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ currentTime + '</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + min_temp+ '℃</td>' 
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ max_temp + '℃</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + w_img + '</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ w_des + '</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + clouds+ '%</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ pop * 100 + '%</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + rain+ 'mm</td>'
+								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ snow + 'mm</td>'
 								+ '</tr>' + '<hr>' ;
 
 						$('tbody').append(tableHtml);
@@ -281,7 +282,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 												</div>
 												<div class="gnb-2dep-menu-txt">
 													<div class="gnb-2dep-menu-info">
-														<p>Climbing Mountain</p>
+														<p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
 														<div class="gnb-2dep-menu-img"></div>
 													</div>
 												</div>
@@ -314,7 +315,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 												</div>
 												<div class="gnb-2dep-menu-txt">
 													<div class="gnb-2dep-menu-info">
-														<p>Board</p>
+														<p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
 														<div class="gnb-2dep-menu-img"></div>
 													</div>
 												</div>
@@ -351,8 +352,9 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 							style="background: #fff url(images/Main_pic_02.jpg) no-repeat 50% 50%;"></div>
 						<div class="main-visual-txt-con">
 							<div class="main-visual-txt-inner area-box">
-								<strong class="main-visual-txt1 title-line"><span>눈
-										내린 무등산. 겨울의 美.<br>산 타 클로스와 함께.
+								<strong class="main-visual-txt1 title-line">
+								<span>눈내린 무등산.겨울의 美.<br>
+								<span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스와 함께.
 								</span></strong>
 							</div>
 						</div>
@@ -378,7 +380,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 								<strong class="main-visual-txt1 title-line"><span>대한민국
 										등산 명소.</span></strong>
 								<p class="main-visual-txt2 title-line">
-									<span>산 타 클로스에서 아름다움을 만끽하세요.</span>
+									<span><span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스에서 아름다움을 만끽하세요.</span>
 								</p>
 							</div>
 						</div>
@@ -411,14 +413,14 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 
 			<!-- 2페이지 시작 -->
 			<section id="mainNewsCon" class="section"
-				style="background: url('./images/Main_pic_07.jpg') 50% 50% no-repeat; background-size: cover;">
+				style="background: url('./images/Main_bgp2.jpg') 50% 50% no-repeat; background-size: cover;">
 				<div class="main-news-wrapper">
 					<aside class="main-news-tit-box">
 						<h3 class="main-news-tit main-txt-up">
-							<span>광주 / 전남 13대명산</span>
+							<span style="text-shadow:-1px 0 #000, 0 6px #000, 2px 0 #000, 0 0px #000">광주 / 전남 13대명산</span>
 						</h3>
-						<p class="main-news-sub-txt main-txt-up">
-							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의 등삶이 항상 산 타 클로스와 함께 행복하길.</span>
+						<p class="main-news-sub-txt main-txt-up" style="letter-spacing:4px; font-size:26px;">
+							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의<span style="color:#b7e4c7;">"등삶"</span>이 항상 <span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스와 함께 행복하길.</span>
 						</p>
 					</aside>
 					<article class="main-news-list-con">
@@ -638,30 +640,30 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 			<!-- 까지 2페이지 -->
 
 			<!-- <!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
-			<section id="mainInformationCon" class="section">
+			<section id="mainInformationCon" class="section" style="background: url('./images/sky_mountain.jpg') 50% 50% no-repeat; background-size: cover;">
 
 				<article class="main-info-wrapper">
 					<aside class="main-info-tit-box">
 						<h3 class="main-info-tit main-txt-up">
-							<span style="margin-top: 5px;">광주 날씨</span>
+							<span style="margin-top: 5px;">광주 날씨 <i class="xi-sun-o"></i></span>
 						</h3>
 					</aside>
 					
 					<article class="main-info-list-con">
 						<ul class="clearfix" style="margin-top:-100px;">
-							<hr>
+
 							<table>
 								<thead>
 									<tr>
-										<td>시간</td>									
-										<td>최저온도</td>									
-										<td>최고온도</td>
-										<td>날씨이미지</td>
-										<td>날씨정보</td>
-										<td>흐림도</td>
-										<td>강수확률</td>
-										<td>강수량</td>
-										<td>적설량</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">시간</td>									
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">최저온도</td>									
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">최고온도</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">날씨이미지</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">날씨정보</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">흐림도</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">강수확률</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">강수량</td>
+										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">적설량</td>
 									</tr>
 								</thead>
 								
@@ -686,7 +688,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 						<article id="footerTop">
 							<!-- 푸터 하단 왼쪽 -->
 							<article class="footer-left-con">
-								<a href="D_Home.html">
+								<a href="D_Home.jsp">
 									<div class="footer-logo">
 										<img src="./images/logo_font.png" width="320px" height="160px">
 									</div>
@@ -701,14 +703,14 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 									</dl>
 									<br>
 									<dl>
-										<dt>조장 :</dt>
-										<dd>류태욱</dd>
-										<dt>역할/조원 :</dt>
-										<dd>Backend : 정현수, 곽승옥, 최혜준 / Front : 류태욱, 정찬준</dd>
+										<dt>조장 : </dt>
+										<dd style="color:black;"> 류태욱</dd>
+										<dt>역할/조원 : </dt>
+										<dd style="color:black;letter-spacing:2px;"> Backend : 정현수, 곽승옥, 최혜준 <span style="color:white;"> / </span> Front : 류태욱, 정찬준</dd>
 									</dl>
 									<br>
 								</div>
-								<div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(드가자)
+								<div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(<span style="color:red;">드</span><span style="color:blue;">가</span><span style="color:gold;">자</span>)
 								</div>
 							</article>
 						</article>

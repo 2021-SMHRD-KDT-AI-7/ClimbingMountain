@@ -193,7 +193,7 @@
 											</div>
 											<div class="gnb-2dep-menu-txt">
 												<div class="gnb-2dep-menu-info">
-													<p>Climbing Mountain</p>
+													<p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
 													<div class="gnb-2dep-menu-img"></div>
 												</div>
 											</div>
@@ -230,7 +230,7 @@
 											</div>
 											<div class="gnb-2dep-menu-txt">
 												<div class="gnb-2dep-menu-info">
-													<p>Board</p>
+													<p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
 													<div class="gnb-2dep-menu-img"></div>
 												</div>
 											</div>

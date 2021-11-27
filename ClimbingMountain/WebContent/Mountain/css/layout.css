@@ -4,11 +4,10 @@
 
 /* ****************** LAYOUT ********************** */
 body, table, th, td, button, select, input, textarea {
-	font-family:'Play','NanumSquare',sans-serif, /*'Noto Sans KR', "나눔고딕", NanumGothic, "Nanum Gothic"*/"돋움", Dotum, Arial;
-	font-size:13px;
-	color:#666;
-	-webkit-text-size-adjust:none;
-	word-break:keep-all;
+    font-family: 'Vitro_core';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 body { background-color:#fff; }
 .blind,legend,caption{overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:1px;line-height:100px;*line-height:0;white-space:nowrap}
@@ -167,11 +166,11 @@ body { background-color:#fff; }
 #footerPartnerListContent + #footer{border-top:0}
 #footerInner{position:relative; }
 .footer-left-con{float:left;margin-top:52px}
-.footer-center-con{float:left; margin-left:8%}
+.footer-center-con{float: left;margin-left: 5%;margin-top: 3%;}
 .footer-right-con{float:right;margin-top:50px;}
 
 /* -------- FOOTER :: 상단 -------- */
-#footerTop{padding:45px 0 45px;}
+#footerTop{padding:0 0 15px;}
 #footerTop:after{display:block;clear:both;content:''}
 
 /* Footer :: 푸터메뉴 */
@@ -268,7 +267,7 @@ body { background-color:#fff; }
 	line-height:1.2;
 	-webkit-text-shadow:1px 1px 18px rgba(0,0,0,0.3);
 	-moz-text-shadow:1px 1px 18px rgba(0,0,0,0.3);
-	text-shadow:1px 1px 18px rgba(0,0,0,0.3);
+	text-shadow:4px 0 #000, 0 5px #000, 4px 0 #000, 0 5px #000;
 }
 #visual .visual-sub-txt + .visual-tit{
 	-webkit-transition-delay:0.5s;

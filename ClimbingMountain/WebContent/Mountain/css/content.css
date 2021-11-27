@@ -825,8 +825,8 @@
 
 .Mountain-info-pic{overflow: hidden;position: relative;background-color: #d0f4de;width: 30%;margin: 3%;padding: 25px;font-weight: 700;float: right;border-radius:5%;}
 .Mountain-info-text{overflow:hidden; position:relative; background-color: #fff; width: 52%; margin: 2%; padding: 20px; font-weight: 700; word-wrap: break-word;	float: right;}
-.Mountain-route{overflow: hidden; position: relative; background-color: #fefae0; width: 90%; margin: 3% auto; padding: 20px; font-weight: 700; word-wrap: break-word; }
-.Traffic-info{overflow: hidden;position: relative;background-color: #fefae0;width: 80%;margin: 4% auto;padding: 80px;border: solid;}
+.Mountain-route{overflow: hidden; position: relative; background-color: #fefae0; width: 90%; margin: 3% auto; padding: 20px; font-weight: 700; word-wrap: break-word; border:solid; border-color:#006400;}
+.Traffic-info{overflow: hidden;position: relative;background-color: #fefae0;width: 80%;margin: 4% auto;padding: 80px;border: solid; border-color:#006400;}
 
 #M_N{font-size: xxx-large;font-weight: 700;text-align: right;color: #006400;}
 #M_L{font-size: x-large;margin-top: 25px;color: black;}

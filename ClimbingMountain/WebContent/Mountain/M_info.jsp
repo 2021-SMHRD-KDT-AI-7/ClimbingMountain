@@ -109,9 +109,9 @@
 	#M_C_T{font-size: xx-large;color: black;margin-top: 25px;}
 	#M_C{font-size: large;word-spacing: 2px;line-height: 25px;color: black;}
 	#M_S_T{font-size: xx-large;color: black;margin-top: 25px;}
-	#M_S{font-size: medium;word-spacing: 2px;line-height: 20px;color: black;}
+	#M_S{font-size: large;word-spacing: 2px;line-height: 26px;color: black;}
 	#M_I_T{font-size: xx-large;color: black;margin-top: 25px;}
-	#M_I{font-size: medium;word-spacing: 3px;line-height: 24px;color: black;}
+	#M_I{font-size: large;word-spacing: 3px;line-height: 26px;color: black;}
 	#C_I_I{font-size: xxx-large;text-align: center;-webkit-text-emphasis-style:triangle;color: #006400;margin-bottom: 25px;}
 	#C_CN{font-size: xx-large;text-indent: 20px;color:red;margin-bottom: 30px;}
 	#C_I{margin-block: 50px;margin-left: 115px;}
@@ -119,10 +119,10 @@
 	#C_CN2{font-size: medium;color: black;position: absolute;margin-left:-240px;margin-top:10px;})
 	#C_I2{}
     #T_I{font-size: xxx-large;color: #006400;text-align: right;}
-    #T_C{font-size: x-large;text-align: center;color: black;margin-top: 50px;}
+    #T_C{font-size: xxx-large;text-align: center;color: black;margin-top: 50px;}
     .T_CC{font-size: x-large;color: black;}
     .T_CCC{font-size: medium;line-height: 30px;color: #000000;}
-    .T_R{font-size: large;line-height: 30px;font-weight: 600;}
+    .T_R{font-size: large;line-height: 30px;font-weight: 600;color:black;}
     .line_info{display: block;height: 5px;border: 0;border-top: 3px solid #006400;margin: 2em 0;padding: 0;}
     .line-traffic{display: block;height:2px;border:0;border-top:1px solid #000000;margin:1em 0;}
     .line_course{display:block;height:1px;border:0;border-top:1px solid #000000;margin:2em 0;}
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
                                     <div class="gnb-2dep-menu-info">
-                                        <p>Climbing Mountain</p>
+                                        <p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
                                         <div class="gnb-2dep-menu-img"></div>
                                     </div>
                                 </div>
@@ -393,7 +393,7 @@
                                 </div>
                                 <div class="gnb-2dep-menu-txt">
                                     <div class="gnb-2dep-menu-info">
-                                        <p>Board</p>
+                                        <p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
                                         <div class="gnb-2dep-menu-img"></div>
                                     </div>
                                 </div>
@@ -415,7 +415,7 @@
 
         <!-- 여기가 배경들어가고 이름나오는곳 -->
         <section id="visual" class="sub-visual-company">
-            <div class="visual-img-con" style="background:#fff url(./img/M_info_bg.jpg) no-repeat 50% 50%;text-shadow: 3px 3px 3px #666;">
+            <div class="visual-img-con" style="background:#fff url(./img/M_info_bg.jpg) no-repeat 50% 18%;text-shadow: 3px 3px 3px #666;">
             </div> <!-- 여기에 산 사진으로 배경 나오게 한다 -->
             <div class="area visual-txt-con">
                 <div class="table-cell-layout">
@@ -984,14 +984,14 @@
                     </dl>
                     <br>
                     <dl>
-                        <dt>조장 : </dt>
-                        <dd>류태욱</dd>
-                        <dt>역할/조원 : </dt>
-                        <dd>Backend : 정현수, 곽승옥, 최혜준 / Front : 류태욱, 정찬준</dd>
-                    </dl>
+										<dt>조장 : </dt>
+										<dd style="color:black;"> 류태욱</dd>
+										<dt>역할/조원 : </dt>
+										<dd style="color:black;letter-spacing:2px;"> Backend : 정현수, 곽승옥, 최혜준 <span style="color:white;"> / </span> Front : 류태욱, 정찬준</dd>
+									</dl>
                     <br>
                 </div>
-                <div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(드가자)
+                <div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(<span style="color:red;">드</span><span style="color:blue;">가</span><span style="color:gold;">자</span>)
                 </div>
             </article>
         </article>
