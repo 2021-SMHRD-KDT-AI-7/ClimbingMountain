@@ -176,4 +176,24 @@ public class DiaryDAO {
 		}
 		return cnt;
 	}
+	
+	public int getcount() {
+		getConn();
+		try {
+			String sql = "select count(*) from tbl_diary";
+			
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbclose();
+		}
+		return -1;
+	}
+	
+	
 }
