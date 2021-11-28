@@ -257,7 +257,7 @@
 						<!-- <span class="line line1"></span><span class="line line2"></span><span class="line line3"></span> -->
 						<!-- </button> -->
 					</div>
-					
+					</header>
 
   <aside id="nav1">
     <div id='c_up'>
@@ -344,8 +344,12 @@
             <div class="bt_wrap">
                 <a href="write.jsp" class="on">등록</a>
                 <!--<a href="#">수정</a>-->
+                
             </div>
+            </section>
         </div>
     </div>
+    
+    
 </body>
 </html> 
