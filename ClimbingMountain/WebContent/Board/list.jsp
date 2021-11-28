@@ -152,7 +152,8 @@
 	communityDAO community_dao = new communityDAO();
 	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
 	communityBoard_list = community_dao.viewBoard();
-	int pagenum =1;
+	int pagenum=1;
+	
 %>
 <body>
      <!-- accessibility -->
@@ -177,10 +178,10 @@
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
                    			<% if(info==null){ %>
-								<a href="../Login/Login.jsp" class="contact-tx" style="background-color:#000000">로그인</a>
-								<a href="../Join/Join.jsp" class="contact-tx" style="background-color:#000000">회원가입</a>
+								<a href="../Login/Login.jsp" class="contact-tx">로그인</a>
+								<a href="../Join/Join.jsp" class="contact-tx">회원가입</a>
 							<%}else{%>
-								<a href="LogoutServiceCon.do" class="contact-tx" style="background-color:#000000">로그아웃</a>
+								<a href="LogoutServiceCon.do" class="contact-tx">로그아웃</a>
 							<% } %>	
                 			</div>
 						</div>
@@ -331,14 +332,13 @@
                }
             %>
               <%
-              	int n = (int)(community_dao.getcount() / 5+1);
+              	int n = (int)(community_dao.getcount() % 5+1);
               	for (int i = 1; i <= n; i++) {
               %>
                 <a href="list.jsp?number=<%=i%>" class="num"><%=i%></a>
                 <%
                }
             %>
-                <a href="list.jsp?number=<%=pagenum +1 %>" class="bt next"> 다음</a>
                 
             </div>
             <div class="bt_wrap">
