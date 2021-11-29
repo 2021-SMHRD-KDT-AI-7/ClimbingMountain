@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
+    <link rel="stylesheet" href="./css/board_style.css">
     <link rel="stylesheet" href="./css/board_css.css">
     <link rel="stylesheet" href="./css/default.css">
 	<link rel="stylesheet" href="./css/layout.css">
@@ -318,9 +319,10 @@
                   	<%= dto.getCommunity_content()%>
                 </div>
                 <div class="file cont">
-               		 <td colspan="2"><img src="../file/<%= dto.getCommunity_file1() %>">
-					<td><img src="..file/<%= dto.getCommunity_file2() %>">
-					<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>
+                
+               		<span><img class="file_img" height="150px" width="150px" src="../file/<%= dto.getCommunity_file1() %>"></span>
+					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file2() %>"></span>
+					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file3() %>"></span>
                 </div>
                 <div class="file_cont">
                 	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
