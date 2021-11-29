@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>관광명소 테스트</title>
+</head>
+<body>
+
+<div class="map_wrap"> 
+	<div id="map" style="width:100%;height:650px;"></div>
+
+
+    <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+    <div class="custom_zoomcontrol radius_border"> 
+        <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
+        <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+    </div>
+    
+    
+
+	<!-- 지도타입 컨트롤 div 입니다 -->
+    <div class="custom_typecontrol radius_border">
+        <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+        <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+    </div>
+    
+ 
+    
+	<!-- 카테고리별 장소 검색하기 -->
+	<!-- cultural_facilities, Tourist_attraction, accommodation -->
+	    <ul id="category">
+        <li id="OL7" data-order="0"> 
+            <span class="category_bg parking"></span>
+            주유소
+        </li>       
+        <li id="CT1" data-order="1"> 
+            <span class="category_bg culture"></span>
+            문화
+        </li>  
+        <li id="AT4" data-order="2"> 
+            <span class="category_bg sightseeing"></span>
+            관광
+        </li>  
+        <li id="AD5" data-order="3"> 
+            <span class="category_bg accommodation"></span>
+            숙박
+        </li>  
+        <li id="FD6" data-order="4"> 
+            <span class="category_bg restaurant"></span>
+            음식점
+        </li>  
+        <li id="CE7" data-order="5"> 
+            <span class="category_bg cafe"></span>
+            카페
+        </li>
+        <li id="HP8" data-order="6"> 
+            <span class="category_bg hospital"></span>
+		병원
+        </li>
+    </ul>
+	
+
+	
+    <div> <!-- 등산로 보기 버튼, 지형보기 버튼,   -->
+		<button id="trail_btn" style="
+		text-shadow:0px 1px 0px #283966;
+		position:absolute;
+		top:80px;
+		bottom:0px;
+		left:10px;
+		right:0px;
+		overflow:hidden;
+		width:135px;
+		height:45px;
+		margin:0;
+		padding:0;
+		z-index:1;
+		font-size:18px;
+		font-family:'Malgun Gothic', '맑은 고딕', sans-serif;
+		font-weight: bold;
+		color: black; 
+		background:#4d5f7c;border-radius:1em;
+		padding: 0;;
+		" onclick="setBounds(),customOverlay.setMap(map);"><a href="#" class="myButton">등산로 보기</a></button>
+
+		<!-- 지형 토글 버튼 -->
+		<label class="map_switch" style="
+		position:absolute;
+		z-index:2;
+		top:10px;
+		right: 150px;
+		">
+	    	<input type="checkbox" id="chkTerrain" onclick="setOverlayMapTypeId()" />
+			<span class="slider round"></span>
+		</label>
+
+		<!-- '지형' 이라는 text -->
+		<div style="
+		position:absolute;
+		z-index:1;
+		top:10px;
+		right: 158px;
+		color:white;
+		width:70px;
+		border-radius: 20px;
+		padding: 9px 15px;
+		font-size:12px;
+		background-color: #4d5f7c;
+		">지형
+		</div>
+		
+		<!-- 깃발 토글 버튼  -->
+	    <label class="map_switch" style="
+		position:absolute;
+		z-index:2;
+		top:10px;
+		right: 270px;
+		">
+		
+		<!-- '깃발' 이라는 text -->
+		<div style="
+		position:absolute;
+		z-index:0;
+		top:0px;
+		right: 8px;
+		color:white;
+		width:70px;
+		border-radius: 20px;
+		padding: 9px 15px;
+		font-size:12px;
+		background-color: #4d5f7c;
+		">깃발
+		</div>
+		
+	    	<input type="checkbox" id="STmarker" onclick="setST_Markers()" />
+			<span class="slider round"></span>
+		</label>
+
+
+
+
+	<!-- 행정동 주소 정보 -->
+    <div class="hAddr">
+        <span class="map_add_title">지도중심기준 행정동 주소정보</span>
+        <span id="centerAddr"></span>
+    </div>
+       
+</div>
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=570ba83ef799797bed963963c7518be2&libraries=clusterer&libraries=services"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(35.317068711991006,126.86217720529942), // 지도의 중심좌표
+		        level: 5, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+	    var trail_list = [
+
+	    	// 4. 정령치
+
+	    	[[35.38542,127.5529885],[35.3853649,127.5529108],[35.3853207,127.5528483],[35.3850344,127.5525763],[35.3846485,127.5523306],[35.3843618,127.5521531],[35.384108,127.5520434],[35.38371,127.5520407],[35.3834007,127.5519711],[35.3830919,127.5517799],[35.3826946,127.5516287],[35.3824511,127.5516676],[35.3821628,127.5518546],[35.3819848,127.5520829],[35.381774,127.55223],[35.3816318,127.5522366],[35.3815197,127.5522418],[35.3813877,127.5520789],[35.3812671,127.5518485],[35.3811363,127.5514426],[35.3810155,127.5512527],[35.380895,127.5510089],[35.3807847,127.5509406],[35.3806973,127.550724],[35.3806211,127.5504534],[35.3804895,127.5502095],[35.3804131,127.549993],[35.3803694,127.5498712],[35.3803481,127.5496955],[35.380194,127.5495459],[35.3799847,127.549369],[35.3799081,127.549193],[35.379787,127.5490841],[35.3796885,127.5488404],[35.3796674,127.5486378],[35.3796351,127.548435],[35.3797352,127.5483142],[35.3798246,127.5480988],[35.3798144,127.5479097],[35.379793,127.5477475],[35.3796388,127.5476115],[35.3795181,127.5474081],[35.3794415,127.5472321],[35.3793427,127.5470829],[35.3792994,127.5468666],[35.379245,127.5466772],[35.3791358,127.5463659],[35.3791256,127.5461768],[35.3791043,127.5460012],[35.3791052,127.5457987],[35.3789845,127.5455953],[35.3788859,127.5453922],[35.3787436,127.5450807],[35.3786235,127.5447288],[35.378414,127.5446059],[35.3782709,127.5444564],[35.3780399,127.5441849],[35.3779856,127.5439685],[35.3779207,127.543644],[35.3777888,127.5434811],[35.3776019,127.5432233],[35.3774143,127.5431411],[35.3773709,127.5429653],[35.3774378,127.5428307],[35.3775386,127.5425614],[35.3775614,127.5425064],[35.3776056,127.5423998],[35.3774893,127.5423223],[35.3774623,127.5423043],[35.3773193,127.5421413],[35.3772429,127.5419113],[35.3772888,127.54181],[35.3773099,127.5417633],[35.377265,127.5417492],[35.3771333,127.5417081],[35.3770455,127.5415455],[35.3770023,127.5413292],[35.3770031,127.5411402],[35.3769267,127.5409236],[35.3768501,127.5407341],[35.376807,127.5404908],[35.3767646,127.540072],[35.3766999,127.539707],[35.3766683,127.5393558],[35.3767032,127.538978],[35.3767275,127.5384921],[35.3767744,127.5378849],[35.3767762,127.5374799],[35.3768546,127.5372644],[35.3769325,127.5371434],[35.3769446,127.5369004],[35.37689,127.5367516],[35.3768914,127.5364411],[35.3770254,127.5361449],[35.3771243,127.5358673],[35.3771499,127.5354977],[35.3771955,127.5351875],[35.3771189,127.5349979],[35.3770646,127.5347816],[35.3768662,127.5346317],[35.3766891,127.5345169],[35.3766347,127.5344817],[35.3764361,127.5343724],[35.3763704,127.534237],[35.3762278,127.5339795],[35.3761297,127.5336548],[35.3761133,127.5336214],[35.3759763,127.5333433],[35.3758341,127.5329913],[35.3757135,127.532761],[35.3755817,127.5325576],[35.3755495,127.5323279],[35.3755395,127.5320848],[35.3753627,127.5320567],[35.3752638,127.531921],[35.3751428,127.5317852],[35.3749998,127.5316088],[35.3749564,127.5314195],[35.3747578,127.5313237],[35.3747584,127.5311752],[35.3746256,127.5312013],[35.3746043,127.5310122],[35.3744718,127.5309843],[35.3742852,127.5308423],[35.3741619,127.5306292],[35.3739147,127.5303698],[35.3739032,127.5301574],[35.3736318,127.5297311],[35.3734471,127.5293811],[35.3732121,127.5291673],[35.3730763,127.5289693],[35.3728168,127.5286643],[35.3726317,127.5283902],[35.3723958,127.5283887],[35.3722041,127.5282854],[35.3721108,127.5282352],[35.371826,127.5280362],[35.3715661,127.5278374],[35.3712317,127.5276229],[35.3711705,127.5274103],[35.3707987,127.5272259],[35.3706009,127.5270275],[35.3705117,127.5267256],[35.3704663,127.5265717],[35.3704803,127.5261928],[35.370383,127.5257372],[35.3703469,127.5254641]],
+	    	[[35.4050058,127.5642059],[35.4048176,127.5642586],[35.4045847,127.5643921],[35.4044404,127.5645126],[35.4041081,127.5646453],[35.4038423,127.564738],[35.4036652,127.5647773],[35.4034666,127.5646814],[35.403312,127.5646398],[35.4031126,127.5647194],[35.4028804,127.5647043],[35.4027481,127.5646359],[35.4025603,127.5645805],[35.4022727,127.5646055],[35.4020296,127.5645768],[35.4018621,127.5645869],[35.4018045,127.5646959],[35.4017414,127.5647369],[35.4016794,127.5646804],[35.401621,127.5645422],[35.4014674,127.5642981],[35.4012579,127.5640718],[35.4010267,127.5638541],[35.4007625,127.5636091],[35.400586,127.5635134],[35.400454,127.5633774],[35.4003924,127.5633672],[35.4001999,127.5633351]],
+	    	[[35.4050058,127.5642059],[35.405194,127.5641667],[35.4053593,127.5642759],[35.4055915,127.5642775],[35.4058569,127.5642659],[35.406134,127.5641327],[35.4064111,127.5639996],[35.4065439,127.56396],[35.4067059,127.5639612],[35.4068582,127.5640465],[35.4070432,127.5640129],[35.4072102,127.5639152],[35.4074067,127.5638985],[35.407694,127.563941],[35.4079257,127.5640507],[35.4081574,127.5641468],[35.4083675,127.5641618],[35.4085439,127.5642576],[35.4087654,127.5641916],[35.4090639,127.5642072],[35.4093396,127.5643577],[35.4096488,127.5644544],[35.4099811,127.5644131],[35.4101292,127.5643281],[35.4102334,127.5643086],[35.4103353,127.5642431],[35.4104997,127.5642399],[35.4106056,127.5642959],[35.4106707,127.5643004],[35.4107357,127.5643115],[35.4107923,127.564375],[35.4108502,127.5644492],[35.4109261,127.5645501],[35.411007,127.564634],[35.4111379,127.5646983],[35.4112253,127.564745],[35.4113058,127.5648036],[35.4113037,127.5649194],[35.411319,127.5650301],[35.411371,127.5650472],[35.411534,127.5651064],[35.4116843,127.5651411],[35.4117797,127.5651311],[35.4118546,127.5651684],[35.4118703,127.5652278],[35.4117692,127.5652361],[35.4116962,127.5652995],[35.4117353,127.5654597],[35.4118264,127.5656172],[35.4119455,127.5656853],[35.4120158,127.5658232],[35.412096,127.5660653]],
+	    	[[35.412096,127.5660653],[35.4122742,127.5661238],[35.4124287,127.5661924],[35.4127394,127.566365],[35.4128498,127.5663474],[35.4129454,127.5663802],[35.4129934,127.5665404],[35.4130725,127.5666513],[35.4131659,127.56664],[35.4132137,127.5666171],[35.4132767,127.5665868],[35.4133872,127.5665596],[35.413455,127.5666222],[35.4134553,127.5667641],[35.4134713,127.5668945],[35.413436,127.567094],[35.413426,127.567273],[35.4135273,127.5673855],[35.4136319,127.5674853],[35.4137433,127.5675332],[35.4138683,127.5675349],[35.4140239,127.5675915],[35.4140963,127.5676456],[35.4142096,127.5676763],[35.4142614,127.5676428],[35.4142822,127.5675684],[35.4143374,127.5675198],[35.4144333,127.5675269],[35.4144732,127.5676405],[35.4144953,127.567777],[35.4145367,127.5679333],[35.4146256,127.568033],[35.4147451,127.568103],[35.4149283,127.5680706],[35.4151274,127.568072],[35.4153815,127.5681143],[35.4156683,127.5682649],[35.4157673,127.5683395],[35.4159217,127.5684558],[35.4160132,127.5685246],[35.4161093,127.5685247],[35.4162092,127.5684443],[35.4162663,127.5684155],[35.4164198,127.5683378],[35.4165526,127.5683252],[35.4169168,127.5684628],[35.4170123,127.568522],[35.4172255,127.5686541],[35.4173844,127.5688899],[35.4175032,127.5691066],[35.417599,127.5691302],[35.4177319,127.5691304],[35.4180078,127.5692539],[35.4181953,127.5693633],[35.4182608,127.5695259],[35.4182908,127.5696318],[35.418357,127.5697426],[35.4184848,127.5697244],[35.4186141,127.5696499],[35.4187583,127.5695429],[35.4189028,127.5693818],[35.4189486,127.5693344],[35.4190584,127.5692208],[35.4192025,127.5691408],[35.419283,127.5691261],[35.4193573,127.5691554],[35.4194183,127.5692542],[35.4194669,127.5693588],[35.4195985,127.5695758],[35.4197195,127.5697117],[35.4198928,127.5700015],[35.4199078,127.5700267],[35.4200931,127.5702277],[35.4202352,127.5705664],[35.4203445,127.5708373],[35.4204761,127.5710679],[35.4206404,127.5713933]],
+	    	[[35.4206404,127.5713933],[35.4207889,127.5712423],[35.4208515,127.5711786],[35.4210959,127.5709507],[35.4212841,127.570898],[35.4214185,127.5707427],[35.4215293,127.5704945],[35.4216744,127.5701983],[35.4218851,127.5700782],[35.4220241,127.5700882],[35.4221476,127.5700129],[35.4222413,127.5697935],[35.4223859,127.5696189],[35.422564,127.569377],[35.4227529,127.5691757],[35.4229198,127.5689472],[35.4231094,127.5686108],[35.4232644,127.5683482],[35.4233123,127.5682601],[35.4234022,127.568228],[35.4236185,127.5682802],[35.4239401,127.5683768],[35.424058,127.5683669],[35.4241883,127.5682942],[35.4244038,127.5682317],[35.4245229,127.568243],[35.4246153,127.568248],[35.4247208,127.5681863],[35.4248896,127.5681104],[35.4251123,127.5680611],[35.42532,127.5680137],[35.4254408,127.5680739],[35.4255377,127.5681585],[35.4256394,127.5681582],[35.4257509,127.5681016],[35.4259663,127.5680572],[35.4261895,127.5680839],[35.4264905,127.5681242],[35.426723,127.5680448],[35.4268151,127.5678815],[35.4268935,127.5677595],[35.4269691,127.56774],[35.4270509,127.5677685],[35.4272142,127.5678102],[35.427344,127.567817],[35.4274449,127.5678032],[35.4275149,127.5678645],[35.4275979,127.5679366],[35.4277175,127.5679544],[35.4278552,127.5679663],[35.4279804,127.5679458],[35.4280292,127.5678634],[35.4281072,127.5677894],[35.4281847,127.5678024],[35.4282987,127.5678725],[35.4284769,127.5679376],[35.4287054,127.5679851],[35.4289168,127.5680801],[35.4291194,127.5680721],[35.4293624,127.5680965],[35.4295506,127.5680573],[35.4297167,127.5680044],[35.4299046,127.5679518],[35.4300417,127.5678784],[35.4300998,127.5677901],[35.4301338,127.5676147],[35.4301125,127.5674887],[35.4301247,127.5673397],[35.4302593,127.56729],[35.430379,127.5673415],[35.4304963,127.5674867],[35.4306157,127.567563],[35.4307098,127.5675631],[35.4308087,127.5676688],[35.4309736,127.5678726],[35.4310614,127.5680083],[35.431182,127.5680564],[35.4313048,127.5680212],[35.4314153,127.5679973],[35.4315532,127.5679823],[35.4316665,127.56797],[35.4317544,127.5678504],[35.4318421,127.5677497],[35.4319505,127.5677257],[35.4320448,127.5677186],[35.4321541,127.567744],[35.4322901,127.5677774],[35.4323808,127.5677822],[35.4324557,127.5676916],[35.4325419,127.5675747],[35.4326217,127.5675633],[35.4327231,127.5675983],[35.4328082,127.5676212],[35.4328483,127.5677104],[35.4328678,127.5677866],[35.43292,127.5678187],[35.4330624,127.5677469],[35.4332084,127.5676181],[35.4333785,127.5673698],[35.4335229,127.5671521],[35.4336101,127.56702],[35.433698,127.5669595],[35.433814,127.5669285],[35.4339581,127.5669819],[35.4340182,127.5670563],[35.4340949,127.5672055],[35.4341821,127.5672709],[35.4343181,127.5672817],[35.4344489,127.5671809],[35.4346372,127.5671012],[35.4348143,127.5670754],[35.4350136,127.5670092],[35.4350967,127.5670146],[35.4351525,127.5669167],[35.4351959,127.5668209],[35.4351422,127.5667545],[35.4349055,127.5666074],[35.4347297,127.5664413],[35.434558,127.5661368],[35.4344827,127.565949],[35.4344626,127.5658617],[35.4345169,127.5657924],[35.4346278,127.5658178],[35.4348204,127.565865],[35.4349864,127.5659056],[35.4350812,127.5659032],[35.4351389,127.5658539],[35.435139,127.5657411],[35.4351037,127.5656443],[35.4350765,127.5654826],[35.4351088,127.565352],[35.4351984,127.5653352],[35.4353552,127.5653329],[35.4355044,127.5652943],[35.4356291,127.5652117],[35.4356963,127.5651066],[35.4357344,127.5649566],[35.4357538,127.5647851],[35.4357767,127.5645624],[35.4358336,127.5642723],[35.4359208,127.5639248],[35.4359664,127.563683],[35.4360414,127.5634632],[35.436093,127.5631932],[35.4361927,127.5629792],[35.4362496,127.5627078],[35.4362447,127.5622079],[35.436287,127.5618975],[35.4363264,127.5616573],[35.4363978,127.5614851],[35.4365443,127.5614436],[35.4365977,127.5613234],[35.4366008,127.561124],[35.4366102,127.5609275],[35.4365796,127.5607754],[35.4364723,127.5606568],[35.4363402,127.5603858],[35.4362175,127.5600998],[35.4360253,127.5595314],[35.4358489,127.5594008],[35.4356869,127.5591468],[35.4356471,127.5588208],[35.4355315,127.5582935],[35.4353811,127.5577848],[35.4353263,127.5575313],[35.4352741,127.5571598],[35.4350323,127.5568144],[35.434834,127.5565983],[35.4345657,127.5563568],[35.4343497,127.5561917],[35.4340893,127.5559968],[35.4337394,127.5557342],[35.433614,127.5556947],[35.4332469,127.5558293],[35.4328905,127.5559288],[35.4325368,127.556054]],
+	    	[[35.4004132,127.5634492],[35.3994427,127.5625496],[35.3983447,127.5628396],[35.3977382,127.5622401],[35.396769,127.5610429],[35.3961633,127.5602947],[35.3948244,127.5599878],[35.3934862,127.5595321],[35.3922698,127.5590773],[35.391907,127.5584796],[35.391059,127.5574322],[35.3906934,127.5574297],[35.3898446,127.556531],[35.3889952,127.5557812],[35.3881464,127.5548826],[35.3879047,127.5544346],[35.3871771,127.5536857],[35.386203,127.5535302],[35.3855958,127.5530797]],
+	    	[[35.3700008,127.5254526],[35.3689075,127.5247017],[35.3678128,127.5242484],[35.3673293,127.5233527],[35.3668439,127.5229033],[35.3658704,127.5225995],[35.3647744,127.5224437],[35.3644108,127.5219951],[35.3640466,127.5216953]]
+
+	    	
+	    	
+	    	]
+		
+	  	// 다중 등산로 출력, 배열 변수 선언
+		var polyline = new Array();
+		var trail_list_kakao = new Array();
+		var trail_color = new Array();
+		
+		// 색상 지정
+		trail_color[0]="#FF0000";
+		trail_color[1]="#FF9900";
+		trail_color[2]="#FFFF00";
+		trail_color[3]="#00FF00";
+		trail_color[4]="#00FFFF";
+		trail_color[5]="#0000FF";
+		trail_color[6]="#FF00FF";
+		trail_color[7]="#664B00";
+		trail_color[8]="#290066";
+		trail_color[9]="#660033";
+		
+		// 등산로 개별 반복문 시작
+	    for(var i=0; i<trail_list.length; i++){
+			trail_list_kakao[i]=[];
+	    		
+				// 각 등산로에 좌표 입력
+				for(var j=0; j<trail_list[i].length; j++){
+					임시=new kakao.maps.LatLng(trail_list[i][j][0], trail_list[i][j][1])
+					trail_list_kakao[i].push(임시);
+				}
+		
+			// 지도에 표시할 선을 생성합니다
+	        polyline[i] = new kakao.maps.Polyline({
+	        path: trail_list_kakao[i], // 선을 구성하는 좌표배열 입니다
+	        strokeWeight: 5, // 선의 두께 입니다
+	        strokeColor: trail_color[i], // 선의 색깔입니다
+	        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	        strokeStyle: 'solid' // 선의 스타일입니다
+	   		});
+			
+	     	// 지도에 선을 표시합니다 
+		    polyline[i].setMap(map);
+
+	    }
+			 	
+		
+		
+		
+		
+		
+		/* 좌표가 1차원 배열일 경우 지도 범위 재설정하는 코드
+		// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+		var bounds = new kakao.maps.LatLngBounds();  
+		
+		var i, marker;
+		for (i = 0; i < trail_list.length; i++) {
+		    // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
+		    marker =     new kakao.maps.Marker({ position : new kakao.maps.LatLng(trail_list[i][0],trail_list[i][1]) });
+		    marker.setMap(map);
+		    
+		    // LatLngBounds 객체에 좌표를 추가합니다
+		    bounds.extend(new kakao.maps.LatLng(trail_list[i][0],trail_list[i][1]));
+		}
+
+		function setBounds() {
+		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+		    map.setBounds(bounds);
+		}
+		*/
+		
+		// 좌표가 2차원 배열일 경우 지도 범위 재설정하는 코드
+		var bounds = new kakao.maps.LatLngBounds();  
+		
+		var i, marker;
+	    for(var i=0; i<trail_list.length; i++){
+			trail_list_kakao[i]=[];
+	    		
+				// 각 등산로에 좌표 입력
+				for(var j=0; j<trail_list[i].length; j++){
+				    marker =     new kakao.maps.Marker({ position : new kakao.maps.LatLng(trail_list[i][j][0],trail_list[i][j][1]) });
+				    // marker.setMap(map);
+				    
+				    // LatLngBounds 객체에 좌표를 추가합니다
+				    bounds.extend(new kakao.maps.LatLng(trail_list[i][j][0],trail_list[i][j][1]));
+				}
+	    }
+	    
+	    // 버튼을 사용할 경우 marker들을 기준으로 지도의 범위를 재설정한다.
+		function setBounds() {
+		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+		    map.panTo(bounds);;
+		}
+		// 시작시 marker들을 기준으로 지도의 범위를 재설정한다.
+		map.panTo(bounds);
+		
+		
+		
+		
+	
+
+		
+		
+
+		
+		
+		
+		var mapTypes = {
+			    terrain : kakao.maps.MapTypeId.TERRAIN,  
+		};
+		
+		function setOverlayMapTypeId() {
+			var chkTerrain = document.getElementById('chkTerrain');
+			    
+		    // 지도 타입을 제거합니다
+		    for (var type in mapTypes) {
+		        map.removeOverlayMapTypeId(mapTypes[type]);    
+		    }
+		    
+		    // 지형정보 체크박스가 체크되어있으면 지도에 지형정보 지도타입을 추가합니다
+		    if (chkTerrain.checked) {
+		        map.addOverlayMapTypeId(mapTypes.terrain);    
+		    }
+		}  
+		
+		
+		
+		
+		
+		// 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
+		function setMapType(maptype) { 
+		    var roadmapControl = document.getElementById('btnRoadmap');
+		    var skyviewControl = document.getElementById('btnSkyview'); 
+		    if (maptype === 'roadmap') {
+		        map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);    
+		        roadmapControl.className = 'selected_btn';
+		        skyviewControl.className = 'btn';
+		    } else {
+		        map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);    
+		        skyviewControl.className = 'selected_btn';
+		        roadmapControl.className = 'btn';
+		    }
+		}
+
+		// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+		function zoomIn() {
+		    map.setLevel(map.getLevel() - 1);
+		}
+
+		// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+		function zoomOut() {
+		    map.setLevel(map.getLevel() + 1);
+		}
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+		var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
+		    contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
+		    markers = [], // 마커를 담을 배열입니다
+		    currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+		
+		    
+		    
+		 // 장소 검색 객체를 생성합니다
+		    var ps = new kakao.maps.services.Places(map); 
+
+		    // 지도에 idle 이벤트를 등록합니다
+		    kakao.maps.event.addListener(map, 'idle', searchPlaces);
+
+		    // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다 
+		    contentNode.className = 'placeinfo_wrap';
+
+		    // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
+		    // 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 kakao.maps.event.preventMap 메소드를 등록합니다 
+		    addEventHandle(contentNode, 'mousedown', kakao.maps.event.preventMap);
+		    addEventHandle(contentNode, 'touchstart', kakao.maps.event.preventMap);
+
+		    // 커스텀 오버레이 컨텐츠를 설정합니다
+		    placeOverlay.setContent(contentNode);  
+
+		    // 각 카테고리에 클릭 이벤트를 등록합니다
+		    addCategoryClickEvent();
+
+		    // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
+		    function addEventHandle(target, type, callback) {
+		        if (target.addEventListener) {
+		            target.addEventListener(type, callback);
+		        } else {
+		            target.attachEvent('on' + type, callback);
+		        }
+		    }
+
+		    // 카테고리 검색을 요청하는 함수입니다
+		    function searchPlaces() {
+		        if (!currCategory) {
+		            return;
+		        }
+		        
+		        // 커스텀 오버레이를 숨깁니다 
+		        placeOverlay.setMap(null);
+
+		        // 지도에 표시되고 있는 마커를 제거합니다
+		        removeMarker();
+		        
+		        ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+		    }
+
+		    // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+		    function placesSearchCB(data, status, pagination) {
+		        if (status === kakao.maps.services.Status.OK) {
+
+		            // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+		            displayPlaces(data);
+		        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+		            // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
+
+		        } else if (status === kakao.maps.services.Status.ERROR) {
+		            // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+		            
+		        }
+		    }
+
+		    // 지도에 마커를 표출하는 함수입니다
+		    function displayPlaces(places) {
+
+		        // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+		        // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+		        var order = document.getElementById(currCategory).getAttribute('data-order');
+
+		        
+
+		        for ( var i=0; i<places.length; i++ ) {
+
+		                // 마커를 생성하고 지도에 표시합니다
+		                var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
+
+		                // 마커와 검색결과 항목을 클릭 했을 때
+		                // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+		                (function(marker, place) {
+		                    kakao.maps.event.addListener(marker, 'click', function() {
+		                        displayPlaceInfo(place);
+		                    });
+		                })(marker, places[i]);
+		        }
+		    }    
+		    
+		    
+		    
+		    
+		    
+		 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+		    function addMarker(position, order) {
+		        var imageSrc = './places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+		            imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
+		            imgOptions =  {
+		                spriteSize : new kakao.maps.Size(72, 244), // 스프라이트 이미지의 크기
+		                spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+		                offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+		            },
+		            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+		                marker = new kakao.maps.Marker({
+		                position: position, // 마커의 위치
+		                image: markerImage 
+		            });
+
+		        marker.setMap(map); // 지도 위에 마커를 표출합니다
+		        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+		        return marker;
+		    }
+		 
+		 
+		 
+		 
+		 
+		 // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+		    function removeMarker() {
+		        for ( var i = 0; i < markers.length; i++ ) {
+		            markers[i].setMap(null);
+		        }   
+		        markers = [];
+		    }
+
+
+
+
+
+		    // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
+		    function displayPlaceInfo (place) {
+		        var content = '<div class="placeinfo">' +
+		                        '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+
+		        if (place.road_address_name) {
+		            content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+		                        '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+		        }  else {
+		            content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
+		        }                
+		       
+		        content += '    <span class="tel">' + place.phone + '</span>' + 
+		                    '</div>' + 
+		                    '<div class="after"></div>';
+
+		        contentNode.innerHTML = content;
+		        placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
+		        placeOverlay.setMap(map);  
+		    }
+
+
+
+
+
+
+		    // 각 카테고리에 클릭 이벤트를 등록합니다
+		    function addCategoryClickEvent() {
+		        var category = document.getElementById('category'),
+		            children = category.children;
+
+		        for (var i=0; i<children.length; i++) {
+		            children[i].onclick = onClickCategory;
+		        }
+		    }
+
+
+
+
+
+		    // 카테고리를 클릭했을 때 호출되는 함수입니다
+		    function onClickCategory() {
+		        var id = this.id,
+		            className = this.className;
+
+		        placeOverlay.setMap(null);
+
+		        if (className === 'on') {
+		            currCategory = '';
+		            changeCategoryClass();
+		            removeMarker();
+		        } else {
+		            currCategory = id;
+		            changeCategoryClass(this);
+		            searchPlaces();
+		        }
+		    }
+
+
+
+
+
+		    // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+		    function changeCategoryClass(el) {
+		        var category = document.getElementById('category'),
+		            children = category.children,
+		            i;
+
+		        for ( i=0; i<children.length; i++ ) {
+		            children[i].className = '';
+		        }
+
+		        if (el) {
+		            el.className = 'on';
+		        } 
+		    } 
+		    
+		    
+
+
+
+
+
+
+
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+				infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+			// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+			searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+			// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+			kakao.maps.event.addListener(map, 'idle', function() {
+				searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+			});
+
+			function searchAddrFromCoords(coords, callback) {
+				// 좌표로 행정동 주소 정보를 요청합니다
+				geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+			}
+
+			function searchDetailAddrFromCoords(coords, callback) {
+				// 좌표로 법정동 상세 주소 정보를 요청합니다
+				geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+			}
+
+			// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+			function displayCenterInfo(result, status) {
+				if (status === kakao.maps.services.Status.OK) {
+					var infoDiv = document.getElementById('centerAddr');
+
+					for(var i = 0; i < result.length; i++) {
+						// 행정동의 region_type 값은 'H' 이므로
+						if (result[i].region_type === 'H') {
+							infoDiv.innerHTML = result[i].address_name;
+							break;
+						}
+					}
+				}    
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			// 커스텀 오버레이에 표시할 컨텐츠 입니다
+			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+			// 별도의 이벤트 메소드를 제공하지 않습니다
+			var content = '<div class="infowrap">' + 
+			            '    <div class="map_info">' + 
+			            '        <div class="co_title">' + 
+			            '            늦재 - 옛길코스' + 
+			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+			            '        </div>' + 
+			            '        <div class="co_body">' + 
+			            '            <div class="co_img">' +
+			            '                <img src="./Neutjae_three-way_intersection.jpg" width="73" height="70">' +
+			            '           </div>' + 
+			            '            <div class="map_desc">' + 
+			            '                <span class="name">상세구간</span> <span class="con">원효사입구 - 늦재 - 동화사터 - 용추삼거리 - 장불재 - 목교 - 원효사입구 - 목교 - 원효사입구</span><br>' +
+			            '                <span class="name">일정</span> <span class="con">당일</span><br>' + 
+			            '                <span class="name">소요시간</span> <span class="con">09 시간 50분</span>&nbsp;&nbsp;<span class="name">거리</span> <span class="con">10.4km</span>&nbsp;&nbsp;<span class="name">난이도</span> <span class="con">중</span><br>' + 
+			            '                <span><a href="# 그냥 만들어 봄" target="_blank" class="link">자세히보기</a></span>' + 
+			            '            </div>' + 
+			            '        </div>' + 
+			            '    </div>' +    
+			            '</div>';
+
+			// 커스텀 오버레이가 표시될 위치입니다 
+			var position = new kakao.maps.LatLng(35.149830, 126.919837);
+
+			// 커스텀 오버레이를 생성합니다
+			var customOverlay = new kakao.maps.CustomOverlay({
+			    position: map.getCenter(),
+			    map: map,
+			    content: content   
+			});
+
+			// 커스텀 오버레이를 지도에 표시합니다
+			customOverlay.setMap(map);
+
+
+			// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+			function closeOverlay() {
+			    customOverlay.setMap(null);     
+			}
+			
+			
+			
+			
+			
+			var startSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다    
+		    startSize = new kakao.maps.Size(50, 45), // 출발 마커이미지의 크기입니다 
+		    startOption = { 
+		        offset: new kakao.maps.Point(15, 43) // 출발 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+		    };
+			
+			// 출발 마커 이미지를 생성합니다
+			var startImage = new kakao.maps.MarkerImage(startSrc, startSize, startOption);
+	
+			var startDragSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_drag.png', // 출발 마커의 드래그 이미지 주소입니다    
+			    startDragSize = new kakao.maps.Size(50, 64), // 출발 마커의 드래그 이미지 크기입니다 
+			    startDragOption = { 
+			        offset: new kakao.maps.Point(15, 54) // 출발 마커의 드래그 이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+			    };
+	
+			// 출발 마커의 드래그 이미지를 생성합니다
+			var startDragImage = new kakao.maps.MarkerImage(startDragSrc, startDragSize, startDragOption);
+	
+			var map_level_Lng1 = 1+map.getLevel()*-0.000005;
+			var map_level_Lng2 = 1+map.getLevel()*0.0000035;
+			var map_level_Lat1 = 1+map.getLevel()*-0.00004;
+			var map_level_Lat2 = 1+map.getLevel()*-0.00004;
+			
+			// 출발 마커가 표시될 위치입니다 
+			var startPosition = new kakao.maps.LatLng(map.getCenter().getLat()*map_level_Lat1,map.getCenter().getLng()*map_level_Lng1); 
+			
+			// 출발 마커를 생성합니다
+			var startMarker = new kakao.maps.Marker({
+			    map: map, // 출발 마커가 지도 위에 표시되도록 설정합니다
+			    position: startPosition,
+			    draggable: true, // 출발 마커가 드래그 가능하도록 설정합니다
+			    image: startImage // 출발 마커이미지를 설정합니다
+			});
+	
+			// 출발 마커에 dragstart 이벤트를 등록합니다
+			kakao.maps.event.addListener(startMarker, 'dragstart', function() {
+			    // 출발 마커의 드래그가 시작될 때 마커 이미지를 변경합니다
+			    startMarker.setImage(startDragImage);
+			});
+	
+			// 출발 마커에 dragend 이벤트를 등록합니다
+			kakao.maps.event.addListener(startMarker, 'dragend', function() {
+			     // 출발 마커의 드래그가 종료될 때 마커 이미지를 원래 이미지로 변경합니다
+			    startMarker.setImage(startImage);
+			});
+	
+			var arriveSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_b.png', // 도착 마커이미지 주소입니다    
+			arriveSize = new kakao.maps.Size(50, 45), // 도착 마커이미지의 크기입니다 
+			arriveOption = { 
+			    offset: new kakao.maps.Point(15, 43) // 도착 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+			};
+	
+			// 도착 마커 이미지를 생성합니다
+			var arriveImage = new kakao.maps.MarkerImage(arriveSrc, arriveSize, arriveOption);
+	
+			var arriveDragSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png', // 도착 마커의 드래그 이미지 주소입니다    
+			    arriveDragSize = new kakao.maps.Size(50, 64), // 도착 마커의 드래그 이미지 크기입니다 
+			    arriveDragOption = { 
+			        offset: new kakao.maps.Point(15, 54) // 도착 마커의 드래그 이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
+			    };
+			 
+			// 도착 마커의 드래그 이미지를 생성합니다
+			var arriveDragImage = new kakao.maps.MarkerImage(arriveDragSrc, arriveDragSize, arriveDragOption);
+	
+			// 도착 마커가 표시될 위치입니다 
+			var arrivePosition = new kakao.maps.LatLng(map.getCenter().getLat()*map_level_Lat2,map.getCenter().getLng()*map_level_Lng2);    
+			 
+			// 도착 마커를 생성합니다 
+			var arriveMarker = new kakao.maps.Marker({  
+			    map: map, // 도착 마커가 지도 위에 표시되도록 설정합니다
+			    position: arrivePosition,
+			    draggable: true, // 도착 마커가 드래그 가능하도록 설정합니다
+			    image: arriveImage // 도착 마커이미지를 설정합니다
+			});
+	
+			// 도착 마커에 dragstart 이벤트를 등록합니다
+			kakao.maps.event.addListener(arriveMarker, 'dragstart', function() {
+			    // 도착 마커의 드래그가 시작될 때 마커 이미지를 변경합니다
+			    arriveMarker.setImage(arriveDragImage);
+			});
+	
+			// 도착 마커에 dragend 이벤트를 등록합니다
+			kakao.maps.event.addListener(arriveMarker, 'dragend', function() {
+			     // 도착 마커의 드래그가 종료될 때 마커 이미지를 원래 이미지로 변경합니다
+			    arriveMarker.setImage(arriveImage);  
+			});
+
+			startMarker.setVisible(false);
+			arriveMarker.setVisible(false);
+			
+			
+			
+			
+			
+			// 토글하면 출발, 도착 마커가 보이거나 안보인다.
+			function setST_Markers(){
+				startMarker.setVisible(true);
+				arriveMarker.setVisible(true);
+
+			    if (!STmarker.checked) {
+					startMarker.setVisible(false);
+					arriveMarker.setVisible(false); 
+			    }
+			}
+			
+
+
+
+	</script>
+</body>
+</html>

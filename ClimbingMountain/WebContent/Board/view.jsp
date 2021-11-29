@@ -322,7 +322,7 @@
 					<td><img src="..file/<%= dto.getCommunity_file2() %>">
 					<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>
                 </div>
-                <div class="file_cont">
+                <div class="file_cont" style="margin-top: 3%;">
                 	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
 					 <a href="../file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
 					 <a href="../file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 

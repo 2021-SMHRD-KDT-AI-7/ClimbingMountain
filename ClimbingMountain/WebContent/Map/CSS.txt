@@ -1,0 +1,174 @@
+		<style> /* 지도 확대, 축소 컨트롤 div 입니다 */
+			.map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+			.map_wrap {position:relative;width:100%;height:650px;}
+			.radius_border{border:1px solid #919191;border-radius:5px;}     
+			.custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+			.custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+			.custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}       
+			.custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+			.custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}    
+			.custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+			.custom_typecontrol .selected_btn:hover {color:#fff;}   
+		</style>
+
+
+
+		<style> /* 지도타입 컨트롤 div 입니다 */
+			.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+			.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+			.custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}             
+			.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}            
+		</style>
+
+
+
+		<style> /* 카테고리별 장소 검색하기 div 입니다 */
+			#category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
+			#category li {float:left;list-style: none;width:50px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
+			#category li.on {background: #eee;}
+			#category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
+			#category li:last-child{margin-right:0;border-right:0;}
+			#category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
+			#category li .category_bg {background:url('./places_category.png') no-repeat;}
+			#category li .parking {background-position: -10px 0;}
+			#category li .culture {background-position: -10px -36px;}
+			#category li .sightseeing {background-position: -10px -72px;}
+			#category li .accommodation {background-position: -10px -108px;}
+			#category li .restaurant  {background-position: -10px -144px;}
+			#category li .cafe {background-position: -10px -180px;}
+			#category li .hospital {background-position: -10px -216px;}
+			#category li.on .category_bg {background-position-x:-46px;}
+			.placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
+			.placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
+			.placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+			.placeinfo_wrap .after {content:'';position:relative;margin-left:-12px;left:50%;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+			.placeinfo a, .placeinfo a:hover, .placeinfo a:active{color:#fff;text-decoration: none;}
+			.placeinfo a, .placeinfo span {display: block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+			.placeinfo span {margin:5px 5px 0 5px;cursor: default;font-size:13px;}
+			.placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+			.placeinfo .tel {color:#0f7833;}
+			.placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
+		</style>
+
+
+
+		<style> /* 지형보기 버튼(슬라이더) */
+			/* 슬라이더 외부를 감싸는 라벨에 대한 스타일 */
+			.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+			}
+
+			/* HTML 기본 체크박스 숨기기 */
+			.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+			}
+
+			/* 슬라이더 - 실제로 토글될 부분 */
+			.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+			}
+
+			.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+			}
+
+			input:checked + .slider {
+			background-color: #2196F3;
+			}
+
+			input:focus + .slider {
+			box-shadow: 0 0 1px #2196F3;
+			}
+
+			input:checked + .slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+			}
+
+			/* 슬라이더를 동그랗게 보여주기 위한 부분 */
+			.slider.round {
+			border-radius: 34px;
+			}
+
+			.slider.round:before {
+			border-radius: 50%;
+			}
+		</style>
+
+
+
+		<style> /* 행정동 주소정보 */
+			.title {font-weight:bold;display:block;}
+			.hAddr {position:absolute;right:10px;top:90%;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+			#centerAddr {display:block;margin-top:2px;font-weight: normal;}
+			.bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+		</style>
+		
+		
+		
+		<style> /* 커스텀 오버레이(간략 안내판) */
+		    .infowrap {position: absolute;left: -73px;bottom: -90px;width: 432px;height: 158px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+		    .infowrap * {padding: 0;margin: 0;}
+		    .infowrap .info {width: 429px;height: 140px; border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+		    .infowrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+		    .info .cstitle {padding: 5px 0 0 10px;height: 30px;color:#fff; background-color: #4d5f7c;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: normal;}
+		    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('./trail_pic/overlay_close.png');}
+		    .info .close:hover {cursor: pointer;}
+		    .info .body {position: relative;overflow: hidden;}
+		    .info .desc {position: relative;left: 40px; margin: 4px 0 0 90px;height: 190px;white-space:normal; width: 290px;}
+		    .desc .name {font-weight: bold;color:#fff; background-color:#7e7e7e;margin:0px;padding:0px 4px; border-radius: 10px;}
+		    .desc .con {}
+		    .info .img img {position: absolute;top: 6px;left: 5px;width: 110px;height: 85px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+		    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 6px;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+		    .info .link {color: #5085BB;}
+		</style>
+		
+		
+		
+		<style> /* 등산로 보기 버튼 */
+			.myButton {
+				box-shadow: 5px 5px 5px 2px #9fb4f2;
+				background:linear-gradient(to bottom, #7892c2 5%, #4d5f7c 100%);
+				background-color:#4d5f7c;
+				border-radius:10px;
+				border:1px solid #4e6096;
+				display:block;
+				cursor:pointer;
+				color:#ffffff;
+				font-family:Arial;
+				font-size:18px;
+				padding:8px 0px;
+				text-decoration:none;
+				text-shadow:0px 1px 0px #283966;
+			}
+			.myButton:hover {
+				background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+				background-color:#476e9e;
+			}
+			.myButton:active {
+				position:relative;
+				top:1px;
+			}
+		</style>

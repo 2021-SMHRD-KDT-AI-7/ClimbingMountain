@@ -258,7 +258,7 @@
 						<!-- </button> -->
 					</div>
 					
-
+					
   <aside id="nav1">
     <div id='c_up'>
       <p class='c_1'>커뮤니티 게시판

@@ -259,7 +259,7 @@
                     
                         <div id="left">
 
-                         <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
+                         <p class="c_2"><a class='c_2_f' href="list.jsp">산 게시판</a>
                     
                         </div>
                     

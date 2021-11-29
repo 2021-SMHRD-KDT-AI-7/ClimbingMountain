@@ -159,72 +159,89 @@
 </head>
 
 <body>
-<script>
-$.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9156&lang=kr&appid=84dffcc7856b59e1c244b26b05fc8a19&units=metric',
-		function(result) {
-					//시간 데이터 만들기
+	<script>
+		$
+				.getJSON(
+						'https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9156&lang=kr&appid=84dffcc7856b59e1c244b26b05fc8a19&units=metric',
+						function(result) {
+							//시간 데이터 만들기
 
-					for (var i = 0; i < result.daily.length; i++) {
+							for (var i = 0; i < result.daily.length; i++) {
 
-						function convertTime(t) { // 시 분 초로 변환하자
-							var ot = new Date(t * 1000);
-							// ot 형식 : Fri Nov 26 2021 11:47:22 GMT+0900 (한국 표준시)
-							var dt = ot.getDate();
-							var ev = ot.getDay();
-							if (ev == 1) {
-								ev = '월요일'
-							} else if (ev == 2) {
-								ev = '화요일'
-							} else if (ev == 3) {
-								ev = '수요일'
-							} else if (ev == 4) {
-								ev = '목요일'
-							} else if (ev == 5) {
-								ev = '금요일'
-							} else if (ev == 6) {
-								ev = '토요일'
-							} else if (ev == 0) {
-								ev = '일요일'
+								function convertTime(t) { // 시 분 초로 변환하자
+									var ot = new Date(t * 1000);
+									// ot 형식 : Fri Nov 26 2021 11:47:22 GMT+0900 (한국 표준시)
+									var dt = ot.getDate();
+									var ev = ot.getDay();
+									if (ev == 1) {
+										ev = '월요일'
+									} else if (ev == 2) {
+										ev = '화요일'
+									} else if (ev == 3) {
+										ev = '수요일'
+									} else if (ev == 4) {
+										ev = '목요일'
+									} else if (ev == 5) {
+										ev = '금요일'
+									} else if (ev == 6) {
+										ev = '토요일'
+									} else if (ev == 0) {
+										ev = '일요일'
+									}
+									return dt + '일  ' + ev
+								}
+
+								var ct = result.daily[i].dt; //가져오는 시간 (유닉스 타임스탬프)
+								var currentTime = convertTime(ct)
+								var min_temp = parseInt(result.daily[i].temp.min); //최저온도
+								var max_temp = parseInt(result.daily[i].temp.max); //최고온도
+								var w_img = '<img src="http://openweathermap.org/img/wn/' + result.daily[i].weather[0].icon + '@2x.png"alt='+ result.daily[i].weather[0].description +'>' // 날씨 이미지
+								var w_des = result.daily[i].weather[0].description; // 날씨 정보
+								var clouds = result.daily[i].clouds; //흐림도 (%)
+								var pop = result.daily[i].pop; //강수확률
+								var rain = result.daily[i].rain; //(가능할 경우) 강수량,mm
+								var snow = result.daily[i].rain; //(가능할 경우) 적설량,mm
+								var undefined = '0';
+
+								if (rain == null) {
+									rain = undefined;
+									snow = undefined;
+								}
+
+								var tableHtml = '<tr>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ currentTime
+										+ '</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ min_temp
+										+ '℃</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ max_temp
+										+ '℃</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ w_img
+										+ '</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ w_des
+										+ '</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ clouds
+										+ '%</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ pop * 100
+										+ '%</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ rain
+										+ 'mm</td>'
+										+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'
+										+ snow + 'mm</td>' + '</tr>' + '<hr>';
+
+								$('tbody').append(tableHtml);
+								console.log(result.daily.length);
 							}
-							return dt + '일  ' + ev
-						}
 
-						var ct = result.daily[i].dt; //가져오는 시간 (유닉스 타임스탬프)
-						var currentTime = convertTime(ct)
-						var min_temp = parseInt(result.daily[i].temp.min); //최저온도
-						var max_temp = parseInt(result.daily[i].temp.max); //최고온도
-						var w_img = '<img src="http://openweathermap.org/img/wn/' + result.daily[i].weather[0].icon + '@2x.png"alt='+ result.daily[i].weather[0].description +'>' // 날씨 이미지
-						var w_des = result.daily[i].weather[0].description; // 날씨 정보
-						var clouds = result.daily[i].clouds; //흐림도 (%)
-						var pop = result.daily[i].pop; //강수확률
-						var rain = result.daily[i].rain; //(가능할 경우) 강수량,mm
-						var snow = result.daily[i].rain; //(가능할 경우) 적설량,mm
-						var undefined = '0';
-						
-						if(rain==null){
-							rain = undefined;
-							snow = undefined;
-						} 
-
-						var tableHtml = '<tr>' 
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ currentTime + '</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + min_temp+ '℃</td>' 
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ max_temp + '℃</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + w_img + '</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ w_des + '</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + clouds+ '%</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ pop * 100 + '%</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">' + rain+ 'mm</td>'
-								+ '<td style="font-size:x-large;width:200px;text-align:center;border-bottom:inset">'+ snow + 'mm</td>'
-								+ '</tr>' + '<hr>' ;
-
-						$('tbody').append(tableHtml);
-						console.log(result.daily.length);
-					}
-
-				});
-
-</script>
+						});
+	</script>
 	<!-- accessibility -->
 	<div class="cm-accessibility">
 		<a href="#mainContainer">본문바로가기</a>
@@ -282,7 +299,10 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 												</div>
 												<div class="gnb-2dep-menu-txt">
 													<div class="gnb-2dep-menu-info">
-														<p><span style="color:#006400;">Climbing</span> <span style="color:red;">Mountain</span></p>
+														<p>
+															<span style="color: #006400;">Climbing</span> <span
+																style="color: red;">Mountain</span>
+														</p>
 														<div class="gnb-2dep-menu-img"></div>
 													</div>
 												</div>
@@ -305,7 +325,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 																class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a> <%
  	} else {
- %> <a href="../Board/list.jsp"> <span style="font-weight: bold;">다이어리</span>
+ %> <a href="../Board/diary_list.jsp"> <span style="font-weight: bold;">다이어리</span>
 																<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a> <%
  	}
@@ -315,7 +335,10 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 												</div>
 												<div class="gnb-2dep-menu-txt">
 													<div class="gnb-2dep-menu-info">
-														<p><span style="color:#006400;">Bo</span><span style="color:red;">ard</span></p>
+														<p>
+															<span style="color: #006400;">Bo</span><span
+																style="color: red;">ard</span>
+														</p>
 														<div class="gnb-2dep-menu-img"></div>
 													</div>
 												</div>
@@ -352,9 +375,9 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 							style="background: #fff url(images/Main_pic_02.jpg) no-repeat 50% 50%;"></div>
 						<div class="main-visual-txt-con">
 							<div class="main-visual-txt-inner area-box">
-								<strong class="main-visual-txt1 title-line">
-								<span>눈내린 무등산.겨울의 美.<br>
-								<span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스와 함께.
+								<strong class="main-visual-txt1 title-line"> <span>눈내린
+										무등산.겨울의 美.<br> <span style="color: #006400;">산</span> <span
+										style="color: red;">타</span> 클로스와 함께.
 								</span></strong>
 							</div>
 						</div>
@@ -380,7 +403,8 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 								<strong class="main-visual-txt1 title-line"><span>대한민국
 										등산 명소.</span></strong>
 								<p class="main-visual-txt2 title-line">
-									<span><span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스에서 아름다움을 만끽하세요.</span>
+									<span><span style="color: #006400;">산</span> <span
+										style="color: red;">타</span> 클로스에서 아름다움을 만끽하세요.</span>
 								</p>
 							</div>
 						</div>
@@ -417,10 +441,17 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 				<div class="main-news-wrapper">
 					<aside class="main-news-tit-box">
 						<h3 class="main-news-tit main-txt-up">
-							<span style="text-shadow:-1px 0 #000, 0 6px #000, 2px 0 #000, 0 0px #000">광주 / 전남 13대명산</span>
+							<span
+								style="text-shadow: -1px 0 #000, 0 6px #000, 2px 0 #000, 0 0px #000">광주
+								/ 전남 13대명산</span>
 						</h3>
-						<p class="main-news-sub-txt main-txt-up" style="letter-spacing:4px; font-size:26px;">
-							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의<span style="color:#b7e4c7;">"등삶"</span>이 항상 <span style="color:#006400;">산</span> <span style="color:red;">타</span> 클로스와 함께 행복하길.</span>
+						<p class="main-news-sub-txt main-txt-up"
+							style="letter-spacing: 4px; font-size: 26px;">
+							<span>등산은 자연과 함께하는 호흡과 같습니다. 여러분의<span
+								style="color: #b7e4c7;">"등삶"</span>이 항상 <span
+								style="color: #006400;">산</span> <span style="color: red;">타</span>
+								클로스와 함께 행복하길.
+							</span>
 						</p>
 					</aside>
 					<article class="main-news-list-con">
@@ -640,7 +671,8 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 			<!-- 까지 2페이지 -->
 
 			<!-- <!-- 부터 날씨정보 섹션 3페이지 일단 기능보류로 주석처리-->
-			<section id="mainInformationCon" class="section" style="background: url('./images/sky_mountain.jpg') 50% 50% no-repeat; background-size: cover;">
+			<section id="mainInformationCon" class="section"
+				style="background: url('./images/sky_mountain.jpg') 50% 50% no-repeat; background-size: cover;">
 
 				<article class="main-info-wrapper">
 					<aside class="main-info-tit-box">
@@ -648,25 +680,34 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 							<span style="margin-top: 5px;">광주 날씨 <i class="xi-sun-o"></i></span>
 						</h3>
 					</aside>
-					
+
 					<article class="main-info-list-con">
-						<ul class="clearfix" style="margin-top:-100px;">
+						<ul class="clearfix" style="margin-top: -100px;">
 
 							<table>
 								<thead>
 									<tr>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">시간</td>									
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">최저온도</td>									
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">최고온도</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">날씨이미지</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">날씨정보</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">흐림도</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">강수확률</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">강수량</td>
-										<td style="text-align:center;font-size:x-large;border-bottom:solid;padding-bottom:20px">적설량</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">시간</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">최저온도</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">최고온도</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">날씨이미지</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">날씨정보</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">흐림도</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">강수확률</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">강수량</td>
+										<td
+											style="text-align: center; font-size: x-large; border-bottom: solid; padding-bottom: 20px">적설량</td>
 									</tr>
 								</thead>
-								
+
 								<tbody>
 								</tbody>
 
@@ -703,14 +744,19 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 									</dl>
 									<br>
 									<dl>
-										<dt>조장 : </dt>
-										<dd style="color:black;"> 류태욱</dd>
-										<dt>역할/조원 : </dt>
-										<dd style="color:black;letter-spacing:2px;"> Backend : 정현수, 곽승옥, 최혜준 <span style="color:white;"> / </span> Front : 류태욱, 정찬준</dd>
+										<dt>조장 :</dt>
+										<dd style="color: black;">류태욱</dd>
+										<dt>역할/조원 :</dt>
+										<dd style="color: black; letter-spacing: 2px;">
+											Backend : 정현수, 곽승옥, 최혜준 <span style="color: white;"> /
+											</span> Front : 류태욱, 정찬준
+										</dd>
 									</dl>
 									<br>
 								</div>
-								<div class="footer-copyright">스마트인재개발원_인공지능7차_1차프로젝트(<span style="color:red;">드</span><span style="color:blue;">가</span><span style="color:gold;">자</span>)
+								<div class="footer-copyright">
+									스마트인재개발원_인공지능7차_1차프로젝트(<span style="color: red;">드</span><span
+										style="color: blue;">가</span><span style="color: gold;">자</span>)
 								</div>
 							</article>
 						</article>

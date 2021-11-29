@@ -159,7 +159,7 @@
 					<div id="headerInnerWrap">
 						<!-- ****************** 헤더상단 ********************** -->
 						<div id="headerInner" class="clearfix">
-							<h1 class="logo"><a href="D_Home.html" title="메인"><img src="./images/header_logo.png"
+							<h1 class="logo"><a href="../Main/D_Home.jsp" title="메인"><img src="./images/header_logo.png"
 										alt="IBK 시스템" class="pc-logo" width="160px" height="90px" /></a></h1>
 							<div class="header-util-box">
                    			<% if(info==null){ %>
@@ -220,7 +220,7 @@
 															class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 													</a> <%
  	} else {
- %> <a href="../Board/list.jsp"> <span style="font-weight: bold;">다이어리</span>
+ %> <a href="../Board/diary_list.jsp"> <span style="font-weight: bold;">다이어리</span>
 															<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 													</a> <%
  	}
@@ -255,7 +255,7 @@
                     
                         <div id="left">
       
-      <p class="c_2"><a class='c_2_f' href="#">산 게시판</a>
+      <p class="c_2"><a class='c_2_f' href="list.jsp">산 게시판</a>
 
     </div>
 
