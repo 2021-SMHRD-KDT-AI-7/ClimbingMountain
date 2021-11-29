@@ -2794,7 +2794,7 @@ input:checked+.slider:before {
 	            '            <div class="map_desc">' + 
 	            '                <span class="name">상세구간</span> <span class="con">증심교 - 토끼등 - 중머리재 - 장불재 - 규봉 - 시무지기폭포 - 인계리</span><br>' +
 	            '                <span class="name">일정</span> <span class="con">당일</span><br>' + 
-	            '                <span class="name">소요시간</span> <span class="con">16 시간 55분</span>&nbsp;&nbsp;<span class="name">거리</span> <span class="con">12.0km</span>&nbsp;&nbsp;<span class="name">난이도</span> <span class="con">중</span><br>' + 
+	            '                <span class="name">소요시간</span> <span class="con">06 시간 55분</span>&nbsp;&nbsp;<span class="name">거리</span> <span class="con">12.0km</span>&nbsp;&nbsp;<span class="name">난이도</span> <span class="con">중</span><br>' + 
 	            '                <span><a href="# 그냥 만들어 봄" target="_blank" class="link">자세히보기</a></span>' + 
 	            '            </div>' + 
 	            '        </div>' + 
