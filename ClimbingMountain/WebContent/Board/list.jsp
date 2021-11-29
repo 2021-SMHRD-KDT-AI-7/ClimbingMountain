@@ -256,16 +256,14 @@
 					</header>
 					
 
-  <aside id="nav1">
+  <aside class="nav2">
     <div id='c_up'>
       <p class='c_1'>커뮤니티 게시판
       <p>
       <p class='c_1_1'>Community Board</p>
     </div>
 
-
-    <div id="left">
-      
+    <div id="left"> 
       <p class="c_2"><a class='c_2_f' href="list.jsp">산 게시판</a>
 
     </div>

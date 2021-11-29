@@ -1114,24 +1114,24 @@ input:checked+.slider:before {
 												<i class="xi-location-arrow"></i> 교통 정보
 											</h1>
 											<%
-												for (int i = 0; i < course_2_list.size(); i++) {
+												for (int i = 0; i < course_2_list.size(); i++) { // 산을 선택했을 때 산 번호를 받아서 일치하는 등산로 교통정보를 리스트에 저장했다.
 											%>
 											<h1 id=T_C>
-												=
-												<%=course_2_list.get(i).getCourse_name()%>
+												=<%=course_2_list.get(i).getCourse_name()%>
+												<!-- 등산로 이름 받아오기 -->
 												=
 											</h1>
 											<br>
 											<%
-												String[] car = course_2_list.get(i).getCar().split("◈");
+												String[] car = course_2_list.get(i).getCar().split("◈"); // 받아온 문자열을 특수기호를 기준으로 배열에 저장 ( 개행을 위해서 )
 											%>
 											<p class=T_CC>
 												<i class="xi-car"></i> 차
 											</p>
 											<br>
 											<%
-												for (int c = 0; c < car.length; c++) {
-												if (c % 2 == 1) {
+												for (int c = 0; c < car.length; c++) { 
+												if (c % 2 == 1) {  // 배열의 짝수에는 출발지의 이름이 적혀있고 홀수에는 그에 맞는 경로가 입력되어있다.
 											%>
 											<p class=T_R><%=car[c]%></p>
 											<%
@@ -1816,18 +1816,23 @@ input:checked+.slider:before {
 					id="centerAddr"></span>
 			</div>
 			<div
-			style="background-color: #fefae0; text-align: center; padding: 40px;">
-			<button class="btn_m1" value="새인봉" style="font-size:18px">새인봉 - 입석대 코스</button>
-			<button class="btn_m1" value="늦재" style="font-size:18px">늦재 - 옛길코스</button>
-			<button class="btn_m1" value="당산나무" style="font-size:18px">당산나무 코스</button>
-			<button class="btn_m1" value="시무지기폭포" style="font-size:18px">시무지기폭포 코스</button>
-			<button class="btn_m1" value="너릿재" style="font-size:18px">너릿재-옛길코스</button>
-			<button class="btn_m1" value="안양산" style="font-size:18px">안양산-북산 코스</button>
-			<button class="btn_m1" value="도원마을" style="font-size:18px">도원마을-규봉코스</button>
-			<button class="btn_m1" value="교리" style="font-size:18px">교리~만연산코스</button>
-			<br>
-		</div>
-	
+				style="background-color: #fefae0; text-align: center; padding: 40px;">
+				<button class="btn_m1" value="새인봉" style="font-size: 18px">새인봉
+					- 입석대 코스</button>
+				<button class="btn_m1" value="늦재" style="font-size: 18px">늦재
+					- 옛길코스</button>
+				<button class="btn_m1" value="당산나무" style="font-size: 18px">당산나무
+					코스</button>
+				<button class="btn_m1" value="시무지기폭포" style="font-size: 18px">시무지기폭포
+					코스</button>
+				<button class="btn_m1" value="너릿재" style="font-size: 18px">너릿재-옛길코스</button>
+				<button class="btn_m1" value="안양산" style="font-size: 18px">안양산-북산
+					코스</button>
+				<button class="btn_m1" value="도원마을" style="font-size: 18px">도원마을-규봉코스</button>
+				<button class="btn_m1" value="교리" style="font-size: 18px">교리~만연산코스</button>
+				<br>
+			</div>
+
 
 			<!-- <span style="font-size:"><i class="xi-maker-drop"></i> 월출산</span><br>
 			<button class="btn_m2" value="구름다리">구름다리</button>
@@ -2794,7 +2799,7 @@ input:checked+.slider:before {
 	            '            <div class="map_desc">' + 
 	            '                <span class="name">상세구간</span> <span class="con">증심교 - 토끼등 - 중머리재 - 장불재 - 규봉 - 시무지기폭포 - 인계리</span><br>' +
 	            '                <span class="name">일정</span> <span class="con">당일</span><br>' + 
-	            '                <span class="name">소요시간</span> <span class="con">06 시간 55분</span>&nbsp;&nbsp;<span class="name">거리</span> <span class="con">12.0km</span>&nbsp;&nbsp;<span class="name">난이도</span> <span class="con">중</span><br>' + 
+	            '                <span class="name">소요시간</span> <span class="con">16 시간 55분</span>&nbsp;&nbsp;<span class="name">거리</span> <span class="con">12.0km</span>&nbsp;&nbsp;<span class="name">난이도</span> <span class="con">중</span><br>' + 
 	            '                <span><a href="# 그냥 만들어 봄" target="_blank" class="link">자세히보기</a></span>' + 
 	            '            </div>' + 
 	            '        </div>' + 
@@ -4056,12 +4061,11 @@ input:checked+.slider:before {
 			
 	}
 	</script>
-	
 									</article>
 
 								</div>
 		</div>
-		
+
 		</article>
 		</section>
 		</article>
