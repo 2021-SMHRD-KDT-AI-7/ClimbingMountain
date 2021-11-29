@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -148,6 +149,7 @@
     
 </head>
 <%
+		communityDAO dao = new communityDAO();
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
 		
@@ -162,6 +164,8 @@
 			script.println("</script>");
 		}
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+		int cnt = dto.getCommunity_cnt();
+		dao.updatehit(community_seq, cnt);
 
 %>
 <body>
