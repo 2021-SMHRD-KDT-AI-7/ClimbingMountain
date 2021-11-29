@@ -297,6 +297,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 																style="font-weight: bold;">모두의 게시판</span> <em
 																class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a></li>
+														
 														<li>
 															<%
 																if (info == null) {
@@ -304,6 +305,8 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 																style="font-weight: bold;">다이어리</span> <em
 																class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a> <%
+														
+														
  	} else {
  %> <a href="../Board/diary_list.jsp"> <span style="font-weight: bold;">다이어리</span>
 																<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>

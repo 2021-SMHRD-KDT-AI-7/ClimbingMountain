@@ -18,6 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
+    <link rel="stylesheet" href="./css/board_css.css">
     <link rel="stylesheet" href="./css/default.css">
 	<link rel="stylesheet" href="./css/layout.css">
 	<link rel="stylesheet" href="./css/content.css">
@@ -28,7 +29,7 @@
 	<script src="./js/vendor/jquery-1.8.3.min.js"></script>
 	<script src="./js/vendor/jquery.easing.1.3.js"></script>
 	<script src="./js/common.js"></script>
-    <link rel="stylesheet" href="./css/board_css.css">
+    
     <!-- 아이콘폰트 -->
 	<link href="/css/icon.css" rel="stylesheet">
 	<!-- <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"  rel="stylesheet"> google -->
