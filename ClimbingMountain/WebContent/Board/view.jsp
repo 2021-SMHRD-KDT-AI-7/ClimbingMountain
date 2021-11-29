@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -148,6 +149,7 @@
     
 </head>
 <%
+		communityDAO dao = new communityDAO();
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
 		
@@ -162,6 +164,8 @@
 			script.println("</script>");
 		}
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+		int cnt = dto.getCommunity_cnt();
+		dao.updatehit(community_seq, cnt);
 
 %>
 <body>
@@ -324,7 +328,7 @@
 					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file2() %>"></span>
 					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file3() %>"></span>
                 </div>
-                <div class="file_cont">
+                <div class="file_cont" style="margin-top: 3%;">
                 	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
 					 <a href="../file/<%= dto.getCommunity_file2() %>" download> 파일2 다운로드 </a> 
 					 <a href="../file/<%= dto.getCommunity_file3() %>" download> 파일3 다운로드 </a> 

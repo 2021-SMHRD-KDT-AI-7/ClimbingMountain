@@ -267,7 +267,7 @@
 
 
     <div id="left">
-      <p class="c_2"><a class='c_2_f' href="#">글 목록</a>
+      <p class="c_2"><a class='c_2_f' href="diary_list.jsp">글 목록</a>
 
     </div>
 

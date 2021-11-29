@@ -404,9 +404,10 @@ a {
     resize: vertical;
 }
 .file_cont a{
-	border-bottom : solid;
-	border-bottom-width :1px;
-	padding : 20px;
+	border: solid;
+	padding : 5px;
+	border-color: black;
+	border-width:1px;
 	
 }
 

@@ -263,7 +263,7 @@ body { background-color:#fff; }
 }
 #visual .visual-tit{
 	font-weight:700; 
-	font-size:50px; 
+	font-size:90px; 
 	line-height:1.2;
 	-webkit-text-shadow:1px 1px 18px rgba(0,0,0,0.3);
 	-moz-text-shadow:1px 1px 18px rgba(0,0,0,0.3);
@@ -364,7 +364,7 @@ body { background-color:#fff; }
 #topMenuM02{display:none;}
 
 /*  SUB LAYOUT :: 컨텐츠 레이아웃 */
-#content{padding:55px 0}
+#content{padding:20px 0}
 
 /* ****************** MODAL LAYERPOPUP ********************** */
 /* modal layer */
