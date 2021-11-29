@@ -46,11 +46,39 @@ public class FrontController extends HttpServlet {
 
 		if(servlet_Name.equals("Login/LoginServiceCon.do")){
 			sc = new LoginServiceCon();
+		}else if(servlet_Name.equals("Join/LoginServiceCon.do")){
+			sc = new LoginServiceCon();
+		}else if(servlet_Name.equals("Main/LoginServiceCon.do")) {
+			sc = new LoginServiceCon();
+		}else if(servlet_Name.equals("Mountain/LoginServiceCon.do")) {
+			sc = new LoginServiceCon();
+		}else if(servlet_Name.equals("Board/LoginServiceCon.do")) {
+			sc = new LoginServiceCon();
+		}
+		
+		
+		if(servlet_Name.equals("Login/JoinServiceCon.do")){
+			sc = new JoinServiceCon();
 		}else if(servlet_Name.equals("Join/JoinServiceCon.do")){
 			sc = new JoinServiceCon();
+		}else if(servlet_Name.equals("Main/JoinServiceCon.do")) {
+			sc = new JoinServiceCon();
+		}else if(servlet_Name.equals("Mountain/JoinServiceCon.do")) {
+			sc = new JoinServiceCon();
+		}else if(servlet_Name.equals("Board/JoinServiceCon.do")) {
+			sc = new JoinServiceCon();
+		}
+		
+		
+		if(servlet_Name.equals("Login/LogoutServiceCon.do")){
+			sc = new LogoutServiceCon();
+		}else if(servlet_Name.equals("Join/LogoutServiceCon.do")){
+			sc = new LogoutServiceCon();
 		}else if(servlet_Name.equals("Main/LogoutServiceCon.do")) {
 			sc = new LogoutServiceCon();
 		}else if(servlet_Name.equals("Mountain/LogoutServiceCon.do")) {
+			sc = new LogoutServiceCon();
+		}else if(servlet_Name.equals("Board/LogoutServiceCon.do")) {
 			sc = new LogoutServiceCon();
 		}
 		

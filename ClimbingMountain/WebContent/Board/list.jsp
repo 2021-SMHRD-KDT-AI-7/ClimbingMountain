@@ -11,6 +11,8 @@
 <html lang="ko">
 
 <% MemberDTO info = (MemberDTO)session.getAttribute("info"); 	
+
+
 %>
 <head>
     <meta charset="UTF-8">
@@ -147,13 +149,7 @@
 <script type="text/javascript" src="./js/layer_popup.js"></script>
 </head>
 
-<%
-	
-	communityDAO community_dao = new communityDAO();
-	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
-	communityBoard_list = community_dao.viewBoard();
-	int pagenum =1;
-%>
+
 <body>
      <!-- accessibility -->
 	<div class="cm-accessibility">
@@ -257,8 +253,9 @@
 						<!-- <span class="line line1"></span><span class="line line2"></span><span class="line line3"></span> -->
 						<!-- </button> -->
 					</div>
+					</header>
 					
-					
+
   <aside id="nav1">
     <div id='c_up'>
       <p class='c_1'>커뮤니티 게시판
@@ -288,21 +285,27 @@
                 
                 
               
-	
-	<% //번호 제목 글쓴이 작성일 조회
-	for(int i=0;i<communityBoard_list.size();i++){   %>
-	<tr>
-		<td><%= i+1 %></td>
-		<td><a href="communityViewOneBoard.jsp?community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></a></td>
-		<td><%= communityBoard_list.get(i).getReg_date() %></td>
-		<td><%= communityBoard_list.get(i).getCommunity_cnt() %></td>
-		<td><%= communityBoard_list.get(i).getMember_id() %></td>
 
-	</tr>
+<%
+	String number =request.getParameter("number");
 	
-	<% } %>
-	</table>
+	communityDAO community_dao = new communityDAO();
+	ArrayList<communityDTO> communityBoard_list = new ArrayList<>(); 
+	int board_count = (int)(community_dao.getcount());  //총 게시글 수
+	int pageNum = 0;
+	if(number!=null){
+		pageNum = Integer.parseInt(number)-1;
+		
+	}
 	
+	int startPage = 1+pageNum*10;
+	int endPage = startPage+9  ;
+	if(endPage>board_count){
+		endPage = board_count;
+	}
+	
+	communityBoard_list = community_dao.getList(startPage,endPage);
+%>	
                     <div class="num">번호</div>
                     <div class="title">제목</div>
                     <div class="writer">글쓴이</div>
@@ -312,7 +315,7 @@
                 <div>
                 	<% //번호 제목 글쓴이 작성일 조회
                 	for(int i=0;i<communityBoard_list.size();i++){   %>
-                    <div class="num"><%=communityBoard_list.size() -i%></div>
+                    <div class="num"><%= communityBoard_list.get(i).getRownum() %>   </div>
                     <div class="title"><a href="view.jsp?Community_seq=<%= communityBoard_list.get(i).getCommunity_seq() %>"><%= communityBoard_list.get(i).getCommunity_subject() %></a></div>
                     <div class="writer"><%= communityBoard_list.get(i).getMember_id() %></div>
                     <div class="date"><%= communityBoard_list.get(i).getReg_date() %></div>
@@ -324,22 +327,23 @@
             </div>
             <div class="board_page">
                 <%
-               if (pagenum != 1) {//이전페이지로
+               if (pageNum != 0) {//이전페이지로
             %>
-                <a href="list.jsp?number=<%=pagenum -1 %>" class="bt prev"> 이전 </a>
+                <a href="list.jsp?number=<%=pageNum -2 %>" class="bt prev"> 이전 </a>
                 <%
                }
             %>
               <%
-              	int n = (int)(community_dao.getcount() / 5+1);
+              	int n = (int)(community_dao.getcount() / 10 +1);
               	for (int i = 1; i <= n; i++) {
               %>
                 <a href="list.jsp?number=<%=i%>" class="num"><%=i%></a>
                 <%
                }
             %>
-                <a href="list.jsp?number=<%=pagenum +1 %>" class="bt next"> 다음</a>
-                
+            <% if (pageNum < n-1) {//다음페이지로 %>
+                <a href="list.jsp?number=<%=pageNum +2 %>" class="bt next"> 다음</a>
+                <%} %>
             </div>
             <div class="bt_wrap">
                 <a href="write.jsp" class="on">등록</a>
@@ -347,5 +351,7 @@
             </div>
         </div>
     </div>
+    
 </body>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-AI-7/ClimbingMountain.git
 </html> 

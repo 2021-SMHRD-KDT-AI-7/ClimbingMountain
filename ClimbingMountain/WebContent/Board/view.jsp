@@ -1,3 +1,4 @@
+<%@page import="Model.DAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="Model.communityDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
+    <link rel="stylesheet" href="./css/board_style.css">
     <link rel="stylesheet" href="./css/board_css.css">
     <link rel="stylesheet" href="./css/default.css">
 	<link rel="stylesheet" href="./css/layout.css">
@@ -147,6 +149,7 @@
     
 </head>
 <%
+		communityDAO dao = new communityDAO();
 		String member_id = (String) session.getAttribute("member_id");
 		System.out.println("member_id :"+ member_id);
 		
@@ -161,6 +164,8 @@
 			script.println("</script>");
 		}
 		communityDTO dto = new communityDAO().viewOneBoard(community_seq);
+		int cnt = dto.getCommunity_cnt();
+		dao.updatehit(community_seq, cnt);
 
 %>
 <body>
@@ -318,9 +323,10 @@
                   	<%= dto.getCommunity_content()%>
                 </div>
                 <div class="file cont">
-               		 <td colspan="2"><img src="../file/<%= dto.getCommunity_file1() %>">
-					<td><img src="..file/<%= dto.getCommunity_file2() %>">
-					<td><img src="..file/<%= dto.getCommunity_file3() %>"></td>
+                
+               		<span><img class="file_img" height="150px" width="150px" src="../file/<%= dto.getCommunity_file1() %>"></span>
+					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file2() %>"></span>
+					<span><img class="file_img" height="150px" width="150px" src="..file/<%= dto.getCommunity_file3() %>"></span>
                 </div>
                 <div class="file_cont" style="margin-top: 3%;">
                 	 <a href="../file/<%= dto.getCommunity_file1() %>" download> 파일1 다운로드 </a> 
