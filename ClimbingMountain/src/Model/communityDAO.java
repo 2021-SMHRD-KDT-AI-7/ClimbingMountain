@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 public class communityDAO {
 
@@ -15,6 +14,7 @@ public class communityDAO {
 	ResultSet rs = null;
 	int cnt = 0;
 	communityDTO dto = null;
+	ArrayList<communityDTO> c_list = new ArrayList<communityDTO>();
 
 	// DB연결 메소드
 	public void getConn() {
@@ -47,37 +47,30 @@ public class communityDAO {
 		}
 	}
 
-	// 게시판 보기
-	public ArrayList<communityDTO> viewBoard() {
-		ArrayList<communityDTO> c_list = new ArrayList<communityDTO>();
-		getConn();
-		try {
-
-			String sql = "select * from tbl_community order by reg_date desc";
-
-			psmt = conn.prepareStatement(sql);
-
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-				int community_seq = rs.getInt("community_seq");
-				String community_subject = rs.getString("community_subject");
-				Date reg_date = rs.getDate("reg_date");
-				int community_cnt = rs.getInt("community_cnt");
-				String member_id = rs.getString("member_id");
-
-				dto = new communityDTO(community_seq, community_subject, reg_date, community_cnt, member_id);
-				c_list.add(dto);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbclose();
-		}
-		return c_list;
-
-	}
+	/*
+	 * // 게시판 보기 public ArrayList<communityDTO> viewBoard() {
+	 * 
+	 * getConn(); try {
+	 * 
+	 * String sql = "select * from tbl_community order by reg_date desc";
+	 * 
+	 * psmt = conn.prepareStatement(sql);
+	 * 
+	 * rs = psmt.executeQuery();
+	 * 
+	 * while (rs.next()) { int community_seq = rs.getInt("community_seq"); String
+	 * community_subject = rs.getString("community_subject"); Date reg_date =
+	 * rs.getDate("reg_date"); int community_cnt = rs.getInt("community_cnt");
+	 * String member_id = rs.getString("member_id");
+	 * 
+	 * dto = new communityDTO(community_seq, community_subject, reg_date,
+	 * community_cnt, member_id); c_list.add(dto); }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } finally { dbclose(); } return
+	 * c_list;
+	 * 
+	 * }
+	 */
 
 	// 게시글 세부내용
 	public communityDTO viewOneBoard(int community_seq) {
@@ -224,6 +217,41 @@ public class communityDAO {
 			dbclose();
 		}
 		return -1;
-			}
-}
+	}
 
+	public ArrayList<communityDTO> getList(int startRow, int endRow) { //
+
+		getConn();
+		try {
+
+			String sql = "select rn, community_seq, community_subject, reg_date, community_cnt, member_id from("
+					+ "select  rownum as rn, community_seq, community_subject, reg_date, community_cnt, member_id "
+					+ "from tbl_community  order by community_seq desc)" + " where rn between ? and ?";
+
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setInt(1, startRow);
+			psmt.setInt(2, endRow);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				int rownum = rs.getInt("rn");
+				int community_seq = rs.getInt("community_seq");
+				String community_subject = rs.getString("community_subject");
+				Date reg_date = rs.getDate("reg_date");
+				int community_cnt = rs.getInt("community_cnt");
+				String Member_id = rs.getString("member_id");
+
+				dto = new communityDTO(rownum,community_seq, community_subject, reg_date, community_cnt, Member_id);
+				c_list.add(dto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbclose();
+		}
+
+		return c_list;
+	}
+}

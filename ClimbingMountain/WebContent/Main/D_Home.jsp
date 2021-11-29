@@ -305,7 +305,7 @@ $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1547&lon=126.9
 																class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a> <%
  	} else {
- %> <a href="../Board/list.jsp"> <span style="font-weight: bold;">다이어리</span>
+ %> <a href="../Board/diary_list.jsp"> <span style="font-weight: bold;">다이어리</span>
 																<em class="gnb-icon"><i class="xi-angle-right-min"></i></em>
 														</a> <%
  	}

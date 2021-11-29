@@ -40,7 +40,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('삭제성공')");
-			script.println("location.href='communityview.jsp'");
+			script.println("location.href='./Board/list.jsp'");
 			script.println("</script>");
 		}
 
